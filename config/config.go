@@ -20,6 +20,9 @@ type Config struct {
 		Port string `mapstructure:"port"`
 		Host string `mapstructure:"host"`
 	} `mapstructure:"server"`
+	Cookie struct {
+		Secret string `mapstructure:"secret"`
+	}
 }
 
 var Configs Config
