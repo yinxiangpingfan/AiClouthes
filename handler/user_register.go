@@ -8,7 +8,6 @@ import (
 )
 
 // 注册
-
 func UserRegister(ctx fiber.Ctx) error {
 	telephone := ctx.FormValue("telephone")
 	easyPassword := ctx.FormValue("password") //加密前的密码
@@ -56,7 +55,7 @@ func UserRegister(ctx fiber.Ctx) error {
 		}
 		//注册成功
 		return ctx.Status(fiber.StatusOK).JSON(fiber.Map{
-			"code": 1015,
+			"code": 1000,
 			"msg":  "注册账号成功",
 		})
 	}

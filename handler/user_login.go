@@ -54,7 +54,7 @@ func UserLogin(ctx fiber.Ctx) error {
 		HTTPOnly: false, //是否允许别人通过js获取自己的cookie，设为false防止XSS攻击
 	})
 	return ctx.Status(fiber.StatusOK).JSON(fiber.Map{
-		"code":  1020,
+		"code":  1000,
 		"msg":   "登陆成功",
 		"token": token,
 	})

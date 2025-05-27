@@ -20,14 +20,14 @@ type User struct {
 	DeletedAt time.Time `xorm:"deleted"`
 }
 
-func OpenDatabase(e *xorm.Engine) {
+func OpenDatabase() {
 	var err error
 	mys := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8", config.Configs.Database.Username, config.Configs.Database.Password, config.Configs.Database.Host, config.Configs.Database.Port, config.Configs.Database.Dbname)
-	e, err = xorm.NewEngine("mysql", mys)
+	Engine, err = xorm.NewEngine("mysql", mys)
 	if err != nil {
 		panic("数据库连接失败: " + err.Error())
 	}
-	err = e.Sync(new(User))
+	err = Engine.Sync(new(User))
 	if err != nil {
 		panic("表结构体创建失败: " + err.Error())
 	}
