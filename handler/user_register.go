@@ -5,9 +5,10 @@ import (
 	"ai_clouthes_backed/utils"
 	"github.com/gofiber/fiber/v3"
 	"golang.org/x/crypto/bcrypt"
+	"os"
 )
 
-// 注册
+// 注册账号
 func UserRegister(ctx fiber.Ctx) error {
 	telephone := ctx.FormValue("telephone")
 	easyPassword := ctx.FormValue("password") //加密前的密码
@@ -40,6 +41,8 @@ func UserRegister(ctx fiber.Ctx) error {
 				"msg":  "注册账号失败，请稍后再试",
 			})
 		}
+		//创建文件夹
+		err = os.Mkdir("./"+telephone+"parseimage", 0755)
 		//把加密后的密码存入数据库
 		user := database.User{
 			Telephone: telephone,
