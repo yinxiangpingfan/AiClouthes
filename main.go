@@ -31,7 +31,7 @@ func main() {
 			Output:        logfile,
 			TimeZone:      "Asia/Shanghai",
 		},
-	))                     //中间件,日志
+	)) //中间件,日志
 	app.Use(recover.New()) //中间件,恢复
 	//设置路由
 	router.Router(app)

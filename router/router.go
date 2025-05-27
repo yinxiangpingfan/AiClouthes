@@ -11,4 +11,6 @@ func Router(app *fiber.App) {
 	app.Post("/register", handler.UserRegister)
 	user := app.Group("/user", utils.Middle)
 	user.Post("/chanpass", handler.ChangePassword)
+	user.Get("/logout", handler.UserLogout)
+
 }
