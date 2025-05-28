@@ -6,6 +6,7 @@ import (
 	"github.com/gofiber/fiber/v3"
 	"golang.org/x/crypto/bcrypt"
 	"os"
+	"path"
 )
 
 // 注册账号
@@ -41,8 +42,6 @@ func UserRegister(ctx fiber.Ctx) error {
 				"msg":  "注册账号失败，请稍后再试",
 			})
 		}
-		//创建文件夹
-		err = os.Mkdir("./"+telephone+"parseimage", 0755)
 		//把加密后的密码存入数据库
 		user := database.User{
 			Telephone: telephone,
@@ -53,6 +52,17 @@ func UserRegister(ctx fiber.Ctx) error {
 			utils.Logger.Error("注册账号时，插入数据库失败" + err.Error())
 			return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 				"code": 1014,
+				"msg":  "注册账号失败，请稍后再试",
+			})
+		}
+		//创建文件夹
+		err3 := os.Mkdir(path.Join("parsePic", telephone), 0755)
+		err1 := os.Mkdir(path.Join("clouthesPic", telephone), 0755)
+		err2 := os.Mkdir(path.Join("dapeiPic", telephone), 0755)
+		if err1 != nil || err2 != nil || err3 != nil {
+			utils.Logger.Error("注册账号时，创建文件夹失败" + err1.Error() + err2.Error() + err3.Error())
+			return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+				"code": 1015,
 				"msg":  "注册账号失败，请稍后再试",
 			})
 		}
