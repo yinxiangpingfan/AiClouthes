@@ -15,9 +15,9 @@ type User struct {
 	Id        int64     `xorm:"pk autoincr"`
 	Telephone string    `xorm:"VARCHAR(11)"`
 	Password  string    `xorm:"VARCHAR(255)"`
+	Temp      string    `xorm:"TEXT"`
 	CreatedAt time.Time `xorm:"created"`
 	UpdatedAt time.Time `xorm:"updated"`
-	DeletedAt time.Time `xorm:"deleted"`
 }
 
 func OpenDatabase() {

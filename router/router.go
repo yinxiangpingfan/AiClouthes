@@ -13,4 +13,6 @@ func Router(app *fiber.App) {
 	user.Post("/chanpass", handler.ChangePassword)
 	user.Get("/logout", handler.UserLogout)
 	user.Post("/pic/upload", handler.UploadImages)
+	user.Post("/pic/parse", handler.ClouthesParseImages)
+	user.Get("/pic/makepic", handler.ClouthesMakeImages)
 }

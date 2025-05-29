@@ -42,7 +42,7 @@ func ChangePassword(ctx fiber.Ctx) error {
 	if e != nil {
 		utils.Logger.Error("修改密码时，加密失败: " + err.Error())
 		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"code": 1033,
+			"code": 1035,
 			"msg":  "修改密码失败，请稍后重试",
 		})
 	}

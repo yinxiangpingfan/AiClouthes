@@ -22,7 +22,12 @@ type Config struct {
 	} `mapstructure:"server"`
 	Cookie struct {
 		Secret string `mapstructure:"secret"`
-	}
+	} `mapstructure:"cookie"`
+	Vivo struct {
+		AppID       string `mapstructure:"appid"`
+		AppKey      string `mapstructure:"appkey"`
+		Aliguijikey string `mapstructure:"aliguijikey"`
+	} `mapstructure:"vivo"`
 }
 
 var Configs Config
