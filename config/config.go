@@ -27,6 +27,8 @@ type Config struct {
 		AppID       string `mapstructure:"appid"`
 		AppKey      string `mapstructure:"appkey"`
 		Aliguijikey string `mapstructure:"aliguijikey"`
+		Aliyun      string `mapstructure:"aliyun"`
+		Gaode       string `mapstructure:"gaode"`
 	} `mapstructure:"vivo"`
 }
 

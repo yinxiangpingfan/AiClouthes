@@ -25,15 +25,9 @@ func ClouthesMakeImages(ctx fiber.Ctx) error {
 	}
 	//截取say根据您的需求，我推荐您穿后面的文字
 	say := user.Temp
-	fmt.Println(say)
-	fmt.Println(1)
 	extracted := extractRecommendation(say)
-	fmt.Println(extracted)
-	fmt.Println(1)
 	recommand := "生成一件白色衬衫，黑色西服裤子的试穿图片"
 	recommand = fmt.Sprintf("根据一下穿搭，生成真人试穿结果，%s", extracted)
-	fmt.Println(recommand)
-	fmt.Println(1)
 	app := vivo.NewVivoAIGC(vivo.Config{
 		AppID:  config.Configs.Vivo.AppID,
 		AppKey: config.Configs.Vivo.AppKey,

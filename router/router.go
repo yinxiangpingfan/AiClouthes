@@ -15,4 +15,6 @@ func Router(app *fiber.App) {
 	user.Post("/pic/upload", handler.UploadImages)
 	user.Post("/pic/parse", handler.ClouthesParseImages)
 	user.Get("/pic/makepic", handler.ClouthesMakeImages)
+	user.Post("/weather/get", handler.GetWeather)
+	user.Post("/weather/make", handler.MakeWeatherClouthes)
 }
