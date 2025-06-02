@@ -1,10 +1,9 @@
 package database
 
 import (
-	"ai_clouthes_backed/config"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/xorm"
+	_ "github.com/mattn/go-sqlite3"
 	"time"
 )
 
@@ -22,8 +21,7 @@ type User struct {
 
 func OpenDatabase() {
 	var err error
-	mys := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8", config.Configs.Database.Username, config.Configs.Database.Password, config.Configs.Database.Host, config.Configs.Database.Port, config.Configs.Database.Dbname)
-	Engine, err = xorm.NewEngine("mysql", mys)
+	Engine, err = xorm.NewEngine("sqlite3", "./test.db")
 	if err != nil {
 		panic("数据库连接失败: " + err.Error())
 	}

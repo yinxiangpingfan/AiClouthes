@@ -36,7 +36,7 @@ func main() {
 	//设置路由
 	router.Router(app)
 	//启动服务
-	sever := fmt.Sprintf("%s:%s", config.Configs.Server.Host, config.Configs.Server.Port)
+	sever := fmt.Sprintf("%s:%s", "0.0.0.0", config.Configs.Server.Port)
 	err = app.Listen(sever)
 	if err != nil {
 		panic("启动服务失败" + err.Error())

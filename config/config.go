@@ -9,13 +9,6 @@ import (
 
 // 定义配置文件结构体
 type Config struct {
-	Database struct {
-		Host     string `mapstructure:"host"`
-		Port     string `mapstructure:"port"`
-		Username string `mapstructure:"username"`
-		Password string `mapstructure:"password"`
-		Dbname   string `mapstructure:"dbname"`
-	} `mapstructure:"database"`
 	Server struct {
 		Port string `mapstructure:"port"`
 		Host string `mapstructure:"host"`
