@@ -39,14 +39,6 @@ func MakeWeatherClouthes(ctx fiber.Ctx) error {
 			"msg":  "根据天气推荐衣服失败，请稍后再试",
 		})
 	}
-	var jsonString string
-	if err := json.Unmarshal([]byte(res.Content), &jsonString); err != nil {
-		utils.Logger.Error("Unmarshal json error" + err.Error() + res.Content)
-		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"code": 2053,
-			"msg":  "根据天气推荐衣服失败，请稍后再试",
-		})
-	}
 	type ClothingMatch struct {
 		UpperGarment string `json:"UpperGarment"`
 		Bottoms      string `json:"Bottoms"`
@@ -57,7 +49,7 @@ func MakeWeatherClouthes(ctx fiber.Ctx) error {
 	}
 
 	var data Response
-	if err := json.Unmarshal([]byte(jsonString), &data); err != nil {
+	if err := json.Unmarshal([]byte(res.Content), &data); err != nil {
 		utils.Logger.Error("Unmarshal json error" + err.Error())
 		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"code": 2054,

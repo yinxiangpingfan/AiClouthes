@@ -11,23 +11,22 @@ import (
 	"time"
 )
 
-func TryClouthesDouble(c fiber.Ctx) error {
+func TryClouthesNoModel2(c fiber.Ctx) error {
 	userId := c.Locals("userId").(int)
 	telephone, err := utils.IdToTelephone(userId)
 	if err != nil {
 		utils.Logger.Error("获取用户手机号失败: " + err.Error())
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"code": 2081,
+			"code": 2111,
 			"msg":  "服务器出现错误，请稍后再试",
 		})
 	}
-	// 处理三个文件上传
-	var topFile, bottomFile, personFile *multipart.FileHeader
+	var topFile, bottomFile *multipart.FileHeader
 	topFile, err = c.FormFile("topGarment")
 	if err != nil {
 		utils.Logger.Error("上装文件获取失败: " + err.Error())
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"code": 2082,
+			"code": 2112,
 			"msg":  "服务器出现错误，请稍后再试",
 		})
 	}
@@ -35,19 +34,10 @@ func TryClouthesDouble(c fiber.Ctx) error {
 	if err != nil {
 		utils.Logger.Error("下装文件获取失败: " + err.Error())
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"code": 2083,
+			"code": 2113,
 			"msg":  "服务器出现错误，请稍后再试",
 		})
 	}
-	personFile, err = c.FormFile("personImage")
-	if err != nil {
-		utils.Logger.Error("模特文件获取失败: " + err.Error())
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"code": 2084,
-			"msg":  "服务器出现错误，请稍后再试",
-		})
-	}
-
 	// 保存文件并生成URL
 	saveAndGetURL := func(file *multipart.FileHeader, a int) string {
 		filename := fmt.Sprintf("%d-%d-%d%s", time.Now().Unix(), time.Now().Nanosecond(), a, path.Ext(file.Filename))
@@ -61,14 +51,20 @@ func TryClouthesDouble(c fiber.Ctx) error {
 
 	topURL := saveAndGetURL(topFile, 1)
 	bottomURL := saveAndGetURL(bottomFile, 2)
-	personURL := saveAndGetURL(personFile, 3)
+	sex := c.FormValue("sex")
+	var personURL string
+	if sex == "male" {
+		personURL = fmt.Sprintf("http://%s:%s/try_files/%s/%s", config.Configs.Server.Host, config.Configs.Server.Port, "model", url.PathEscape("male.png"))
+	} else {
+		personURL = fmt.Sprintf("http://%s:%s/try_files/%s/%s", config.Configs.Server.Host, config.Configs.Server.Port, "model", url.PathEscape("female.png"))
+	}
 	fmt.Println(topURL)
 	fmt.Println(bottomURL)
 	fmt.Println(personURL)
 	if topURL == "" || bottomURL == "" || personURL == "" {
 		utils.Logger.Error("文件上传失败")
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"code": 2085,
+			"code": 2115,
 			"msg":  "文件上传失败",
 		})
 	}
@@ -79,7 +75,7 @@ func TryClouthesDouble(c fiber.Ctx) error {
 	if taskID == "" {
 		utils.Logger.Error("提交异步任务失败" + err.Error())
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"code": 2086,
+			"code": 2116,
 			"msg":  "服务器出现错误，请稍后再试",
 		})
 	}
@@ -107,8 +103,7 @@ func TryClouthesDouble(c fiber.Ctx) error {
 		})
 	} else {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"code": 2087,
+			"code": 2117,
 			"msg":  "服务器出现错误，请稍后再试"})
-
 	}
 }
