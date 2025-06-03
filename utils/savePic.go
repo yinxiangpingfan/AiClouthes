@@ -22,7 +22,7 @@ func SavePic(urls string) (string, error) {
 	} else {
 		defer resp.Body.Close()
 		//命名文件，当前时间+随机数
-		name := fmt.Sprintf("%s%d.%s", time.Now().Format("20060102150405"), rand.Intn(10000), ".jpg")
+		name := fmt.Sprintf("%s%d.%s", time.Now().Format("20060102150405"), rand.Intn(10000), "jpg")
 		path := path.Join("clouthesPic", "temp", name)
 		f, err := os.Create(path)
 		if err != nil {
