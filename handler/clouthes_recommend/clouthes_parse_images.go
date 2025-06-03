@@ -52,7 +52,7 @@ func ClouthesParseImages(ctx fiber.Ctx) error {
 	writer := ctx.Response().BodyWriter()
 	err = client.ChatVisionStream("Pro/Qwen/Qwen2.5-VL-7B-Instruct", []openai.VisionMessage{
 		{
-			Role:    "users",
+			Role:    "user",
 			Content: imageContents,
 		},
 	}, func(s string) {
