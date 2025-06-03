@@ -10,6 +10,7 @@ import (
 	"github.com/gofiber/fiber/v3/middleware/logger"
 	"github.com/gofiber/fiber/v3/middleware/recover"
 	"os"
+	"path"
 )
 
 func main() {
@@ -33,6 +34,19 @@ func main() {
 		},
 	)) //中间件,日志
 	app.Use(recover.New()) //中间件,恢复
+	//判断是否存在文件夹,不存在则创建
+	err = utils.HaveFloder(path.Join("parsePic"))
+	if err != nil {
+		panic("创建文件夹失败")
+	}
+	err = utils.HaveFloder(path.Join("dapeiPic"))
+	if err != nil {
+		panic("创建文件夹失败")
+	}
+	err = utils.HaveFloder(path.Join("clouthesPic", "temp"))
+	if err != nil {
+		panic("创建文件夹失败")
+	}
 	//设置路由
 	router.Router(app)
 	//启动服务
