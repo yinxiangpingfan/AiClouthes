@@ -4,6 +4,7 @@ import (
 	"ai_clouthes_backed/config"
 	"ai_clouthes_backed/database"
 	"ai_clouthes_backed/utils"
+	"bufio"
 	"encoding/json"
 	"fmt"
 	"github.com/dingdinglz/openai"
@@ -46,49 +47,54 @@ func ClouthesParseImages(ctx fiber.Ctx) error {
 		ApiKey:  config.Configs.Vivo.Aliguijikey,
 	})
 	ctx.Set("Content-Type", "text/event-stream")
-	ctx.Set("Cache-Control", "no-cache")
+	ctx.Set("Cache-Control", "no-cache, no-transform")
 	ctx.Set("Connection", "keep-alive")
-	ctx.Set("x-Accel-Buffering", "no")
-	writer := ctx.Response().BodyWriter()
-	err = client.ChatVisionStream("Pro/Qwen/Qwen2.5-VL-7B-Instruct", []openai.VisionMessage{
-		{
-			Role:    "user",
-			Content: imageContents,
-		},
-	}, func(s string) {
-		answer += s
-		message := map[string]string{
-			"data": s,
+	ctx.Set("X-Accel-Buffering", "no")
+	ctx.Set("Transfer-Encoding", "chunked")
+	ctx.Set("Access-Control-Allow-Origin", "*")
+	ctx.Set("Access-Control-Allow-Headers", "Cache-Control")
+	ctx.Set("Access-Control-Allow-Credentials", "true")
+	ctx.Response().SetBodyStreamWriter(func(w *bufio.Writer) {
+		defer func() {
+			w.Flush()
+		}()
+		// 禁用GZip中间件
+		ctx.Response().Header.Add("Content-Encoding", "identity")
+		err = client.ChatVisionStream("Pro/Qwen/Qwen2.5-VL-7B-Instruct", []openai.VisionMessage{
+			{
+				Role:    "user",
+				Content: imageContents,
+			},
+		}, func(s string) {
+			answer += s
+			message := map[string]string{
+				"data": s,
+			}
+			massgaeJson, _ := json.Marshal(message)
+			// 发送 SSE 事件
+			w.Write([]byte("event: message\n"))
+			w.Write([]byte("data: " + string(massgaeJson) + "\n\n"))
+			w.Flush()
+		})
+		if err != nil {
+			utils.Logger.Error("解析图片时，AI推荐失败" + err.Error())
+			// 发送错误消息
+			w.Write([]byte("event: message\n"))
+			w.Write([]byte("data: {\"data\":\"错误了\"}\n\n"))
+			w.Write([]byte("event: message\n"))
+			w.Write([]byte("data: {\"data\":\"" + err.Error() + "\"}\n\n"))
+			w.Flush()
 		}
-		massgaeJson, _ := json.Marshal(message)
-		// 发送 SSE 事件
-		writer.Write([]byte("event: message\n"))
-		writer.Write([]byte("data: " + string(massgaeJson) + "\n\n"))
-		if f, ok := writer.(interface{ Flush() error }); ok {
-			f.Flush()
+		//将回答保存到数据库
+		_, e11 := database.Engine.Where("id = ?", userId).Update(&database.User{
+			Temp: answer,
+		})
+		if e11 != nil {
+			utils.Logger.Error("解析图片时，保存回答到数据库失败" + e11.Error())
 		}
 	})
-	if err != nil {
-		utils.Logger.Error("解析图片时，AI推荐失败" + err.Error())
-		// 发送错误消息
-		writer.Write([]byte("event: message\n"))
-		writer.Write([]byte("data: {\"data\":\"错误了\"}\n\n"))
-		writer.Write([]byte("event: message\n"))
-		writer.Write([]byte("data: {\"data\":\"" + err.Error() + "\"}\n\n"))
-		if f, ok := writer.(interface{ Flush() error }); ok {
-			f.Flush()
-		}
-	}
-	//将回答保存到数据库
-	_, e11 := database.Engine.Where("id = ?", userId).Update(&database.User{
-		Temp: answer,
-	})
-	if e11 != nil {
-		utils.Logger.Error("解析图片时，保存回答到数据库失败" + e11.Error())
-	}
 	return nil
 }
-
 func add(folderPath string, imageContent *[]openai.VisionContent) error {
 	// 捕获 Walk 函数的返回值作为最终错误
 	err := filepath.Walk(folderPath, func(path string, info os.FileInfo, err error) error {
