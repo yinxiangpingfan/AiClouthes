@@ -19,24 +19,19 @@ func ClouthesParseImages(ctx fiber.Ctx) error {
 	//解析图片
 	userId := ctx.Locals("userId").(int)
 	telephone, err := utils.IdToTelephone(userId)
-	text := ctx.FormValue("ques")
+	var text string
+	text = ctx.FormValue("ques")
 	if err != nil {
 		utils.Logger.Error("解析图片时，获取用户手机号失败" + err.Error())
-		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"code": 2021,
-			"msg":  "服务器出现错误，请稍后再试",
-		})
+		return nil
 	}
 	var imageContents []openai.VisionContent
 	err = add(path.Join("parsePic", telephone), &imageContents)
 	if err != nil {
 		utils.Logger.Error("解析图片时，获取用户图片失败" + err.Error())
-		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"code": 2022,
-			"msg":  "服务器出现错误，请稍后再试",
-		})
+		return nil
 	}
-	sy := fmt.Sprintf("解析上方几张图片，分析其中包含的衣服并输出，并根据%s的目的从刚刚识别的衣服中选择一套衣服（也可以是几件）。请按照以下格式输出：\n例如：第一张图片中包含的衣服有：1.黑色西服外套（具体描述这个衣服）\n2.白色衬衫（具体描述这个衣服）\n第三张图片中包含的衣服有：1.红色衬衫（具体描述这个衣服）\n2.蓝色裤子（具体描述这个衣服）\n根据您的需求，我推荐您穿：1.黑色西服外套\n2.红色衬衫\n3.蓝色裤子\n原因：说明选择几件衣服的原因\n\n请按照这个格式输出，必须要按照这个格式不要输出其他内容。注意，括号里面的具体描述这个衣服，直接在括号里面输出描述，要输出描述的内容，而不是输出具体描述这个衣服这几个字。注意：一定要从实际出发，图片数量以及衣物要根据实际图片来输出。在推荐衣服的时候要注意衣服在穿的时候不能冲突，要符合常理。", text)
+	sy := fmt.Sprintf("请严格解析用户提供的图片（共 [X] 张），按图片顺序逐一列出每张图片中的所有可清晰辨认衣物。格式为：\n第一张图片中包含的衣服有：\n1.[衣物名称]（颜色、款式、材质、关键特征如领型/袖长/图案等）\n2.[衣物名称]（同上具体描述）\n...\n第二张图片中包含的衣服有：\n1.[衣物名称]（具体描述）\n...（按实际图片数量继续）。要求衣物名称准确具体，描述仅基于图片可见信息。\n\n然后，根据用户本次目的：%s，从上述分析出的所有衣物中选择一套可组合穿着的搭配进行推荐。格式为：\n根据您的需求，我推荐您穿：\n1.[推荐衣物1名称]\n2.[推荐衣物2名称]\n...\n原因：[说明选择原因，必须包含：1. 场合匹配性分析 2. 单品间搭配兼容性 3. 放弃其他选项的关键理由]。\n\n全局要求：\n1. 输出必须且仅包含以上两部分指定格式内容（衣物分析列表 + 推荐列表 + 原因段落），绝对不要添加任何其他文字（如问候语、总结、表情符号）。\n2. 衣物分析必须忠实于图片内容，[X]需替换为实际图片数量。\n3. 推荐搭配必须符合常理：不能同时推荐两件需外穿的单品（如两件外套），确保有上衣和下装组合，季节/场合需合理（如不推荐羽绒服参加夏季婚礼）。\n4. 衣物分析中括号()内必须直接填写具体描述内容，不要写“具体描述”字样。\n5. 推荐衣物必须且只能来自第一步分析列出的衣物列表。违者将导致功能失效。", text)
 	imageContents = append(imageContents, openai.VisionContent{
 		Type: openai.VISION_MESSAGE_TEXT,
 		Text: sy,
@@ -58,9 +53,16 @@ func ClouthesParseImages(ctx fiber.Ctx) error {
 		defer func() {
 			w.Flush()
 		}()
-		// 禁用GZip中间件
-		ctx.Response().Header.Add("Content-Encoding", "identity")
-		err = client.ChatVisionStream("Pro/Qwen/Qwen2.5-VL-7B-Instruct", []openai.VisionMessage{
+		if err != nil {
+			utils.Logger.Error("解析图片时，AI推荐失败" + err.Error())
+			// 发送错误消息
+			w.Write([]byte("event: message\n"))
+			w.Write([]byte("data: {\"data\":\"错误了\"}\n\n"))
+			w.Write([]byte("event: message\n"))
+			w.Write([]byte("data: {\"data\":\"" + err.Error() + "\"}\n\n"))
+			w.Flush()
+		}
+		err = client.ChatVisionStream("Qwen/Qwen2.5-VL-32B-Instruct", []openai.VisionMessage{
 			{
 				Role:    "user",
 				Content: imageContents,
