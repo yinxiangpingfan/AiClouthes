@@ -24,7 +24,7 @@
 
 启动后端需要在main.go同一级下创建server.log（用户记录错误时的日志） 以及use.log（记录使用的日志） 以及 config.yaml（配置文件）
 
-config.yaml为一下格式
+config.yaml为以下格式
 
 ```
 server:
