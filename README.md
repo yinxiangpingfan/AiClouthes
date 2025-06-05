@@ -26,6 +26,7 @@
 
 config.yaml为一下格式
 
+```
 server:
  port: 端口号
  host: 服务器ip
@@ -37,6 +38,7 @@ vivo:
  aliguijikey: 轨迹流动的key
  aliyun: 阿里云百炼的key
  gaode: 高德的key
+```
 
 # 前端
 
