@@ -7,6 +7,7 @@ import (
 	"ai_clouthes_backed/utils"
 	"fmt"
 	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/fiber/v3/middleware/cors"
 	"github.com/gofiber/fiber/v3/middleware/logger"
 	"github.com/gofiber/fiber/v3/middleware/recover"
 	"os"
@@ -21,6 +22,34 @@ func main() {
 	//启动数据库
 	database.OpenDatabase()
 	app := fiber.New()
+	// 关键：CORS 中间件必须放在最前面
+	app.Use(cors.New(cors.Config{
+		// 允许的前端域名（生产+开发环境）
+		AllowOrigins: []string{"http://localhost:3000", "http://82.156.59.17:8080", "http://210.30.104.118:8100"},
+
+		// 允许携带凭证（Cookie）
+		AllowCredentials: true,
+
+		// 允许的 HTTP 方法
+		AllowMethods: []string{
+			fiber.MethodGet,
+			fiber.MethodPost,
+			fiber.MethodHead,
+			fiber.MethodPut,
+			fiber.MethodDelete,
+			fiber.MethodPatch,
+			fiber.MethodOptions,
+		},
+		// 允许的请求头（特别注意文件上传和流式接口）
+		AllowHeaders: []string{
+			"Origin",
+			"Content-Type",
+			"Accept",
+			"Authorization",
+			"X-Requested-With",
+			"Cookie",
+		},
+	}))
 	logfile, err := os.OpenFile("use.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
 		panic("日志中间件设置失败")
@@ -32,7 +61,7 @@ func main() {
 			Output:        logfile,
 			TimeZone:      "Asia/Shanghai",
 		},
-	)) //中间件,日志
+	))                     //中间件,日志
 	app.Use(recover.New()) //中间件,恢复
 	//判断是否存在文件夹,不存在则创建
 	err = utils.HaveFloder(path.Join("parsePic"))
