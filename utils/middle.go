@@ -20,6 +20,5 @@ func Middle(ctx fiber.Ctx) error {
 	}
 	//将用户id存入ctx中
 	ctx.Locals("userId", a)
-	ctx.Next()
-	return nil
+	return ctx.Next()
 }
