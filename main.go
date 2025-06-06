@@ -61,7 +61,7 @@ func main() {
 			Output:        logfile,
 			TimeZone:      "Asia/Shanghai",
 		},
-	))                     //中间件,日志
+	)) //中间件,日志
 	app.Use(recover.New()) //中间件,恢复
 	//判断是否存在文件夹,不存在则创建
 	err = utils.HaveFloder(path.Join("parsePic"))
