@@ -25,12 +25,10 @@ func main() {
 	// 关键：CORS 中间件必须放在最前面
 	app.Use(cors.New(cors.Config{
 		// 允许的前端域名（生产+开发环境）
-		AllowOrigins: []string{"http://localhost:3000", "http://82.156.59.17:8080", "http://210.30.104.118:8100"},
+		AllowOrigins: []string{"http://localhost:8100", "http://82.156.59.17:8080", "http://210.30.104.118:8100"},
 
-		// 允许携带凭证（Cookie）
 		AllowCredentials: true,
 
-		// 允许的 HTTP 方法
 		AllowMethods: []string{
 			fiber.MethodGet,
 			fiber.MethodPost,
@@ -40,7 +38,6 @@ func main() {
 			fiber.MethodPatch,
 			fiber.MethodOptions,
 		},
-		// 允许的请求头（特别注意文件上传和流式接口）
 		AllowHeaders: []string{
 			"Origin",
 			"Content-Type",
@@ -49,6 +46,7 @@ func main() {
 			"X-Requested-With",
 			"Cookie",
 		},
+		ExposeHeaders: []string{"Set-Cookie"}, // 允许前端访问 Set-Cookie 头
 	}))
 	logfile, err := os.OpenFile("use.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
