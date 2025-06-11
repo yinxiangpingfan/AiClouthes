@@ -2,6 +2,7 @@ package users
 
 import (
 	"ai_clouthes_backed/utils"
+
 	"github.com/gofiber/fiber/v3"
 )
 
@@ -23,6 +24,7 @@ func UserLogout(ctx fiber.Ctx) error {
 		MaxAge:   -1,    //cookie的有效时间，时间单位秒。如果不设置过期时间，默认情况下关闭浏览器后cookie被删除
 		Path:     "/",   //cookie存放目录
 		Secure:   false, //是否只能通过https访问
+		SameSite: "None",
 		HTTPOnly: false, //是否允许别人通过js获取自己的cookie，设为false防止XSS攻击
 	})
 	return ctx.Status(fiber.StatusOK).JSON(fiber.Map{
