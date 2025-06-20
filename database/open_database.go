@@ -2,18 +2,20 @@ package database
 
 import (
 	"fmt"
+	"time"
+
 	"github.com/go-xorm/xorm"
 	_ "github.com/mattn/go-sqlite3"
-	"time"
 )
 
 // 用于连接数据库,并把根据结构体创建表结构
 var Engine *xorm.Engine
 
 type User struct {
-	Id        int64     `xorm:"pk autoincr"`
-	Telephone string    `xorm:"VARCHAR(11)"`
-	Password  string    `xorm:"VARCHAR(255)"`
+	Id        int64  `xorm:"pk autoincr"`
+	Telephone string `xorm:"VARCHAR(11)"`
+	Password  string `xorm:"VARCHAR(255)"`
+	Sex       string
 	Temp      string    `xorm:"TEXT"`
 	CreatedAt time.Time `xorm:"created"`
 	UpdatedAt time.Time `xorm:"updated"`

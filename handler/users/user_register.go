@@ -3,16 +3,25 @@ package users
 import (
 	"ai_clouthes_backed/database"
 	"ai_clouthes_backed/utils"
-	"github.com/gofiber/fiber/v3"
-	"golang.org/x/crypto/bcrypt"
 	"os"
 	"path"
+
+	"github.com/gofiber/fiber/v3"
+	"golang.org/x/crypto/bcrypt"
 )
 
 // 注册账号
 func UserRegister(ctx fiber.Ctx) error {
 	telephone := ctx.FormValue("telephone")
 	easyPassword := ctx.FormValue("password") //加密前的密码
+	sex := ctx.FormValue("sex")
+	if sex != "男" && sex != "女" {
+		utils.Logger.Error("注册账号时，性别参数错误")
+		return ctx.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"code": 1016,
+			"msg":  "性别参数错误",
+		})
+	}
 	//判断手机号是否存在
 	has, err := database.Engine.Exist(&database.User{
 		Telephone: telephone,

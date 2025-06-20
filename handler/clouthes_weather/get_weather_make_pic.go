@@ -2,14 +2,28 @@ package clouthes_weather
 
 import (
 	"ai_clouthes_backed/config"
+	"ai_clouthes_backed/database"
 	"ai_clouthes_backed/utils"
+	"fmt"
+	"time"
+
 	"github.com/dingdinglz/vivo"
 	"github.com/gofiber/fiber/v3"
-	"time"
 )
 
 func GetWeatherMakePic(ctx fiber.Ctx) error {
 	information := ctx.FormValue("information")
+	userId := ctx.Locals("userId").(int)
+	//查找userID对应的性别
+	sex, e8 := database.Engine.Where("id = ?", userId).Cols("sex").Get(new(database.User))
+	if e8 != nil {
+		utils.Logger.Error("Get sex error" + e8.Error())
+		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"code": 2064,
+			"msg":  "根据天气推荐衣服失败，请稍后再试",
+		})
+	}
+	information = fmt.Sprintf("一位%s性，%s", sex, information)
 	app := vivo.NewVivoAIGC(vivo.Config{
 		AppID:  config.Configs.Vivo.AppID,
 		AppKey: config.Configs.Vivo.AppKey,
