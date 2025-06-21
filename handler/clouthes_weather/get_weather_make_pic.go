@@ -20,7 +20,7 @@ func GetWeatherMakePic(ctx fiber.Ctx) error {
 	if e8 != nil {
 		utils.Logger.Error("Get sex error" + e8.Error())
 		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"code": 2055,
+			"code": 2064,
 			"msg":  "根据天气推荐衣服失败，请稍后再试",
 		})
 	}
