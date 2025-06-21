@@ -16,13 +16,20 @@ func MakeWeatherClouthes(ctx fiber.Ctx) error {
 	weather := ctx.FormValue("weather")
 	userId := ctx.Locals("userId").(int)
 	//查找userID对应的性别
-	sex, e8 := database.Engine.Where("id = ?", userId).Cols("sex").Get(new(database.User))
+	var user database.User
+	_, e8 := database.Engine.Where("id = ?", userId).Get(&user)
 	if e8 != nil {
 		utils.Logger.Error("Get sex error" + e8.Error())
 		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"code": 2055,
 			"msg":  "根据天气推荐衣服失败，请稍后再试",
 		})
+	}
+	sex := user.Sex
+	if sex == "male" {
+		sex = "男"
+	} else {
+		sex = "女"
 	}
 	app := vivo.NewVivoAIGC(vivo.Config{
 		AppID:  config.Configs.Vivo.AppID,

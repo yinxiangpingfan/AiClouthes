@@ -2,12 +2,13 @@ package clouthes_recommend
 
 import (
 	"ai_clouthes_backed/utils"
-	"github.com/gofiber/fiber/v3"
 	"math/rand"
 	"path"
 	"path/filepath"
 	"strconv"
 	"time"
+
+	"github.com/gofiber/fiber/v3"
 )
 
 //此路由用于上传图片

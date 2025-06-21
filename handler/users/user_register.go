@@ -15,7 +15,7 @@ func UserRegister(ctx fiber.Ctx) error {
 	telephone := ctx.FormValue("telephone")
 	easyPassword := ctx.FormValue("password") //加密前的密码
 	sex := ctx.FormValue("sex")
-	if sex != "男" && sex != "女" {
+	if sex != "male" && sex != "female" {
 		utils.Logger.Error("注册账号时，性别参数错误")
 		return ctx.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"code": 1016,
@@ -55,6 +55,7 @@ func UserRegister(ctx fiber.Ctx) error {
 		user := database.User{
 			Telephone: telephone,
 			Password:  string(hashPassword),
+			Sex:       sex,
 		}
 		_, err = database.Engine.Insert(&user)
 		if err != nil {
