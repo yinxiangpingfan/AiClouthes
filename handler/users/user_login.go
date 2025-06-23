@@ -53,7 +53,7 @@ func UserLogin(ctx fiber.Ctx) error {
 		Path:     "/",   //cookie存放目录
 		Secure:   false, //是否只能通过https访问
 		HTTPOnly: false, //是否允许别人通过js获取自己的cookie，设为false防止XSS攻击
-		SameSite: "None",
+		SameSite: "Lax",
 	})
 	return ctx.Status(fiber.StatusOK).JSON(fiber.Map{
 		"code":  1000,

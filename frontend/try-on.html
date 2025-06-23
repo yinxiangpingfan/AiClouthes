@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>虚拟试衣 - AI智能穿搭助手</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: #F1DFD3;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* 左侧导航栏 */
+        .sidebar {
+            width: 280px;
+            background: #E4C2C1;
+            backdrop-filter: blur(10px);
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #4a90e2;
+        }
+
+        .logo h1 {
+            color: #4a90e2;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .logo p {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            margin-bottom: 10px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: #555;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .nav-link:hover {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .nav-link.active {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+        }
+
+        .nav-icon {
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        /* 主内容区域 */
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 40px;
+        }
+
+        .page-header {
+            text-align: center;
+            color: black;
+            margin-bottom: 40px;
+        }
+
+        .page-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* 上传区域容器 */
+        .upload-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto 40px;
+        }
+
+        /* 响应式设计 - 平板端 */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 250px;
+            }
+            
+            .main-content {
+                margin-left: 250px;
+                padding: 30px 20px;
+            }
+            
+            .upload-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                max-width: 600px;
+            }
+            
+            .page-title {
+                font-size: 28px;
+            }
+        }
+        
+        /* 响应式设计 - 手机端 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 20px 0;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px 15px;
+            }
+            
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .page-subtitle {
+                font-size: 14px;
+            }
+            
+            .upload-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                max-width: 100%;
+            }
+            
+            .upload-section {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 18px;
+            }
+            
+            .nav-menu {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .nav-item {
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+        }
+        
+        /* 小屏手机优化 */
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 15px 10px;
+            }
+            
+            .page-title {
+                font-size: 20px;
+            }
+            
+            .upload-section {
+                padding: 15px;
+            }
+            
+            .section-title {
+                font-size: 16px;
+            }
+            
+            .nav-item {
+                 min-width: 100px;
+                 font-size: 14px;
+             }
+             
+             .result-section {
+                 padding: 20px 15px;
+                 margin: 20px 10px;
+             }
+             
+             .result-title {
+                 font-size: 18px;
+             }
+             
+             .result-images {
+                 grid-template-columns: 1fr;
+                 gap: 15px;
+             }
+             
+             .result-item img {
+                 max-height: 350px;
+                 object-fit: contain;
+             }
+         }
+         
+         /* 结果展示区域响应式优化 */
+         @media (max-width: 768px) {
+             .result-section {
+                 padding: 20px;
+                 margin: 20px 15px;
+             }
+             
+             .result-images {
+                 grid-template-columns: 1fr;
+                 gap: 20px;
+             }
+             
+             .result-item img {
+                 max-height: 300px;
+                 object-fit: contain;
+             }
+         }
+         
+         @media (max-width: 1024px) {
+             .result-images {
+                 grid-template-columns: 1fr 1fr;
+                 gap: 15px;
+             }
+             
+             .result-item img {
+                 max-height: 320px;
+                 object-fit: contain;
+             }
+         }
+
+        .upload-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .upload-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* 文件上传区域 */
+        .upload-area {
+            border: 2px dashed #4a90e2;
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 20px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .upload-area:hover {
+            border-color: #357abd;
+            background: #e3f2fd;
+        }
+
+        .upload-area.dragover {
+            border-color: #357abd;
+            background: #e3f2fd;
+            transform: scale(1.02);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            color: #4a90e2;
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .upload-hint {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        /* 图片预览 */
+        .image-preview {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+
+        .remove-preview {
+            display: block;
+            margin: 10px auto 0;
+            padding: 8px 16px;
+            background: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .remove-preview:hover {
+            background: #cc0000;
+        }
+
+        /* 生成按钮区域 */
+        .generate-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .action-button {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+        }
+
+        .action-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .action-button.secondary {
+            background: linear-gradient(135deg, #6c757d, #5a6268);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            display: none;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4a90e2;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+        }
+
+        .success-message {
+            background: #e8f5e8;
+            color: #2e7d32;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+        }
+
+        /* 结果展示区域 */
+        .result-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .result-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .result-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-item h4 {
+            margin-bottom: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .result-item img {
+            width: 100%;
+            max-height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            object-fit: contain;
+            background-color: #f8f9fa;
+        }
+
+        .download-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        /* 模式选择区域 */
+        .mode-selection {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .mode-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .mode-btn {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mode-btn:hover {
+            border-color: #4a90e2;
+            background: #e3f2fd;
+            transform: translateY(-2px);
+        }
+
+        .mode-btn.active {
+            border-color: #4a90e2;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+        }
+
+        .mode-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .mode-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .mode-desc {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* 性别选择 */
+        .gender-selection {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .gender-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            min-width: 120px;
+        }
+
+        .gender-option:hover {
+            border-color: #4a90e2;
+            background: #e3f2fd;
+        }
+
+        .gender-option input[type="radio"] {
+            display: none;
+        }
+
+        .gender-option input[type="radio"]:checked + .gender-icon {
+            transform: scale(1.2);
+        }
+
+        .gender-option input[type="radio"]:checked ~ .gender-text {
+            color: #4a90e2;
+            font-weight: bold;
+        }
+
+        .gender-option input[type="radio"]:checked {
+            border-color: #4a90e2;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+        }
+
+        .gender-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .gender-text {
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        /* 用户操作区域 */
+        .user-actions {
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 12px 20px;
+            margin-bottom: 10px;
+            background: transparent;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            color: #555;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .action-btn:hover {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            border-color: #4a90e2;
+            transform: translateX(5px);
+        }
+
+        .action-btn .nav-icon {
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        .logout-btn:hover {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-color: #e74c3c;
+        }
+
+        /* 修改密码弹窗样式 */
+        .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        .modal-header {
+            padding: 20px 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .close-btn {
+            font-size: 24px;
+            color: #999;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #666;
+        }
+
+        .modal-body {
+            padding: 20px 24px;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+
+        .modal-footer {
+            padding: 0 24px 20px;
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .btn-cancel, .btn-confirm {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cancel {
+            background: #f5f5f5;
+            color: #666;
+        }
+
+        .btn-cancel:hover {
+            background: #e8e8e8;
+        }
+
+        .btn-confirm {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+        }
+
+        .btn-confirm:hover {
+            background: linear-gradient(135deg, #357abd, #2968a3);
+        }
+
+        /* 消息提示样式 */
+        .message-toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 6px;
+            color: white;
+            font-size: 14px;
+            z-index: 1001;
+            animation: slideInRight 0.3s ease;
+        }
+
+        .message-toast.success {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+
+        .message-toast.error {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .upload-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .result-images {
+                grid-template-columns: 1fr;
+            }
+
+            .mode-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .gender-selection {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧导航栏 -->
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="/frontend/2531750494569_.pic_hd.jpg" alt="AI穿搭助手">
+                <h1>AI穿搭助手</h1>
+                <p>智能穿搭，时尚生活</p>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/frontend/index.html" class="nav-link">
+                        <span class="nav-icon">🏠</span>
+                        首页
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/weather.html" class="nav-link">
+                        <span class="nav-icon">🌤️</span>
+                        天气穿搭
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/wardrobe.html" class="nav-link">
+                        <span class="nav-icon">👗</span>
+                        衣柜搭配
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/try-on.html" class="nav-link active">
+                        <span class="nav-icon">👔</span>
+                        虚拟试衣
+                    </a>
+                </li>
+            </ul>
+            
+            <!-- 用户操作区域 -->
+            <div class="user-actions">
+                <button class="action-btn" onclick="changePassword()">
+                    <span class="nav-icon">🔑</span>
+                    修改密码
+                </button>
+                <button class="action-btn logout-btn" onclick="logout()">
+                    <span class="nav-icon">🚪</span>
+                    退出登录
+                </button>
+            </div>
+        </nav>
+
+        <!-- 主内容区域 -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">AI虚拟试衣</h1>
+                <p class="page-subtitle">上传人物照片和衣服照片，AI为您生成逼真的试穿效果</p>
+            </div>
+
+            <!-- 试衣模式选择 -->
+            <div class="mode-selection">
+                <h3 class="section-title">🎯 选择试衣模式</h3>
+                <div class="mode-buttons">
+                    <button class="mode-btn active" data-mode="single-model" onclick="selectMode('single-model')">
+                        <span class="mode-icon">👤👕</span>
+                        <span class="mode-title">有模特试套装</span>
+                        <span class="mode-desc">上传模特照片和套装</span>
+                    </button>
+                    <button class="mode-btn" data-mode="double-model" onclick="selectMode('double-model')">
+                        <span class="mode-icon">👤👔👖</span>
+                        <span class="mode-title">有模特试上衣+裤子</span>
+                        <span class="mode-desc">上传模特照片、上衣和裤子</span>
+                    </button>
+                    <button class="mode-btn" data-mode="single-nomodel" onclick="selectMode('single-nomodel')">
+                        <span class="mode-icon">🤖👕</span>
+                        <span class="mode-title">无模特试套装</span>
+                        <span class="mode-desc">只需上传套装，选择性别</span>
+                    </button>
+                    <button class="mode-btn" data-mode="double-nomodel" onclick="selectMode('double-nomodel')">
+                        <span class="mode-icon">🤖👔👖</span>
+                        <span class="mode-title">无模特试上衣+裤子</span>
+                        <span class="mode-desc">上传上衣和裤子，选择性别</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 上传区域 -->
+            <div class="upload-container" id="uploadContainer">
+                <!-- 模特照片上传 (有模特模式) -->
+                <div class="upload-section" id="personSection">
+                    <h3 class="section-title">👤 上传模特照片</h3>
+                    
+                    <div class="upload-area" onclick="document.getElementById('personInput').click()">
+                        <div class="upload-icon">📷</div>
+                        <div class="upload-text">点击或拖拽上传模特照片</div>
+                        <div class="upload-hint">建议上传全身照，支持 JPG、PNG、BMP、HEIC 格式</div>
+                    </div>
+                    
+                    <input type="file" id="personInput" class="file-input" accept=".jpg,.jpeg,.png,.bmp,.heic" onchange="handlePersonImage(event)">
+                    
+                    <div class="image-preview" id="personPreview"></div>
+                    
+                    <div class="error-message" id="personError"></div>
+                </div>
+
+                <!-- 性别选择 (无模特模式) -->
+                <div class="upload-section" id="genderSection" style="display: none;">
+                    <h3 class="section-title">⚧ 选择性别</h3>
+                    
+                    <div class="gender-selection">
+                        <label class="gender-option">
+                            <input type="radio" name="gender" value="male" checked>
+                            <span class="gender-icon">👨</span>
+                            <span class="gender-text">男性</span>
+                        </label>
+                        <label class="gender-option">
+                            <input type="radio" name="gender" value="female">
+                            <span class="gender-icon">👩</span>
+                            <span class="gender-text">女性</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 套装照片上传 (套装模式) -->
+                <div class="upload-section" id="suitSection">
+                    <h3 class="section-title">👕 上传套装照片</h3>
+                    
+                    <div class="upload-area" onclick="document.getElementById('suitInput').click()">
+                        <div class="upload-icon">👔</div>
+                        <div class="upload-text">点击或拖拽上传套装照片</div>
+                        <div class="upload-hint">支持连衣裙、套装等，平铺拍摄效果更佳</div>
+                    </div>
+                    
+                    <input type="file" id="suitInput" class="file-input" accept=".jpg,.jpeg,.png,.bmp,.heic" onchange="handleSuitImage(event)">
+                    
+                    <div class="image-preview" id="suitPreview"></div>
+                    
+                    <div class="error-message" id="suitError"></div>
+                </div>
+
+                <!-- 上衣照片上传 (分体模式) -->
+                <div class="upload-section" id="topSection" style="display: none;">
+                    <h3 class="section-title">👔 上传上衣照片</h3>
+                    
+                    <div class="upload-area" onclick="document.getElementById('topInput').click()">
+                        <div class="upload-icon">👔</div>
+                        <div class="upload-text">点击或拖拽上传上衣照片</div>
+                        <div class="upload-hint">支持衬衫、T恤、外套等，平铺拍摄效果更佳</div>
+                    </div>
+                    
+                    <input type="file" id="topInput" class="file-input" accept=".jpg,.jpeg,.png,.bmp,.heic" onchange="handleTopImage(event)">
+                    
+                    <div class="image-preview" id="topPreview"></div>
+                    
+                    <div class="error-message" id="topError"></div>
+                </div>
+
+                <!-- 裤子照片上传 (分体模式) -->
+                <div class="upload-section" id="bottomSection" style="display: none;">
+                    <h3 class="section-title">👖 上传裤子照片</h3>
+                    
+                    <div class="upload-area" onclick="document.getElementById('bottomInput').click()">
+                        <div class="upload-icon">👖</div>
+                        <div class="upload-text">点击或拖拽上传裤子照片</div>
+                        <div class="upload-hint">支持牛仔裤、休闲裤、短裤等，平铺拍摄效果更佳</div>
+                    </div>
+                    
+                    <input type="file" id="bottomInput" class="file-input" accept=".jpg,.jpeg,.png,.bmp,.heic" onchange="handleBottomImage(event)">
+                    
+                    <div class="image-preview" id="bottomPreview"></div>
+                    
+                    <div class="error-message" id="bottomError"></div>
+                </div>
+            </div>
+
+            <!-- 生成按钮区域 -->
+            <div class="generate-section">
+                <h3 class="section-title">🎨 生成试穿效果</h3>
+                <p style="color: #666; margin-bottom: 20px;" id="generateHint">请先上传模特照片和套装照片，然后点击生成按钮</p>
+                
+                <button class="action-button" id="generateBtn" onclick="generateTryOn()" disabled>生成试穿效果</button>
+                <button class="action-button secondary" onclick="clearAll()">重新开始</button>
+                
+                <div class="loading" id="generateLoading">AI正在生成试穿效果，请稍候...</div>
+                <div class="error-message" id="generateError"></div>
+                <div class="success-message" id="generateSuccess"></div>
+            </div>
+
+            <!-- 结果展示区域 -->
+            <div class="result-section" id="resultSection">
+                <h3 class="result-title">✨ 试穿效果</h3>
+                
+                <div class="result-images">
+                    <div class="result-item">
+                        <h4>衣服照片</h4>
+                        <img id="originalClothes" alt="衣服照片">
+                    </div>
+                    <div class="result-item">
+                        <h4>试穿效果</h4>
+                        <img id="tryOnResult" alt="试穿效果">
+                        <a href="#" class="download-btn" id="downloadBtn" download="try-on-result.jpg">下载图片</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let currentMode = 'single-model';
+        let personImage = null;
+        let suitImage = null;
+        let topImage = null;
+        let bottomImage = null;
+        let selectedGender = 'male';
+        
+        // 图片URL用于结果展示
+        let personImageUrl = null;
+        let suitImageUrl = null;
+        let topImageUrl = null;
+        let bottomImageUrl = null;
+
+        // 初始化页面
+        function initPage() {
+            checkLogin();
+            setupDragAndDrop();
+            selectMode('single-model'); // 默认选择有模特试套装
+        }
+
+        // 检查登录状态
+        function checkLogin() {
+            const token = getCookie('token');
+            if (!token) {
+                window.location.href = '/login';
+            }
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        // 选择试衣模式
+        function selectMode(mode) {
+            currentMode = mode;
+            
+            // 更新按钮状态
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
+            
+            // 显示/隐藏相应的上传区域
+            updateUploadSections();
+            
+            // 清空所有上传的文件
+            clearAllFiles();
+            
+            // 更新提示文本
+            updateGenerateHint();
+            
+            // 更新生成按钮状态
+            updateGenerateButton();
+        }
+
+        // 更新上传区域显示
+        function updateUploadSections() {
+            const personSection = document.getElementById('personSection');
+            const genderSection = document.getElementById('genderSection');
+            const suitSection = document.getElementById('suitSection');
+            const topSection = document.getElementById('topSection');
+            const bottomSection = document.getElementById('bottomSection');
+            
+            // 隐藏所有区域
+            personSection.style.display = 'none';
+            genderSection.style.display = 'none';
+            suitSection.style.display = 'none';
+            topSection.style.display = 'none';
+            bottomSection.style.display = 'none';
+            
+            // 根据模式显示相应区域
+            switch(currentMode) {
+                case 'single-model':
+                    personSection.style.display = 'block';
+                    suitSection.style.display = 'block';
+                    break;
+                case 'double-model':
+                    personSection.style.display = 'block';
+                    topSection.style.display = 'block';
+                    bottomSection.style.display = 'block';
+                    break;
+                case 'single-nomodel':
+                    genderSection.style.display = 'block';
+                    suitSection.style.display = 'block';
+                    break;
+                case 'double-nomodel':
+                    genderSection.style.display = 'block';
+                    topSection.style.display = 'block';
+                    bottomSection.style.display = 'block';
+                    break;
+            }
+        }
+
+        // 更新生成提示文本
+        function updateGenerateHint() {
+            const hint = document.getElementById('generateHint');
+            const hints = {
+                'single-model': '请先上传模特照片和套装照片，然后点击生成按钮',
+                'double-model': '请先上传模特照片、上衣和裤子照片，然后点击生成按钮',
+                'single-nomodel': '请先选择性别并上传套装照片，然后点击生成按钮',
+                'double-nomodel': '请先选择性别并上传上衣和裤子照片，然后点击生成按钮'
+            };
+            hint.textContent = hints[currentMode];
+        }
+
+        // 设置拖拽上传
+        function setupDragAndDrop() {
+            const uploadAreas = document.querySelectorAll('.upload-area');
+            
+            uploadAreas.forEach((area) => {
+                area.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.classList.add('dragover');
+                });
+                
+                area.addEventListener('dragleave', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('dragover');
+                });
+                
+                area.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('dragover');
+                    
+                    const files = Array.from(e.dataTransfer.files);
+                    if (files.length > 0) {
+                        const file = files[0];
+                        const parentSection = this.closest('.upload-section');
+                        
+                        if (parentSection.id === 'personSection') {
+                            handlePersonImageFile(file);
+                        } else if (parentSection.id === 'suitSection') {
+                            handleSuitImageFile(file);
+                        } else if (parentSection.id === 'topSection') {
+                            handleTopImageFile(file);
+                        } else if (parentSection.id === 'bottomSection') {
+                            handleBottomImageFile(file);
+                        }
+                    }
+                });
+            });
+        }
+
+        // 处理模特照片
+        function handlePersonImage(event) {
+            const file = event.target.files[0];
+            handlePersonImageFile(file);
+        }
+
+        function handlePersonImageFile(file) {
+            if (!file) return;
+            
+            if (!isValidImageFile(file)) {
+                showError('personError', '请选择有效的图片文件（JPG、PNG、BMP、HEIC）');
+                return;
+            }
+
+            if (!isValidFileSize(file)) {
+                showError('personError', '文件大小必须在5KB到5MB之间');
+                return;
+            }
+
+            personImage = file;
+            displayImagePreview(file, 'personPreview', (url) => {
+                personImageUrl = url;
+            });
+            updateGenerateButton();
+        }
+
+        // 处理套装照片
+        function handleSuitImage(event) {
+            const file = event.target.files[0];
+            handleSuitImageFile(file);
+        }
+
+        function handleSuitImageFile(file) {
+            if (!file) return;
+            
+            if (!isValidImageFile(file)) {
+                showError('suitError', '请选择有效的图片文件（JPG、PNG、BMP、HEIC）');
+                return;
+            }
+
+            if (!isValidFileSize(file)) {
+                showError('suitError', '文件大小必须在5KB到5MB之间');
+                return;
+            }
+
+            suitImage = file;
+            displayImagePreview(file, 'suitPreview', (url) => {
+                suitImageUrl = url;
+            });
+            updateGenerateButton();
+        }
+
+        // 处理上衣照片
+        function handleTopImage(event) {
+            const file = event.target.files[0];
+            handleTopImageFile(file);
+        }
+
+        function handleTopImageFile(file) {
+            if (!file) return;
+            
+            if (!isValidImageFile(file)) {
+                showError('topError', '请选择有效的图片文件（JPG、PNG、BMP、HEIC）');
+                return;
+            }
+
+            if (!isValidFileSize(file)) {
+                showError('topError', '文件大小必须在5KB到5MB之间');
+                return;
+            }
+
+            topImage = file;
+            displayImagePreview(file, 'topPreview', (url) => {
+                topImageUrl = url;
+            });
+            updateGenerateButton();
+        }
+
+        // 处理裤子照片
+        function handleBottomImage(event) {
+            const file = event.target.files[0];
+            handleBottomImageFile(file);
+        }
+
+        function handleBottomImageFile(file) {
+            if (!file) return;
+            
+            if (!isValidImageFile(file)) {
+                showError('bottomError', '请选择有效的图片文件（JPG、PNG、BMP、HEIC）');
+                return;
+            }
+
+            if (!isValidFileSize(file)) {
+                showError('bottomError', '文件大小必须在5KB到5MB之间');
+                return;
+            }
+
+            bottomImage = file;
+            displayImagePreview(file, 'bottomPreview', (url) => {
+                bottomImageUrl = url;
+            });
+            updateGenerateButton();
+        }
+
+        // 验证图片文件
+        function isValidImageFile(file) {
+            const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/bmp', 'image/heic'];
+            return validTypes.includes(file.type);
+        }
+
+        // 验证文件大小
+        function isValidFileSize(file) {
+            const minSize = 5 * 1024; // 5KB
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            return file.size >= minSize && file.size <= maxSize;
+        }
+
+        // 显示图片预览
+        function displayImagePreview(file, containerId, urlCallback) {
+            const container = document.getElementById(containerId);
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                container.innerHTML = `
+                    <img src="${e.target.result}" alt="预览图" class="preview-image">
+                    <button class="remove-preview" onclick="removeImage('${containerId}')">移除图片</button>
+                `;
+                
+                if (urlCallback) {
+                    urlCallback(e.target.result);
+                }
+            };
+            
+            reader.readAsDataURL(file);
+        }
+
+        // 移除图片
+        function removeImage(containerId) {
+            document.getElementById(containerId).innerHTML = '';
+            
+            switch(containerId) {
+                case 'personPreview':
+                    personImage = null;
+                    personImageUrl = null;
+                    document.getElementById('personInput').value = '';
+                    break;
+                case 'suitPreview':
+                    suitImage = null;
+                    suitImageUrl = null;
+                    document.getElementById('suitInput').value = '';
+                    break;
+                case 'topPreview':
+                    topImage = null;
+                    topImageUrl = null;
+                    document.getElementById('topInput').value = '';
+                    break;
+                case 'bottomPreview':
+                    bottomImage = null;
+                    bottomImageUrl = null;
+                    document.getElementById('bottomInput').value = '';
+                    break;
+            }
+            
+            updateGenerateButton();
+        }
+
+        // 更新生成按钮状态
+        function updateGenerateButton() {
+            const btn = document.getElementById('generateBtn');
+            let canGenerate = false;
+            
+            switch(currentMode) {
+                case 'single-model':
+                    canGenerate = personImage && suitImage;
+                    break;
+                case 'double-model':
+                    canGenerate = personImage && topImage && bottomImage;
+                    break;
+                case 'single-nomodel':
+                    canGenerate = suitImage;
+                    break;
+                case 'double-nomodel':
+                    canGenerate = topImage && bottomImage;
+                    break;
+            }
+            
+            btn.disabled = !canGenerate;
+        }
+
+        // 获取选中的性别
+        function getSelectedGender() {
+            const genderRadios = document.querySelectorAll('input[name="gender"]');
+            for (let radio of genderRadios) {
+                if (radio.checked) {
+                    return radio.value;
+                }
+            }
+            return 'male';
+        }
+
+        // 生成试穿效果
+        async function generateTryOn() {
+            const loading = document.getElementById('generateLoading');
+            const errorDiv = document.getElementById('generateError');
+            const successDiv = document.getElementById('generateSuccess');
+            const btn = document.getElementById('generateBtn');
+            const resultSection = document.getElementById('resultSection');
+
+            loading.style.display = 'block';
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+            resultSection.style.display = 'none';
+            btn.disabled = true;
+
+            try {
+                const formData = new FormData();
+                let endpoint = '';
+                
+                switch(currentMode) {
+                    case 'single-model':
+                        if (!personImage || !suitImage) {
+                            showError('generateError', '请先上传模特照片和套装照片');
+                            return;
+                        }
+                        formData.append('personImage', personImage);
+                        formData.append('topGarment', suitImage);
+                        endpoint = '/user/try/single';
+                        break;
+                        
+                    case 'double-model':
+                        if (!personImage || !topImage || !bottomImage) {
+                            showError('generateError', '请先上传模特照片、上衣和裤子照片');
+                            return;
+                        }
+                        formData.append('personImage', personImage);
+                        formData.append('topGarment', topImage);
+                        formData.append('bottomGarment', bottomImage);
+                        endpoint = '/user/try/double';
+                        break;
+                        
+                    case 'single-nomodel':
+                        if (!suitImage) {
+                            showError('generateError', '请先上传套装照片');
+                            return;
+                        }
+                        formData.append('topGarment', suitImage);
+                        formData.append('sex', getSelectedGender());
+                        endpoint = '/user/try/nomodel1';
+                        break;
+                        
+                    case 'double-nomodel':
+                        if (!topImage || !bottomImage) {
+                            showError('generateError', '请先上传上衣和裤子照片');
+                            return;
+                        }
+                        formData.append('topGarment', topImage);
+                        formData.append('bottomGarment', bottomImage);
+                        formData.append('sex', getSelectedGender());
+                        endpoint = '/user/try/nomodel2';
+                        break;
+                }
+
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.code === 1000) {
+                    displayTryOnResult(result.data);
+                    showSuccess('generateSuccess', '试穿效果生成成功！');
+                } else {
+                    showError('generateError', result.msg || '生成失败，请重试');
+                }
+            } catch (error) {
+                showError('generateError', '网络错误，请稍后重试');
+            } finally {
+                loading.style.display = 'none';
+                btn.disabled = false;
+            }
+        }
+
+        // 显示试穿结果
+        function displayTryOnResult(resultUrl) {
+            // 显示衣服图片
+            const originalClothes = document.getElementById('originalClothes');
+            
+            if (currentMode.includes('single')) {
+                originalClothes.src = suitImageUrl;
+            } else {
+                // 对于分体模式，可以显示上衣或创建组合图片
+                originalClothes.src = topImageUrl;
+            }
+            
+            // 显示试穿结果
+            const resultImg = document.getElementById('tryOnResult');
+            resultImg.src = resultUrl;
+            
+            // 设置下载链接
+            const downloadBtn = document.getElementById('downloadBtn');
+            downloadBtn.href = resultUrl;
+            
+            // 显示结果区域
+            document.getElementById('resultSection').style.display = 'block';
+            
+            // 滚动到结果区域
+            document.getElementById('resultSection').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // 清空所有文件
+        function clearAllFiles() {
+            personImage = null;
+            suitImage = null;
+            topImage = null;
+            bottomImage = null;
+            personImageUrl = null;
+            suitImageUrl = null;
+            topImageUrl = null;
+            bottomImageUrl = null;
+            
+            // 清空输入框
+            document.getElementById('personInput').value = '';
+            document.getElementById('suitInput').value = '';
+            document.getElementById('topInput').value = '';
+            document.getElementById('bottomInput').value = '';
+            
+            // 清空预览
+            document.getElementById('personPreview').innerHTML = '';
+            document.getElementById('suitPreview').innerHTML = '';
+            document.getElementById('topPreview').innerHTML = '';
+            document.getElementById('bottomPreview').innerHTML = '';
+        }
+
+        // 清空所有内容
+        function clearAll() {
+            clearAllFiles();
+            
+            // 隐藏消息和结果
+            document.getElementById('generateError').style.display = 'none';
+            document.getElementById('generateSuccess').style.display = 'none';
+            document.getElementById('resultSection').style.display = 'none';
+            
+            // 重置性别选择
+            document.querySelector('input[name="gender"][value="male"]').checked = true;
+            
+            // 更新按钮状态
+            updateGenerateButton();
+        }
+
+        // 显示错误信息
+        function showError(elementId, message) {
+            const errorDiv = document.getElementById(elementId);
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        // 显示成功信息
+        function showSuccess(elementId, message) {
+            const successDiv = document.getElementById(elementId);
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+        }
+
+        // 修改密码
+        function changePassword() {
+            showPasswordModal();
+        }
+        
+        function showPasswordModal() {
+            const modal = document.createElement('div');
+            modal.className = 'password-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>修改密码</h3>
+                        <span class="close-btn" onclick="closePasswordModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <label for="newPassword">新密码:</label>
+                            <input type="password" id="newPassword" placeholder="请输入新密码">
+                        </div>
+                        <div class="input-group">
+                            <label for="confirmPassword">确认密码:</label>
+                            <input type="password" id="confirmPassword" placeholder="请再次输入新密码">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn-cancel" onclick="closePasswordModal()">取消</button>
+                        <button class="btn-confirm" onclick="submitPasswordChange()">确认</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+        
+        function closePasswordModal() {
+            const modal = document.querySelector('.password-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+        
+        function submitPasswordChange() {
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (!newPassword) {
+                showMessage('请输入新密码', 'error');
+                return;
+            }
+            
+            if (newPassword !== confirmPassword) {
+                showMessage('两次输入的密码不一致!', 'error');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('newpassword', newPassword);
+            
+            fetch('/user/chanpass', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.code === 1000) {
+                    showMessage('密码修改成功!', 'success');
+                    closePasswordModal();
+                } else {
+                    showMessage(data.msg || '密码修改失败，请重试', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showMessage('网络错误，请稍后重试', 'error');
+            });
+        }
+        
+        function showMessage(message, type) {
+            const toast = document.createElement('div');
+            toast.className = `message-toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+        
+        // 退出登录
+        function logout() {
+            if (confirm('确定要退出登录吗？')) {
+                // 发送退出登录请求
+                fetch('/user/logout', {
+                    method: 'POST'
+                })
+                .then(() => {
+                    // 清除cookie
+                    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                    // 跳转到登录页面
+                    window.location.href = '/login';
+                })
+                .catch(() => {
+                    // 即使请求失败也清除本地cookie并跳转
+                    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                    window.location.href = '/login';
+                });
+            }
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', initPage);
+    </script>
+</body>
+</html>

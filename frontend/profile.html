@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - AI智能穿搭助手</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: #F1DFD3;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* 左侧导航栏 */
+        .sidebar {
+            width: 280px;
+            background: #E4C2C1;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #4a90e2;
+        }
+
+        .logo h1 {
+            color: #4a90e2;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .logo p {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            margin-bottom: 10px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: #555;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .nav-link:hover {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .nav-link.active {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+        }
+
+        .nav-icon {
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        /* 主内容区域 */
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 40px;
+        }
+
+        .page-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .page-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* 内容区域 */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 响应式设计 - 平板端 */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 250px;
+            }
+            
+            .main-content {
+                margin-left: 250px;
+                padding: 30px 20px;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+        }
+        
+        /* 响应式设计 - 手机端 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 20px 0;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px 15px;
+            }
+            
+            .page-title {
+                font-size: 28px;
+            }
+            
+            .page-subtitle {
+                font-size: 14px;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .profile-card {
+                padding: 25px;
+            }
+            
+            .nav-menu {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .nav-item {
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+        }
+        
+        /* 小屏手机优化 */
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 15px 10px;
+            }
+            
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .page-subtitle {
+                font-size: 12px;
+            }
+            
+            .profile-card {
+                padding: 20px;
+            }
+            
+            .nav-item {
+                min-width: 100px;
+                font-size: 14px;
+            }
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: fit-content;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 40px;
+            color: white;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .profile-phone {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .profile-info {
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .info-value {
+            color: #666;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .action-button {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+        }
+
+        .action-button.danger {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+        }
+
+        .action-button.danger:hover {
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
+        }
+
+        /* 历史记录区域 */
+        .history-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-icon {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        .history-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .tab-button {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            color: #4a90e2;
+            border-bottom-color: #4a90e2;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .history-list {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #f0f0f0;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .history-item:hover {
+            background: #f8f9fa;
+            transform: translateX(5px);
+        }
+
+        .history-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+
+        .history-content {
+            flex: 1;
+        }
+
+        .history-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .history-desc {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 3px;
+        }
+
+        .history-time {
+            color: #999;
+            font-size: 11px;
+        }
+
+        .history-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .history-btn {
+            padding: 6px 12px;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .history-btn:hover {
+            background: #4a90e2;
+            color: white;
+            border-color: #4a90e2;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4a90e2;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .history-tabs {
+                flex-wrap: wrap;
+            }
+
+            .tab-button {
+                flex: 1;
+                min-width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧导航栏 -->
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="/frontend/2531750494569_.pic_hd.jpg" alt="AI穿搭助手">
+                <h1>AI穿搭助手</h1>
+                <p>智能穿搭，时尚生活</p>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/frontend/index.html" class="nav-link">
+                        <span class="nav-icon">🏠</span>
+                        首页
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/weather.html" class="nav-link">
+                        <span class="nav-icon">🌤️</span>
+                        天气穿搭
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/wardrobe.html" class="nav-link">
+                        <span class="nav-icon">👗</span>
+                        衣柜搭配
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/try-on.html" class="nav-link">
+                        <span class="nav-icon">👔</span>
+                        虚拟试衣
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/profile.html" class="nav-link active">
+                        <span class="nav-icon">👤</span>
+                        个人中心
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 主内容区域 -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">个人中心</h1>
+                <p class="page-subtitle">管理您的个人信息和查看使用历史</p>
+            </div>
+
+            <div class="content-grid">
+                <!-- 个人信息卡片 -->
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar" id="profileAvatar">👤</div>
+                        <div class="profile-name" id="profileName">加载中...</div>
+                        <div class="profile-phone" id="profilePhone">加载中...</div>
+                    </div>
+
+                    <div class="profile-info">
+                        <div class="info-item">
+                            <span class="info-label">性别</span>
+                            <span class="info-value" id="profileGender">加载中...</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">注册时间</span>
+                            <span class="info-value" id="profileRegTime">加载中...</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">使用次数</span>
+                            <span class="info-value" id="profileUsageCount">加载中...</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">最后登录</span>
+                            <span class="info-value" id="profileLastLogin">加载中...</span>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="action-button" onclick="editProfile()">编辑资料</button>
+                        <button class="action-button" onclick="changePassword()">修改密码</button>
+                        <button class="action-button danger" onclick="logout()">退出登录</button>
+                    </div>
+
+                    <div class="error-message" id="profileError"></div>
+                </div>
+
+                <!-- 历史记录区域 -->
+                <div class="history-section">
+                    <h3 class="section-title">
+                        <span class="section-icon">📋</span>
+                        使用历史
+                    </h3>
+
+                    <div class="history-tabs">
+                        <button class="tab-button active" onclick="switchTab('weather')">天气穿搭</button>
+                        <button class="tab-button" onclick="switchTab('wardrobe')">衣柜搭配</button>
+                        <button class="tab-button" onclick="switchTab('tryon')">虚拟试衣</button>
+                    </div>
+
+                    <!-- 天气穿搭历史 -->
+                    <div class="tab-content active" id="weatherTab">
+                        <div class="loading" id="weatherLoading">加载天气穿搭历史...</div>
+                        <div class="history-list" id="weatherHistory"></div>
+                    </div>
+
+                    <!-- 衣柜搭配历史 -->
+                    <div class="tab-content" id="wardrobeTab">
+                        <div class="loading" id="wardrobeLoading">加载衣柜搭配历史...</div>
+                        <div class="history-list" id="wardrobeHistory"></div>
+                    </div>
+
+                    <!-- 虚拟试衣历史 -->
+                    <div class="tab-content" id="tryonTab">
+                        <div class="loading" id="tryonLoading">加载虚拟试衣历史...</div>
+                        <div class="history-list" id="tryonHistory"></div>
+                    </div>
+
+                    <div class="error-message" id="historyError"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let currentTab = 'weather';
+        let userInfo = null;
+
+        // 初始化页面
+        function initPage() {
+            checkLogin();
+            loadUserProfile();
+            loadHistory(currentTab);
+        }
+
+        // 检查登录状态
+        function checkLogin() {
+            const token = getCookie('token');
+            if (!token) {
+                window.location.href = '/login';
+            }
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        // 加载用户资料
+        function loadUserProfile() {
+            // 显示默认用户信息
+            displayUserProfile();
+        }
+
+        // 显示用户资料
+        function displayUserProfile() {
+            // 设置默认头像
+            const avatar = document.getElementById('profileAvatar');
+            avatar.textContent = '👤';
+
+            // 设置基本信息
+            document.getElementById('profileName').textContent = '用户';
+            document.getElementById('profilePhone').textContent = '未绑定';
+            document.getElementById('profileGender').textContent = '未设置';
+            
+            // 设置默认时间信息
+            document.getElementById('profileRegTime').textContent = '2024-01-01';
+            document.getElementById('profileUsageCount').textContent = '0 次';
+            document.getElementById('profileLastLogin').textContent = new Date().toLocaleDateString();
+        }
+
+        // 切换标签页
+        function switchTab(tabName) {
+            // 更新标签按钮状态
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // 更新内容显示
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabName + 'Tab').classList.add('active');
+
+            // 加载对应历史记录
+            currentTab = tabName;
+            loadHistory(tabName);
+        }
+
+        // 加载历史记录
+        async function loadHistory(type) {
+            const loadingId = type + 'Loading';
+            const historyId = type + 'History';
+            
+            document.getElementById(loadingId).style.display = 'block';
+            document.getElementById(historyId).innerHTML = '';
+
+            try {
+                // 模拟加载延迟
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                // 显示空状态（因为没有实际的历史记录API）
+                displayEmptyHistory(historyId, type);
+            } catch (error) {
+                showError('historyError', '加载历史记录失败');
+            } finally {
+                document.getElementById(loadingId).style.display = 'none';
+            }
+        }
+
+        // 显示空历史记录状态
+        function displayEmptyHistory(containerId, type) {
+            const container = document.getElementById(containerId);
+            const typeNames = {
+                weather: '天气穿搭',
+                wardrobe: '衣柜搭配',
+                tryon: '虚拟试衣'
+            };
+            
+            const icons = {
+                weather: '🌤️',
+                wardrobe: '👗',
+                tryon: '👔'
+            };
+
+            container.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-icon">${icons[type]}</div>
+                    <p>暂无${typeNames[type]}历史记录</p>
+                    <p style="font-size: 12px; margin-top: 10px; color: #ccc;">开始使用功能后，历史记录将显示在这里</p>
+                </div>
+            `;
+        }
+
+        // 编辑资料
+        function editProfile() {
+            alert('编辑资料功能开发中...');
+        }
+
+        // 修改密码
+        function changePassword() {
+            alert('修改密码功能开发中...');
+        }
+
+        // 退出登录
+        function logout() {
+            if (confirm('确定要退出登录吗？')) {
+                // 清除cookie
+                document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                
+                // 跳转到登录页
+                window.location.href = '/login';
+            }
+        }
+
+        // 显示错误信息
+        function showError(elementId, message) {
+            const errorDiv = document.getElementById(elementId);
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', initPage);
+    </script>
+</body>
+</html>

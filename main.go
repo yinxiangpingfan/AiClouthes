@@ -6,12 +6,13 @@ import (
 	"ai_clouthes_backed/router"
 	"ai_clouthes_backed/utils"
 	"fmt"
+	"os"
+	"path"
+
 	"github.com/gofiber/fiber/v3"
 	"github.com/gofiber/fiber/v3/middleware/cors"
 	"github.com/gofiber/fiber/v3/middleware/logger"
 	"github.com/gofiber/fiber/v3/middleware/recover"
-	"os"
-	"path"
 )
 
 func main() {

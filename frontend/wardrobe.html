@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>衣柜搭配 - AI智能穿搭助手</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: #F1DFD3;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* 左侧导航栏 */
+        .sidebar {
+            width: 280px;
+            background: #E4C2C1;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #4a90e2;
+        }
+
+        .logo h1 {
+            color: #4a90e2;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .logo p {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            margin-bottom: 10px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: #555;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .nav-link:hover {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .nav-link.active {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+        }
+
+        .nav-icon {
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        /* 主内容区域 */
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 40px;
+        }
+
+        .page-header {
+            text-align: center;
+            color: black;
+            margin-bottom: 40px;
+        }
+
+        .page-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* 步骤卡片 */
+        .steps-container {
+            display: grid;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 响应式设计 - 平板端 */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 250px;
+            }
+            
+            .main-content {
+                margin-left: 250px;
+                padding: 30px 20px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .steps-container {
+                gap: 25px;
+                max-width: 700px;
+            }
+        }
+        
+        /* 响应式设计 - 手机端 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 20px 0;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px 15px;
+            }
+            
+            .page-title {
+                font-size: 28px;
+            }
+            
+            .page-subtitle {
+                font-size: 14px;
+            }
+            
+            .steps-container {
+                gap: 20px;
+                max-width: 100%;
+            }
+            
+            .step-card {
+                padding: 25px;
+            }
+            
+            .nav-menu {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .nav-item {
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+        }
+        
+        /* 小屏手机优化 */
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 15px 10px;
+            }
+            
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .page-subtitle {
+                font-size: 12px;
+            }
+            
+            .step-card {
+                padding: 20px;
+            }
+            
+            .nav-item {
+                min-width: 100px;
+                font-size: 14px;
+            }
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* 文件上传区域 */
+        .upload-area {
+            border: 2px dashed #4a90e2;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .upload-area:hover {
+            border-color: #357abd;
+            background: #e3f2fd;
+        }
+
+        .upload-area.dragover {
+            border-color: #357abd;
+            background: #e3f2fd;
+            transform: scale(1.02);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            color: #4a90e2;
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .upload-hint {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        /* 图片预览 */
+        .image-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .preview-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .remove-btn:hover {
+            background: #ff4444;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            background: #fafafa;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #4a90e2;
+            background: white;
+        }
+
+        .action-button {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+        }
+
+        .action-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            display: none;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4a90e2;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+        }
+
+        .success-message {
+            background: #e8f5e8;
+            color: #2e7d32;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+        }
+
+        /* AI分析结果 */
+        .analysis-result {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            display: none;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .analysis-content {
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .result-image {
+            text-align: center;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .result-image img {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 用户操作区域 */
+        .user-actions {
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 12px 20px;
+            margin-bottom: 10px;
+            background: transparent;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            color: #555;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .action-btn:hover {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            border-color: #4a90e2;
+            transform: translateX(5px);
+        }
+
+        .action-btn .nav-icon {
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        .logout-btn:hover {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-color: #e74c3c;
+        }
+
+        /* 修改密码弹窗样式 */
+        .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        .modal-header {
+            padding: 20px 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .close-btn {
+            font-size: 24px;
+            color: #999;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #666;
+        }
+
+        .modal-body {
+            padding: 20px 24px;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+
+        .modal-footer {
+            padding: 0 24px 20px;
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .btn-cancel, .btn-confirm {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cancel {
+            background: #f5f5f5;
+            color: #666;
+        }
+
+        .btn-cancel:hover {
+            background: #e8e8e8;
+        }
+
+        .btn-confirm {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+        }
+
+        .btn-confirm:hover {
+            background: linear-gradient(135deg, #357abd, #2968a3);
+        }
+
+        /* 消息提示样式 */
+        .message-toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 6px;
+            color: white;
+            font-size: 14px;
+            z-index: 1001;
+            animation: slideInRight 0.3s ease;
+        }
+
+        .message-toast.success {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+
+        .message-toast.error {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .image-preview {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .preview-image {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧导航栏 -->
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="/frontend/2531750494569_.pic_hd.jpg" alt="AI穿搭助手">
+                <h1>AI穿搭助手</h1>
+                <p>智能穿搭，时尚生活</p>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/frontend/index.html" class="nav-link">
+                        <span class="nav-icon">🏠</span>
+                        首页
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/weather.html" class="nav-link">
+                        <span class="nav-icon">🌤️</span>
+                        天气穿搭
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/wardrobe.html" class="nav-link active">
+                        <span class="nav-icon">👗</span>
+                        衣柜搭配
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/try-on.html" class="nav-link">
+                        <span class="nav-icon">👔</span>
+                        虚拟试衣
+                    </a>
+                </li>
+            </ul>
+            
+            <!-- 用户操作区域 -->
+            <div class="user-actions">
+                <button class="action-btn" onclick="changePassword()">
+                    <span class="nav-icon">🔑</span>
+                    修改密码
+                </button>
+                <button class="action-btn logout-btn" onclick="logout()">
+                    <span class="nav-icon">🚪</span>
+                    退出登录
+                </button>
+            </div>
+        </nav>
+
+        <!-- 主内容区域 -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">衣柜智能搭配</h1>
+                <p class="page-subtitle">上传衣柜照片，AI为您推荐最佳搭配方案</p>
+            </div>
+
+            <div class="steps-container">
+                <!-- 步骤1：上传衣柜照片 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">上传衣柜照片</h3>
+                    </div>
+                    
+                    <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                        <div class="upload-icon">📷</div>
+                        <div class="upload-text">点击或拖拽上传衣柜照片</div>
+                        <div class="upload-hint">支持 JPG、PNG、JPEG 格式，最多上传5张图片</div>
+                    </div>
+                    
+                    <input type="file" id="fileInput" class="file-input" multiple accept=".jpg,.jpeg,.png" onchange="handleFileSelect(event)">
+                    
+                    <div class="image-preview" id="imagePreview"></div>
+                    
+                    <button class="action-button" id="uploadBtn" onclick="uploadImages()" disabled>上传图片</button>
+                    
+                    <div class="loading" id="uploadLoading">正在上传图片...</div>
+                    <div class="error-message" id="uploadError"></div>
+                    <div class="success-message" id="uploadSuccess"></div>
+                </div>
+
+                <!-- 步骤2：输入搭配需求 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">输入搭配需求</h3>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">穿搭目的或场合</label>
+                        <input type="text" class="form-input" id="purposeInput" placeholder="例如：去春游、上班、约会、运动等" maxlength="100">
+                    </div>
+                    
+                    <button class="action-button" id="analyzeBtn" onclick="analyzeWardrobe()" disabled>AI分析推荐</button>
+                    
+                    <div class="loading" id="analyzeLoading">AI正在分析衣柜并推荐搭配...</div>
+                    <div class="error-message" id="analyzeError"></div>
+                    
+                    <div class="analysis-result" id="analysisResult">
+                        <h4>AI分析结果</h4>
+                        <div class="analysis-content" id="analysisContent"></div>
+                    </div>
+                </div>
+
+                <!-- 步骤3：生成试穿效果 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">生成试穿效果</h3>
+                    </div>
+                    
+                    <button class="action-button" id="generateBtn" onclick="generateOutfitImage()" disabled>生成试穿图片</button>
+                    
+                    <div class="loading" id="generateLoading">AI正在生成试穿效果图...</div>
+                    <div class="error-message" id="generateError"></div>
+                    
+                    <div class="result-image" id="resultImage">
+                        <h4>试穿效果</h4>
+                        <img id="generatedImage" alt="试穿效果图">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let selectedFiles = [];
+        let uploadedSuccessfully = false;
+        let analysisCompleted = false;
+
+        // 初始化页面
+        function initPage() {
+            checkLogin();
+            setupDragAndDrop();
+        }
+
+        // 检查登录状态
+        function checkLogin() {
+            const token = getCookie('token');
+            if (!token) {
+                window.location.href = '/login';
+            }
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        // 设置拖拽上传
+        function setupDragAndDrop() {
+            const uploadArea = document.querySelector('.upload-area');
+            
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.classList.add('dragover');
+            });
+            
+            uploadArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                this.classList.remove('dragover');
+            });
+            
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('dragover');
+                
+                const files = Array.from(e.dataTransfer.files);
+                handleFiles(files);
+            });
+        }
+
+        // 处理文件选择
+        function handleFileSelect(event) {
+            const files = Array.from(event.target.files);
+            handleFiles(files);
+        }
+
+        // 处理文件
+        function handleFiles(files) {
+            // 过滤文件类型和数量
+            const validFiles = files.filter(file => {
+                const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+                return validTypes.includes(file.type);
+            });
+
+            if (validFiles.length === 0) {
+                showError('uploadError', '请选择有效的图片文件（JPG、PNG、JPEG）');
+                return;
+            }
+
+            // 限制最多5张图片
+            const totalFiles = selectedFiles.length + validFiles.length;
+            if (totalFiles > 5) {
+                showError('uploadError', '最多只能上传5张图片');
+                return;
+            }
+
+            // 添加到选中文件列表
+            selectedFiles = selectedFiles.concat(validFiles);
+            updateImagePreview();
+            
+            // 启用上传按钮
+            document.getElementById('uploadBtn').disabled = selectedFiles.length === 0;
+        }
+
+        // 更新图片预览
+        function updateImagePreview() {
+            const previewContainer = document.getElementById('imagePreview');
+            previewContainer.innerHTML = '';
+
+            selectedFiles.forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const previewItem = document.createElement('div');
+                    previewItem.className = 'preview-item';
+                    previewItem.innerHTML = `
+                        <img src="${e.target.result}" alt="预览图" class="preview-image">
+                        <button class="remove-btn" onclick="removeImage(${index})">×</button>
+                    `;
+                    previewContainer.appendChild(previewItem);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // 移除图片
+        function removeImage(index) {
+            selectedFiles.splice(index, 1);
+            updateImagePreview();
+            document.getElementById('uploadBtn').disabled = selectedFiles.length === 0;
+        }
+
+        // 上传图片
+        async function uploadImages() {
+            if (selectedFiles.length === 0) {
+                showError('uploadError', '请选择要上传的图片');
+                return;
+            }
+
+            const loading = document.getElementById('uploadLoading');
+            const errorDiv = document.getElementById('uploadError');
+            const successDiv = document.getElementById('uploadSuccess');
+            const btn = document.getElementById('uploadBtn');
+
+            loading.style.display = 'block';
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+            btn.disabled = true;
+
+            try {
+                const formData = new FormData();
+                selectedFiles.forEach(file => {
+                    formData.append('pictures', file);
+                });
+
+                const response = await fetch('/user/pic/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.code === 1000) {
+                    uploadedSuccessfully = true;
+                    showSuccess('uploadSuccess', '图片上传成功！');
+                    document.getElementById('analyzeBtn').disabled = false;
+                } else {
+                    showError('uploadError', result.msg || '上传失败');
+                }
+            } catch (error) {
+                showError('uploadError', '网络错误，请稍后重试');
+            } finally {
+                loading.style.display = 'none';
+                btn.disabled = false;
+            }
+        }
+
+        // 分析衣柜
+        async function analyzeWardrobe() {
+            const purpose = document.getElementById('purposeInput').value.trim();
+            if (!purpose) {
+                showError('analyzeError', '请输入穿搭目的或场合');
+                return;
+            }
+
+            if (!uploadedSuccessfully) {
+                showError('analyzeError', '请先上传衣柜照片');
+                return;
+            }
+
+            const loading = document.getElementById('analyzeLoading');
+            const errorDiv = document.getElementById('analyzeError');
+            const resultDiv = document.getElementById('analysisResult');
+            const btn = document.getElementById('analyzeBtn');
+
+            loading.style.display = 'block';
+            errorDiv.style.display = 'none';
+            resultDiv.style.display = 'none';
+            btn.disabled = true;
+
+            try {
+                const formData = new FormData();
+                formData.append('ques', purpose);
+
+                const response = await fetch('/user/pic/parse', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('网络请求失败');
+                }
+
+                // 处理流式响应
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+                let analysisText = '';
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    const chunk = decoder.decode(value);
+                    const lines = chunk.split('\n');
+
+                    for (const line of lines) {
+                        if (line.startsWith('data: ')) {
+                            try {
+                                const data = JSON.parse(line.slice(6));
+                                if (data.data) {
+                                    analysisText += data.data;
+                                    // 将markdown格式转换为HTML
+                                    const htmlContent = convertMarkdownToHtml(analysisText);
+                                    document.getElementById('analysisContent').innerHTML = htmlContent;
+                                    resultDiv.style.display = 'block';
+                                    
+                                    // 自动滚动到底部显示最新内容
+                                    const analysisResult = document.getElementById('analysisResult');
+                                    analysisResult.scrollTop = analysisResult.scrollHeight;
+                                }
+                            } catch (e) {
+                                // 忽略解析错误
+                            }
+                        }
+                    }
+                }
+
+                if (analysisText) {
+                    analysisCompleted = true;
+                    document.getElementById('generateBtn').disabled = false;
+                } else {
+                    showError('analyzeError', '分析失败，请重试');
+                }
+            } catch (error) {
+                showError('analyzeError', '网络错误，请稍后重试');
+            } finally {
+                loading.style.display = 'none';
+                btn.disabled = false;
+            }
+        }
+
+        // 生成试穿图片
+        async function generateOutfitImage() {
+            if (!analysisCompleted) {
+                showError('generateError', '请先完成AI分析');
+                return;
+            }
+
+            const loading = document.getElementById('generateLoading');
+            const errorDiv = document.getElementById('generateError');
+            const resultDiv = document.getElementById('resultImage');
+            const btn = document.getElementById('generateBtn');
+
+            loading.style.display = 'block';
+            errorDiv.style.display = 'none';
+            resultDiv.style.display = 'none';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch('/user/pic/makepic', {
+                    method: 'GET'
+                });
+
+                const result = await response.json();
+
+                if (result.code === 1000) {
+                    displayGeneratedImage(result.url);
+                } else {
+                    showError('generateError', result.msg || '生成图片失败');
+                }
+            } catch (error) {
+                showError('generateError', '网络错误，请稍后重试');
+            } finally {
+                loading.style.display = 'none';
+                btn.disabled = false;
+            }
+        }
+
+        // 显示生成的图片
+        function displayGeneratedImage(imageUrl) {
+            const img = document.getElementById('generatedImage');
+            img.src = imageUrl;
+            img.onload = function() {
+                document.getElementById('resultImage').style.display = 'block';
+            };
+        }
+
+        // 显示错误信息
+        function showError(elementId, message) {
+            const errorDiv = document.getElementById(elementId);
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        // 显示成功信息
+        function showSuccess(elementId, message) {
+            const successDiv = document.getElementById(elementId);
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+        }
+
+        // 将markdown格式转换为HTML
+        function convertMarkdownToHtml(markdown) {
+            let html = markdown;
+            
+            // 处理四级标题 #### 
+            html = html.replace(/^#### (.+)$/gm, '<h4 style="color: #4a90e2; font-size: 16px; font-weight: bold; margin: 15px 0 10px 0; border-bottom: 2px solid #e0e0e0; padding-bottom: 5px;">$1</h4>');
+            
+            // 处理三级标题 ###
+            html = html.replace(/^### (.+)$/gm, '<h3 style="color: #4a90e2; font-size: 18px; font-weight: bold; margin: 20px 0 10px 0;">$1</h3>');
+            
+            // 处理二级标题 ##
+            html = html.replace(/^## (.+)$/gm, '<h2 style="color: #4a90e2; font-size: 20px; font-weight: bold; margin: 20px 0 15px 0;">$1</h2>');
+            
+            // 处理一级标题 #
+            html = html.replace(/^# (.+)$/gm, '<h1 style="color: #4a90e2; font-size: 22px; font-weight: bold; margin: 25px 0 15px 0;">$1</h1>');
+            
+            // 处理粗体 **text**
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong style="color: #333; font-weight: bold;">$1</strong>');
+            
+            // 处理斜体 *text*
+            html = html.replace(/\*(.+?)\*/g, '<em style="color: #666; font-style: italic;">$1</em>');
+            
+            // 处理换行
+            html = html.replace(/\n/g, '<br>');
+            
+            // 处理列表项 - item 或 * item
+            html = html.replace(/^[\-\*] (.+)$/gm, '<li style="margin: 5px 0; padding-left: 10px; color: #555;">$1</li>');
+            
+            // 包装连续的li标签为ul
+            html = html.replace(/((<li[^>]*>.*?<\/li>\s*)+)/g, '<ul style="margin: 10px 0; padding-left: 20px; list-style-type: disc;">$1</ul>');
+            
+            return html;
+        }
+
+        // 修改密码
+        function changePassword() {
+            showPasswordModal();
+        }
+        
+        function showPasswordModal() {
+            const modal = document.createElement('div');
+            modal.className = 'password-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>修改密码</h3>
+                        <span class="close-btn" onclick="closePasswordModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <label for="newPassword">新密码:</label>
+                            <input type="password" id="newPassword" placeholder="请输入新密码">
+                        </div>
+                        <div class="input-group">
+                            <label for="confirmPassword">确认密码:</label>
+                            <input type="password" id="confirmPassword" placeholder="请再次输入新密码">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn-cancel" onclick="closePasswordModal()">取消</button>
+                        <button class="btn-confirm" onclick="submitPasswordChange()">确认</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+        
+        function closePasswordModal() {
+            const modal = document.querySelector('.password-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+        
+        function submitPasswordChange() {
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (!newPassword) {
+                showMessage('请输入新密码', 'error');
+                return;
+            }
+            
+            if (newPassword !== confirmPassword) {
+                showMessage('两次输入的密码不一致!', 'error');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('newpassword', newPassword);
+            
+            fetch('/user/chanpass', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.code === 1000) {
+                    showMessage('密码修改成功!', 'success');
+                    closePasswordModal();
+                } else {
+                    showMessage(data.msg || '密码修改失败，请重试', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showMessage('网络错误，请稍后重试', 'error');
+            });
+        }
+        
+        function showMessage(message, type) {
+            const toast = document.createElement('div');
+            toast.className = `message-toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+        
+        // 退出登录
+        function logout() {
+            if (confirm('确定要退出登录吗？')) {
+                // 发送退出登录请求
+                fetch('/user/logout', {
+                    method: 'GET'
+                })
+                .then(() => {
+                    // 清除cookie
+                    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                    // 跳转到登录页面
+                    window.location.href = '/login';
+                })
+                .catch(() => {
+                    // 即使请求失败也清除本地cookie并跳转
+                    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                    window.location.href = '/login';
+                });
+            }
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', initPage);
+    </script>
+</body>
+</html>
