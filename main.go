@@ -26,9 +26,8 @@ func main() {
 	// 关键：CORS 中间件必须放在最前面
 	app.Use(cors.New(cors.Config{
 		// 允许的前端域名（生产+开发环境）
-		AllowOrigins: []string{"*"},
-
-
+		AllowOrigins:     []string{"*"},
+		AllowCredentials: false,
 		AllowMethods: []string{
 			fiber.MethodGet,
 			fiber.MethodPost,
