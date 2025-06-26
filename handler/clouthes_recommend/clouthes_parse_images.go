@@ -7,11 +7,12 @@ import (
 	"bufio"
 	"encoding/json"
 	"fmt"
-	"github.com/dingdinglz/openai"
-	"github.com/gofiber/fiber/v3"
 	"os"
 	"path"
 	"path/filepath"
+
+	"github.com/dingdinglz/openai"
+	"github.com/gofiber/fiber/v3"
 )
 
 // 解析图片
@@ -78,6 +79,13 @@ func ClouthesParseImages(ctx fiber.Ctx) error {
 			w.Write([]byte("data: " + string(massgaeJson) + "\n\n"))
 			w.Flush()
 		})
+
+		// 流式输出完成后发送结束标记
+		if err == nil {
+			w.Write([]byte("event: message\n"))
+			w.Write([]byte("data: [DONE]\n\n"))
+			w.Flush()
+		}
 		if err != nil {
 			utils.Logger.Error("解析图片时，AI推荐失败" + err.Error())
 			// 发送错误消息

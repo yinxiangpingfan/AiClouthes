@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import androidx.core.content.FileProvider;
 import android.text.TextUtils;
 import java.io.IOException;
@@ -22,9 +23,14 @@ import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.webkit.WebView;
+import android.webkit.WebSettings;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebViewClient;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.aiclothes.app.R;
@@ -48,6 +54,8 @@ public class WardrobeFragment extends Fragment {
     private EditText tvPurposeInput;
     private ProgressBar progressBar;
     private LinearLayout llImageContainer;
+    private CardView cardAnalysisResult;
+    private WebView webViewAnalysis;
     
     private ApiService apiService;
     private List<File> selectedImageFiles;
@@ -78,6 +86,11 @@ public class WardrobeFragment extends Fragment {
         tvPurposeInput = view.findViewById(R.id.tv_purpose_input);
         progressBar = view.findViewById(R.id.progress_bar);
         llImageContainer = view.findViewById(R.id.ll_image_container);
+        cardAnalysisResult = view.findViewById(R.id.card_analysis_result);
+        webViewAnalysis = view.findViewById(R.id.webview_analysis);
+        
+        // 初始化WebView
+        initWebView();
     }
     
     private void initData() {
@@ -86,6 +99,11 @@ public class WardrobeFragment extends Fragment {
         
         // 初始化Markdown处理器
         markwon = Markwon.create(getContext());
+        
+        // 初始时隐藏分析结果卡片
+        if (cardAnalysisResult != null) {
+            cardAnalysisResult.setVisibility(View.GONE);
+        }
     }
     
     private void initListeners() {
@@ -208,9 +226,11 @@ public class WardrobeFragment extends Fragment {
             // 创建ImageView
             ImageView imageView = new ImageView(getContext());
             LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, 200);
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             imageView.setLayoutParams(imageParams);
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            imageView.setAdjustViewBounds(true);
+            imageView.setMaxHeight(400); // 设置最大高度避免图片过大
             imageView.setBackgroundColor(0xFFF0F0F0);
             
             // 加载图片
@@ -242,6 +262,72 @@ public class WardrobeFragment extends Fragment {
         btnGenerateImage.setEnabled(false);
     }
     
+    private void initWebView() {
+        if (webViewAnalysis != null) {
+            WebSettings webSettings = webViewAnalysis.getSettings();
+            webSettings.setJavaScriptEnabled(true);
+            webSettings.setDomStorageEnabled(true);
+            webSettings.setAllowFileAccess(true);
+            webSettings.setAllowContentAccess(true);
+            
+            // 添加JavaScript接口
+            webViewAnalysis.addJavascriptInterface(new WebAppInterface(), "Android");
+            
+            // 设置WebViewClient
+            webViewAnalysis.setWebViewClient(new WebViewClient() {
+                @Override
+                public void onPageFinished(WebView view, String url) {
+                    super.onPageFinished(view, url);
+                    Log.d("WardrobeFragment", "WebView页面加载完成");
+                }
+            });
+            
+            // 加载HTML文件
+            webViewAnalysis.loadUrl("file:///android_asset/wardrobe_stream.html");
+            
+            // 初始时隐藏WebView
+            webViewAnalysis.setVisibility(View.GONE);
+        }
+    }
+    
+    public class WebAppInterface {
+        @JavascriptInterface
+        public String getBaseUrl() {
+            // 返回API基础URL
+            return "http://192.168.1.100:8000"; // 根据实际情况修改
+        }
+        
+        @JavascriptInterface
+        public String getPurpose() {
+            // 返回用户输入的目的
+            return tvPurposeInput != null ? tvPurposeInput.getText().toString().trim() : "";
+        }
+        
+        @JavascriptInterface
+        public void onAnalysisComplete(String result) {
+            // 分析完成回调
+            if (getActivity() != null) {
+                getActivity().runOnUiThread(() -> {
+                    showLoading(false);
+                    wardrobeAnalysisResult = result;
+                    btnGenerateImage.setEnabled(true);
+                    Log.d("WardrobeFragment", "WebView分析完成，结果长度: " + result.length());
+                });
+            }
+        }
+        
+        @JavascriptInterface
+        public void onAnalysisError(String error) {
+            // 分析错误回调
+            if (getActivity() != null) {
+                getActivity().runOnUiThread(() -> {
+                    showLoading(false);
+                    showError("分析失败：" + error);
+                });
+            }
+        }
+    }
+
     private void analyzeWardrobe() {
         if (selectedImageFiles.isEmpty()) {
             Toast.makeText(getContext(), "请先选择衣柜照片", Toast.LENGTH_SHORT).show();
@@ -291,48 +377,90 @@ public class WardrobeFragment extends Fragment {
         analysisTextBuilder.setLength(0);
         tvAnalysisResult.setText("");
         
+        // 显示分析结果卡片
+        if (cardAnalysisResult != null) {
+            cardAnalysisResult.setVisibility(View.VISIBLE);
+        }
+        
+        // 显示TextView，隐藏WebView
+        if (webViewAnalysis != null) {
+            webViewAnalysis.setVisibility(View.GONE);
+        }
+        if (tvAnalysisResult != null) {
+            tvAnalysisResult.setVisibility(View.VISIBLE);
+        }
+        
+        // 使用原生Android流式处理
+        parseWardrobeWithOriginalMethod(purpose);
+    }
+    
+    private void useWebViewForStreaming(String purpose) {
+        if (webViewAnalysis != null) {
+            // 显示WebView，隐藏TextView
+            webViewAnalysis.setVisibility(View.VISIBLE);
+            tvAnalysisResult.setVisibility(View.GONE);
+            
+            // 调用JavaScript函数开始分析
+            webViewAnalysis.post(() -> {
+                String jsCode = "if(typeof startAnalysis === 'function') { startAnalysis(); } else { console.log('startAnalysis function not found'); }";
+                webViewAnalysis.evaluateJavascript(jsCode, result -> {
+                    Log.d("WardrobeFragment", "JavaScript调用结果: " + result);
+                });
+            });
+        } else {
+            // 如果WebView不可用，回退到原来的方式
+            parseWardrobeWithOriginalMethod(purpose);
+        }
+    }
+    
+    private void parseWardrobeWithOriginalMethod(String purpose) {
         apiService.parseWardrobeAndRecommend(purpose, new ApiService.StreamCallback() {
             @Override
             public void onData(String data) {
-                if (getActivity() != null) {
-                    getActivity().runOnUiThread(() -> {
-                        // 累积流式数据
-                        analysisTextBuilder.append(data);
-                        
-                        // 将Markdown格式转换为富文本并显示
-                        String markdownText = analysisTextBuilder.toString();
-                        markwon.setMarkdown(tvAnalysisResult, markdownText);
-                        
-                        // 自动滚动到底部显示最新内容
-                        scrollToBottom();
-                    });
+                Log.d("WardrobeFragment", "收到流式数据: " + data);
+                if (getActivity() != null && isAdded()) {
+                    // 累积流式数据
+                    analysisTextBuilder.append(data);
+                    
+                    // 将Markdown格式转换为富文本并显示
+                    String markdownText = analysisTextBuilder.toString();
+                    Log.d("WardrobeFragment", "当前累积文本长度: " + markdownText.length());
+                    markwon.setMarkdown(tvAnalysisResult, markdownText);
+                    
+                    // 自动滚动到底部显示最新内容
+                    scrollToBottom();
+                } else {
+                    Log.w("WardrobeFragment", "Fragment未添加或Activity为空，跳过数据更新");
                 }
             }
             
             @Override
             public void onComplete() {
-                if (getActivity() != null) {
-                    getActivity().runOnUiThread(() -> {
-                        showLoading(false);
-                        wardrobeAnalysisResult = analysisTextBuilder.toString();
-                        btnGenerateImage.setEnabled(true);
-                        
-                        // 最终渲染完整的Markdown内容
-                        markwon.setMarkdown(tvAnalysisResult, wardrobeAnalysisResult);
-                    });
+                Log.d("WardrobeFragment", "流式响应完成");
+                if (getActivity() != null && isAdded()) {
+                    showLoading(false);
+                    wardrobeAnalysisResult = analysisTextBuilder.toString();
+                    Log.d("WardrobeFragment", "最终分析结果长度: " + wardrobeAnalysisResult.length());
+                    btnGenerateImage.setEnabled(true);
+                    
+                    // 最终渲染完整的Markdown内容
+                    markwon.setMarkdown(tvAnalysisResult, wardrobeAnalysisResult);
+                } else {
+                    Log.w("WardrobeFragment", "onComplete: Fragment未添加或Activity为空");
                 }
             }
             
             @Override
             public void onError(String error) {
-                if (getActivity() != null) {
-                    getActivity().runOnUiThread(() -> {
-                        showLoading(false);
-                        showError("分析失败：" + error);
-                    });
+                Log.e("WardrobeFragment", "流式响应错误: " + error);
+                if (getActivity() != null && isAdded()) {
+                    showLoading(false);
+                    showError("分析失败：" + error);
+                } else {
+                    Log.w("WardrobeFragment", "onError: Fragment未添加或Activity为空");
                 }
             }
-        });
+         });
     }
     
     // 滚动到底部显示最新内容

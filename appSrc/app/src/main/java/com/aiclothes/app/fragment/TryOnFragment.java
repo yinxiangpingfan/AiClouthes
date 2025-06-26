@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
 import androidx.core.content.FileProvider;
 import android.text.TextUtils;
@@ -636,33 +638,29 @@ public class TryOnFragment extends Fragment {
                     @Override
                     public void onSuccess(JsonObject response) {
                         android.util.Log.d("TryOnFragment", "带模特单件试穿API调用成功");
-                        isProcessing = false; // 重置处理状态
-                        btnStartTryOn.setEnabled(true); // 重新启用按钮
-                        btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
-                        btnStartTryOn.setAlpha(1.0f); // 恢复透明度
-                        btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
-                        btnStartTryOn.setAlpha(1.0f); // 恢复透明度
-                        btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
-                        btnStartTryOn.setAlpha(1.0f); // 恢复透明度
-                        btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
-                        btnStartTryOn.setAlpha(1.0f); // 恢复透明度
-                        btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
-                        btnStartTryOn.setAlpha(1.0f); // 恢复透明度
-                        btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
-                        btnStartTryOn.setAlpha(1.0f); // 恢复透明度
-                        showLoading(false);
-                        handleTryOnResult(response);
+                        // 切换到主线程执行UI操作
+                        new Handler(Looper.getMainLooper()).post(() -> {
+                            isProcessing = false; // 重置处理状态
+                            btnStartTryOn.setEnabled(true); // 重新启用按钮
+                            btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
+                            btnStartTryOn.setAlpha(1.0f); // 恢复透明度
+                            showLoading(false);
+                            handleTryOnResult(response);
+                        });
                     }
                     
                     @Override
                     public void onError(String error) {
                         android.util.Log.e("TryOnFragment", "带模特单件试穿API调用失败: " + error);
-                        isProcessing = false; // 重置处理状态
-                        btnStartTryOn.setEnabled(true); // 重新启用按钮
-                        btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
-                        btnStartTryOn.setAlpha(1.0f); // 恢复透明度
-                        showLoading(false);
-                        showError(getString(R.string.error_try_on_failed) + error);
+                        // 切换到主线程执行UI操作
+                        new Handler(Looper.getMainLooper()).post(() -> {
+                            isProcessing = false; // 重置处理状态
+                            btnStartTryOn.setEnabled(true); // 重新启用按钮
+                            btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
+                            btnStartTryOn.setAlpha(1.0f); // 恢复透明度
+                            showLoading(false);
+                            showError(getString(R.string.error_try_on_failed) + error);
+                        });
                     }
                 });
             } else {
@@ -672,23 +670,29 @@ public class TryOnFragment extends Fragment {
                     @Override
                     public void onSuccess(JsonObject response) {
                         android.util.Log.d("TryOnFragment", "带模特分开试穿API调用成功");
-                        isProcessing = false; // 重置处理状态
-                        btnStartTryOn.setEnabled(true); // 重新启用按钮
-                        btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
-                        btnStartTryOn.setAlpha(1.0f); // 恢复透明度
-                        showLoading(false);
-                        handleTryOnResult(response);
+                        // 切换到主线程执行UI操作
+                        new Handler(Looper.getMainLooper()).post(() -> {
+                            isProcessing = false; // 重置处理状态
+                            btnStartTryOn.setEnabled(true); // 重新启用按钮
+                            btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
+                            btnStartTryOn.setAlpha(1.0f); // 恢复透明度
+                            showLoading(false);
+                            handleTryOnResult(response);
+                        });
                     }
                     
                     @Override
                     public void onError(String error) {
                         android.util.Log.e("TryOnFragment", "带模特分开试穿API调用失败: " + error);
-                        isProcessing = false; // 重置处理状态
-                        btnStartTryOn.setEnabled(true); // 重新启用按钮
-                        btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
-                        btnStartTryOn.setAlpha(1.0f); // 恢复透明度
-                        showLoading(false);
-                        showError(getString(R.string.error_try_on_failed) + error);
+                        // 切换到主线程执行UI操作
+                        new Handler(Looper.getMainLooper()).post(() -> {
+                            isProcessing = false; // 重置处理状态
+                            btnStartTryOn.setEnabled(true); // 重新启用按钮
+                            btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
+                            btnStartTryOn.setAlpha(1.0f); // 恢复透明度
+                            showLoading(false);
+                            showError(getString(R.string.error_try_on_failed) + error);
+                        });
                     }
                 });
             }
@@ -700,23 +704,29 @@ public class TryOnFragment extends Fragment {
                     @Override
                     public void onSuccess(JsonObject response) {
                         android.util.Log.d("TryOnFragment", "不带模特单件试穿API调用成功");
-                        isProcessing = false; // 重置处理状态
-                        btnStartTryOn.setEnabled(true); // 重新启用按钮
-                        btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
-                        btnStartTryOn.setAlpha(1.0f); // 恢复透明度
-                        showLoading(false);
-                        handleTryOnResult(response);
+                        // 切换到主线程执行UI操作
+                        new Handler(Looper.getMainLooper()).post(() -> {
+                            isProcessing = false; // 重置处理状态
+                            btnStartTryOn.setEnabled(true); // 重新启用按钮
+                            btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
+                            btnStartTryOn.setAlpha(1.0f); // 恢复透明度
+                            showLoading(false);
+                            handleTryOnResult(response);
+                        });
                     }
                     
                     @Override
                     public void onError(String error) {
                         android.util.Log.e("TryOnFragment", "不带模特单件试穿API调用失败: " + error);
-                        isProcessing = false; // 重置处理状态
-                        btnStartTryOn.setEnabled(true); // 重新启用按钮
-                        btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
-                        btnStartTryOn.setAlpha(1.0f); // 恢复透明度
-                        showLoading(false);
-                        showError(getString(R.string.error_try_on_failed) + error);
+                        // 切换到主线程执行UI操作
+                        new Handler(Looper.getMainLooper()).post(() -> {
+                            isProcessing = false; // 重置处理状态
+                            btnStartTryOn.setEnabled(true); // 重新启用按钮
+                            btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
+                            btnStartTryOn.setAlpha(1.0f); // 恢复透明度
+                            showLoading(false);
+                            showError(getString(R.string.error_try_on_failed) + error);
+                        });
                     }
                 });
             } else {
@@ -726,23 +736,29 @@ public class TryOnFragment extends Fragment {
                     @Override
                     public void onSuccess(JsonObject response) {
                         android.util.Log.d("TryOnFragment", "不带模特分开试穿API调用成功");
-                        isProcessing = false; // 重置处理状态
-                        btnStartTryOn.setEnabled(true); // 重新启用按钮
-                        btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
-                        btnStartTryOn.setAlpha(1.0f); // 恢复透明度
-                        showLoading(false);
-                        handleTryOnResult(response);
+                        // 切换到主线程执行UI操作
+                        new Handler(Looper.getMainLooper()).post(() -> {
+                            isProcessing = false; // 重置处理状态
+                            btnStartTryOn.setEnabled(true); // 重新启用按钮
+                            btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
+                            btnStartTryOn.setAlpha(1.0f); // 恢复透明度
+                            showLoading(false);
+                            handleTryOnResult(response);
+                        });
                     }
                     
                     @Override
                     public void onError(String error) {
                         android.util.Log.e("TryOnFragment", "不带模特分开试穿API调用失败: " + error);
-                        isProcessing = false; // 重置处理状态
-                        btnStartTryOn.setEnabled(true); // 重新启用按钮
-                        btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
-                        btnStartTryOn.setAlpha(1.0f); // 恢复透明度
-                        showLoading(false);
-                        showError(getString(R.string.error_try_on_failed) + error);
+                        // 切换到主线程执行UI操作
+                        new Handler(Looper.getMainLooper()).post(() -> {
+                            isProcessing = false; // 重置处理状态
+                            btnStartTryOn.setEnabled(true); // 重新启用按钮
+                            btnStartTryOn.setText(getString(R.string.start_try_on)); // 恢复按钮文本
+                            btnStartTryOn.setAlpha(1.0f); // 恢复透明度
+                            showLoading(false);
+                            showError(getString(R.string.error_try_on_failed) + error);
+                        });
                     }
                 });
             }

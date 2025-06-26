@@ -4,6 +4,7 @@ package com.aiclothes.app.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -67,6 +68,9 @@ public final class FragmentWardrobeBinding implements ViewBinding {
   @NonNull
   public final EditText tvPurposeInput;
 
+  @NonNull
+  public final WebView webviewAnalysis;
+
   private FragmentWardrobeBinding(@NonNull ScrollView rootView, @NonNull Button btnAnalyzeWardrobe,
       @NonNull Button btnGenerateImage, @NonNull Button btnGenerateRecommendation,
       @NonNull Button btnSelectImage, @NonNull Button btnTakePhoto,
@@ -74,7 +78,7 @@ public final class FragmentWardrobeBinding implements ViewBinding {
       @NonNull ImageView ivRecommendationDisplay, @NonNull ImageView ivRecommendationImage,
       @NonNull ImageView ivWardrobeImage, @NonNull LinearLayout llImageContainer,
       @NonNull ProgressBar progressBar, @NonNull TextView tvAnalysisResult,
-      @NonNull EditText tvPurposeInput) {
+      @NonNull EditText tvPurposeInput, @NonNull WebView webviewAnalysis) {
     this.rootView = rootView;
     this.btnAnalyzeWardrobe = btnAnalyzeWardrobe;
     this.btnGenerateImage = btnGenerateImage;
@@ -90,6 +94,7 @@ public final class FragmentWardrobeBinding implements ViewBinding {
     this.progressBar = progressBar;
     this.tvAnalysisResult = tvAnalysisResult;
     this.tvPurposeInput = tvPurposeInput;
+    this.webviewAnalysis = webviewAnalysis;
   }
 
   @Override
@@ -203,11 +208,17 @@ public final class FragmentWardrobeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.webview_analysis;
+      WebView webviewAnalysis = ViewBindings.findChildViewById(rootView, id);
+      if (webviewAnalysis == null) {
+        break missingId;
+      }
+
       return new FragmentWardrobeBinding((ScrollView) rootView, btnAnalyzeWardrobe,
           btnGenerateImage, btnGenerateRecommendation, btnSelectImage, btnTakePhoto,
           cardAnalysisResult, cardRecommendationImage, ivRecommendationDisplay,
           ivRecommendationImage, ivWardrobeImage, llImageContainer, progressBar, tvAnalysisResult,
-          tvPurposeInput);
+          tvPurposeInput, webviewAnalysis);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -108,10 +108,12 @@
                 <ImageView
                     android:id="@+id/iv_recommendation_image"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="#f0f0f0"
-                    android:scaleType="centerCrop"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="400dp"
                     android:visibility="gone"
                     android:src="@android:drawable/ic_menu_gallery" />
 
@@ -195,6 +197,15 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
+                <!-- WebView用于流式输出显示 -->
+                <WebView
+                    android:id="@+id/webview_analysis"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone" />
+
+                <!-- 传统TextView作为备用 -->
                 <TextView
                     android:id="@+id/tv_analysis_result"
                     android:layout_width="match_parent"

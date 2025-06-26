@@ -2,12 +2,15 @@ package com.aiclothes.app.network;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import java.io.File;
@@ -54,9 +57,10 @@ public class ApiService {
         
         this.client = new OkHttpClient.Builder()
                 .addInterceptor(logging)
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(120, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS)
+                .cache(null) // 禁用缓存以支持流式响应
                 .cookieJar(new CookieJar() {
                     private final HashMap<String, List<Cookie>> cookieStore = new HashMap<>();
                     
@@ -197,6 +201,49 @@ public class ApiService {
         });
     }
     
+    // 处理SSE格式的单行数据
+    private void processSSELine(String line, StreamCallback callback) {
+        Log.d(TAG, "处理SSE行: " + line);
+        
+        // 处理SSE格式：event: message 和 data: {"data": "..."}
+        if (line.startsWith("data: ")) {
+            String jsonData = line.substring(6).trim();
+            Log.d(TAG, "提取的JSON数据: " + jsonData);
+            
+            if (!jsonData.isEmpty()) {
+                // 检查是否为结束标记
+                if (jsonData.equals("[DONE]")) {
+                    Log.d(TAG, "收到流式结束标记");
+                    return;
+                }
+                
+                try {
+                    JsonObject json = JsonParser.parseString(jsonData).getAsJsonObject();
+                    if (json.has("data")) {
+                        String dataContent = json.get("data").getAsString();
+                        Log.d(TAG, "解析到数据内容: " + dataContent);
+                        
+                        // 立即切换到主线程回调，实现真正的流式输出
+                        new Handler(Looper.getMainLooper()).post(() -> {
+                            callback.onData(dataContent);
+                        });
+                    } else {
+                        Log.w(TAG, "JSON中没有data字段: " + jsonData);
+                    }
+                } catch (Exception e) {
+                    Log.e(TAG, "JSON解析错误，跳过此行: " + jsonData, e);
+                    // 忽略JSON解析错误，继续处理下一行
+                }
+            }
+        } else if (line.startsWith("event: ")) {
+            Log.d(TAG, "收到事件行: " + line);
+        } else if (line.trim().isEmpty()) {
+            Log.d(TAG, "收到空行");
+        } else {
+            Log.d(TAG, "收到其他格式行: " + line);
+        }
+    }
+    
     // 获取天气
     public void getWeather(String code, ApiCallback<JsonObject> callback) {
         RequestBody formBody = new MultipartBody.Builder()
@@ -264,6 +311,8 @@ public class ApiService {
     
     // 解析衣柜照片并推荐（流式输出）
     public void parseWardrobeAndRecommend(String purpose, StreamCallback callback) {
+        Log.d(TAG, "开始解析衣橱并推荐 - 目的: " + purpose);
+        
         RequestBody formBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("ques", purpose)
@@ -272,48 +321,106 @@ public class ApiService {
         Request request = createAuthenticatedRequest()
                 .url(BASE_URL + "/user/pic/parse")
                 .post(formBody)
+                .addHeader("Accept", "text/event-stream")
+                .addHeader("Cache-Control", "no-cache")
+                .addHeader("Connection", "keep-alive")
                 .build();
         
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                callback.onError(e.getMessage());
+                Log.e(TAG, "流式请求失败: " + e.getMessage(), e);
+                new Handler(Looper.getMainLooper()).post(() -> {
+                    callback.onError("网络请求失败: " + e.getMessage());
+                });
             }
             
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                Log.d(TAG, "流式响应状态码: " + response.code());
+                
                 if (!response.isSuccessful()) {
-                    callback.onError("HTTP " + response.code());
+                    Log.e(TAG, "流式响应HTTP错误: " + response.code());
+                    new Handler(Looper.getMainLooper()).post(() -> {
+                        callback.onError("HTTP错误: " + response.code() + " " + response.message());
+                    });
                     return;
                 }
                 
-                // 处理Server-Sent Events流式响应
+                // 检查Content-Type是否为text/event-stream
+                String contentType = response.header("Content-Type");
+                Log.d(TAG, "响应Content-Type: " + contentType);
+                
+                // 处理Server-Sent Events流式响应 - 仿照前端实现
+                InputStream inputStream = null;
                 try {
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(response.body().byteStream()));
-                    String line;
-                    StringBuilder buffer = new StringBuilder();
+                    inputStream = response.body().byteStream();
+                    byte[] buffer = new byte[1024];
+                    StringBuilder dataBuffer = new StringBuilder();
                     
-                    while ((line = reader.readLine()) != null) {
-                        // 处理SSE格式：event: message 和 data: {"data": "..."}
-                        if (line.startsWith("data: ")) {
-                            String jsonData = line.substring(6).trim();
-                            if (!jsonData.isEmpty()) {
-                                try {
-                                    JsonObject json = JsonParser.parseString(jsonData).getAsJsonObject();
-                                    if (json.has("data")) {
-                                        String dataContent = json.get("data").getAsString();
-                                        callback.onData(dataContent);
-                                    }
-                                } catch (Exception e) {
-                                    // 忽略JSON解析错误，继续处理下一行
+                    while (true) {
+                        int bytesRead = inputStream.read(buffer);
+                        if (bytesRead == -1) {
+                            Log.d(TAG, "流式响应读取完成");
+                            break;
+                        }
+                        
+                        // 将读取的字节转换为字符串
+                        String chunk = new String(buffer, 0, bytesRead, "UTF-8");
+                        Log.d(TAG, "收到数据块: " + chunk);
+                        
+                        dataBuffer.append(chunk);
+                        
+                        // 按行处理数据
+                        String[] lines = dataBuffer.toString().split("\n");
+                        
+                        // 保留最后一行（可能不完整）
+                        if (lines.length > 0) {
+                            dataBuffer = new StringBuilder();
+                            String lastLine = lines[lines.length - 1];
+                            
+                            // 如果最后一行不以换行符结尾，说明可能不完整
+                            if (!chunk.endsWith("\n")) {
+                                dataBuffer.append(lastLine);
+                                // 处理除最后一行外的所有行
+                                for (int i = 0; i < lines.length - 1; i++) {
+                                    processSSELine(lines[i], callback);
+                                }
+                            } else {
+                                // 处理所有行
+                                for (String line : lines) {
+                                    processSSELine(line, callback);
                                 }
                             }
                         }
-                        // 忽略event行和空行
                     }
-                    callback.onComplete();
+                    
+                    // 处理缓冲区中剩余的数据
+                    if (dataBuffer.length() > 0) {
+                        processSSELine(dataBuffer.toString(), callback);
+                    }
+                    
+                    Log.d(TAG, "流式响应完成");
+                    new Handler(Looper.getMainLooper()).post(() -> {
+                        callback.onComplete();
+                    });
+                    
                 } catch (Exception e) {
-                    callback.onError("流式响应处理失败: " + e.getMessage());
+                    Log.e(TAG, "流式响应处理失败", e);
+                    new Handler(Looper.getMainLooper()).post(() -> {
+                        callback.onError("流式响应处理失败: " + e.getMessage());
+                    });
+                } finally {
+                    if (inputStream != null) {
+                        try {
+                            inputStream.close();
+                        } catch (IOException e) {
+                            Log.w(TAG, "关闭inputStream失败", e);
+                        }
+                    }
+                    if (response.body() != null) {
+                        response.body().close();
+                    }
                 }
             }
         });
@@ -412,7 +519,9 @@ public class ApiService {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e(TAG, "网络请求失败 - URL: " + request.url() + ", 错误: " + e.getMessage(), e);
-                callback.onError("网络请求失败: " + e.getMessage());
+                new Handler(Looper.getMainLooper()).post(() -> {
+                    callback.onError("网络请求失败: " + e.getMessage());
+                });
             }
             
             @Override
@@ -421,7 +530,9 @@ public class ApiService {
                 
                 if (!response.isSuccessful()) {
                     Log.e(TAG, "HTTP错误 - 状态码: " + response.code() + ", 消息: " + response.message());
-                    callback.onError("HTTP错误: " + response.code() + " " + response.message());
+                    new Handler(Looper.getMainLooper()).post(() -> {
+                        callback.onError("HTTP错误: " + response.code() + " " + response.message());
+                    });
                     return;
                 }
                 
@@ -430,7 +541,9 @@ public class ApiService {
                 
                 if (responseBody == null || responseBody.trim().isEmpty()) {
                     Log.e(TAG, "响应内容为空");
-                    callback.onError("服务器响应为空");
+                    new Handler(Looper.getMainLooper()).post(() -> {
+                        callback.onError("服务器响应为空");
+                    });
                     return;
                 }
                 
@@ -439,7 +552,9 @@ public class ApiService {
                     
                     if (!jsonObject.has("code")) {
                         Log.e(TAG, "响应中缺少code字段");
-                        callback.onError("服务器响应格式错误：缺少code字段");
+                        new Handler(Looper.getMainLooper()).post(() -> {
+                            callback.onError("服务器响应格式错误：缺少code字段");
+                        });
                         return;
                     }
                     
@@ -450,14 +565,20 @@ public class ApiService {
                     if (code == 1101 || code == 1102) {
                         Log.w(TAG, "需要重新登录，清除token");
                         clearToken();
-                        callback.onError("请重新登录");
+                        new Handler(Looper.getMainLooper()).post(() -> {
+                            callback.onError("请重新登录");
+                        });
                         return;
                     }
                     
-                    callback.onSuccess(jsonObject);
+                    new Handler(Looper.getMainLooper()).post(() -> {
+                        callback.onSuccess(jsonObject);
+                    });
                 } catch (Exception e) {
                     Log.e(TAG, "解析响应失败 - 响应内容: " + responseBody, e);
-                    callback.onError("解析响应失败: " + e.getMessage());
+                    new Handler(Looper.getMainLooper()).post(() -> {
+                        callback.onError("解析响应失败: " + e.getMessage());
+                    });
                 }
             }
         });

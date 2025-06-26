@@ -126,6 +126,7 @@ id tv_title
 id tv_username
 id tv_weather_description
 id tv_weather_info
+id webview_analysis
 layout activity_login
 layout activity_main
 layout activity_register
@@ -251,3 +252,4 @@ style Theme.AIClothes.NoActionBar
 xml backup_rules
 xml data_extraction_rules
 xml file_paths
+xml network_security_config
