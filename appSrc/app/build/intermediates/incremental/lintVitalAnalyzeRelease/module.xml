@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app"
+    name=":app"
+    type="APP"
+    maven="AIClothesApp:app:"
+    agpVersion="8.1.2"
+    buildFolder="build"
+    bootClassPath="/Users/easyimpr/Library/Android/sdk/platforms/android-34/android.jar:/Users/easyimpr/Library/Android/sdk/build-tools/33.0.1/core-lambda-stubs.jar"
+    javaSourceLevel="1.8"
+    compileTarget="android-34"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="release"/>
+</lint-module>

@@ -1,0 +1,219 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.aiclothes.app"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:5:5-67
+11-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:6:5-79
+12-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:6:22-76
+13    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+13-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:7:5-80
+13-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:7:22-77
+14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+14-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:8:5-81
+14-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:8:22-78
+15    <uses-permission android:name="android.permission.CAMERA" />
+15-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:9:5-65
+15-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:9:22-62
+16    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+16-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:10:5-76
+16-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:10:22-73
+17    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+17-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:11:5-79
+17-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:11:22-76
+18    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+18-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:12:5-81
+18-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:12:22-78
+19
+20    <!-- 声明相机硬件特性为可选，以支持ChromeOS等设备 -->
+21    <uses-feature
+21-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:15:5-85
+22        android:name="android.hardware.camera"
+22-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:15:19-57
+23        android:required="false" />
+23-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:15:58-82
+24    <uses-feature
+24-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:16:5-95
+25        android:name="android.hardware.camera.autofocus"
+25-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:16:19-67
+26        android:required="false" />
+26-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:16:68-92
+27
+28    <permission
+28-->[androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+29        android:name="com.aiclothes.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+29-->[androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+30        android:protectionLevel="signature" />
+30-->[androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+31
+32    <uses-permission android:name="com.aiclothes.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+32-->[androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+32-->[androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+33
+34    <application
+34-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:18:5-61:19
+35        android:allowBackup="true"
+35-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:19:9-35
+36        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+36-->[androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+37        android:dataExtractionRules="@xml/data_extraction_rules"
+37-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:20:9-65
+38        android:debuggable="true"
+39        android:extractNativeLibs="false"
+40        android:fullBackupContent="@xml/backup_rules"
+40-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:21:9-54
+41        android:icon="@drawable/app_logo"
+41-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:22:9-42
+42        android:label="@string/app_name"
+42-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:23:9-41
+43        android:roundIcon="@drawable/app_logo"
+43-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:24:9-47
+44        android:supportsRtl="true"
+44-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:25:9-35
+45        android:theme="@style/Theme.AIClothes"
+45-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:26:9-47
+46        android:usesCleartextTraffic="true" >
+46-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:27:9-44
+47        <activity
+47-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:30:9-39:20
+48            android:name="com.aiclothes.app.activity.MainActivity"
+48-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:31:13-50
+49            android:exported="true"
+49-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:32:13-36
+50            android:theme="@style/Theme.AIClothes.NoActionBar"
+50-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:34:13-63
+51            android:windowSoftInputMode="adjustPan" >
+51-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:33:13-52
+52            <intent-filter>
+52-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:35:13-38:29
+53                <action android:name="android.intent.action.MAIN" />
+53-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:36:17-69
+53-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:36:25-66
+54
+55                <category android:name="android.intent.category.LAUNCHER" />
+55-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:37:17-77
+55-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:37:27-74
+56            </intent-filter>
+57        </activity>
+58        <activity
+58-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:41:9-44:66
+59            android:name="com.aiclothes.app.activity.LoginActivity"
+59-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:42:13-51
+60            android:exported="false"
+60-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:43:13-37
+61            android:theme="@style/Theme.AIClothes.NoActionBar" />
+61-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:44:13-63
+62        <activity
+62-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:46:9-49:66
+63            android:name="com.aiclothes.app.activity.RegisterActivity"
+63-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:47:13-54
+64            android:exported="false"
+64-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:48:13-37
+65            android:theme="@style/Theme.AIClothes.NoActionBar" />
+65-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:49:13-63
+66
+67        <provider
+68            android:name="androidx.core.content.FileProvider"
+68-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:52:13-62
+69            android:authorities="com.aiclothes.app.fileprovider"
+69-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:53:13-64
+70            android:exported="false"
+70-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:54:13-37
+71            android:grantUriPermissions="true" >
+71-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:55:13-47
+72            <meta-data
+72-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:56:13-58:54
+73                android:name="android.support.FILE_PROVIDER_PATHS"
+73-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:57:17-67
+74                android:resource="@xml/file_paths" />
+74-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:58:17-51
+75        </provider>
+76        <provider
+76-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+77            android:name="androidx.startup.InitializationProvider"
+77-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+78            android:authorities="com.aiclothes.app.androidx-startup"
+78-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+79            android:exported="false" >
+79-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+80            <meta-data
+80-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+81                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+81-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+82                android:value="androidx.startup" />
+82-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+83            <meta-data
+83-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+84                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+84-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+85                android:value="androidx.startup" />
+85-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+86            <meta-data
+86-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+87                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+87-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+88                android:value="androidx.startup" />
+88-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+89        </provider>
+90
+91        <uses-library
+91-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
+92            android:name="androidx.window.extensions"
+92-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
+93            android:required="false" />
+93-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
+94        <uses-library
+94-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
+95            android:name="androidx.window.sidecar"
+95-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
+96            android:required="false" />
+96-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
+97
+98        <receiver
+98-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+99            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+99-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+100            android:directBootAware="false"
+100-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+101            android:enabled="true"
+101-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+102            android:exported="true"
+102-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+103            android:permission="android.permission.DUMP" >
+103-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+104            <intent-filter>
+104-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+105                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+105-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+105-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+106            </intent-filter>
+107            <intent-filter>
+107-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+108                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+108-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+108-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+109            </intent-filter>
+110            <intent-filter>
+110-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+111                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+111-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+111-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+112            </intent-filter>
+113            <intent-filter>
+113-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+114                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+114-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+114-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+115            </intent-filter>
+116        </receiver>
+117    </application>
+118
+119</manifest>

@@ -1,0 +1,836 @@
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:7: Warning: READ_EXTERNAL_STORAGE is deprecated (and is not granted) when targeting Android 13+. If you need to query or interact with MediaStore or media files on the shared storage, you should instead use one or more new storage permissions: READ_MEDIA_IMAGES, READ_MEDIA_VIDEO or READ_MEDIA_AUDIO. [ScopedStorage]
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:8: Warning: WRITE_EXTERNAL_STORAGE is deprecated (and is not granted) when targeting Android 13+. If you need to write to shared storage, use the MediaStore.createWriteRequest intent. [ScopedStorage]
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ScopedStorage":
+   Scoped storage is enforced on Android 10+ (or Android 11+ if using
+   requestLegacyExternalStorage). In particular, WRITE_EXTERNAL_STORAGE will
+   no longer provide write access to all files; it will provide the equivalent
+   of READ_EXTERNAL_STORAGE instead.
+
+   As of Android 13, if you need to query or interact with MediaStore or media
+   files on the shared storage, you should be using instead one or more new
+   storage permissions:
+   * android.permission.READ_MEDIA_IMAGES
+   * android.permission.READ_MEDIA_VIDEO
+   * android.permission.READ_MEDIA_AUDIO
+
+   and then add maxSdkVersion="33" to the older permission. See the developer
+   guide for how to do this:
+   https://developer.android.com/about/versions/13/behavior-changes-13#granula
+   r-media-permissions
+
+   The MANAGE_EXTERNAL_STORAGE permission can be used to manage all files, but
+   it is rarely necessary and most apps on Google Play are not allowed to use
+   it. Most apps should instead migrate to use scoped storage. To modify or
+   delete files, apps should request write access from the user as described
+   at https://goo.gle/android-mediastore-createwriterequest.
+
+   To learn more, read these resources: Play policy:
+   https://goo.gle/policy-storage-help Allowable use cases:
+   https://goo.gle/policy-storage-usecases
+
+   https://goo.gle/android-storage-usecases
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/java/com/aiclothes/app/utils/ImageUtils.java:141: Warning: Implicitly using the default locale is a common source of bugs: Use toLowerCase(Locale) instead. For strings meant to be internal use Locale.ROOT, otherwise Locale.getDefault(). [DefaultLocale]
+        String extension = fileName.toLowerCase();
+                                    ~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/java/com/aiclothes/app/fragment/TryOnFragment.java:438: Warning: Implicitly using the default locale is a common source of bugs: Use toLowerCase(Locale) instead. For strings meant to be internal use Locale.ROOT, otherwise Locale.getDefault(). [DefaultLocale]
+         String fileName = imageFile.getName().toLowerCase();
+                                               ~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/java/com/aiclothes/app/fragment/TryOnFragment.java:765: Warning: Implicitly using the default locale is a common source of bugs: Use toLowerCase(Locale) instead. For strings meant to be internal use Locale.ROOT, otherwise Locale.getDefault(). [DefaultLocale]
+        String fileName = imageFile.getName().toLowerCase();
+                                              ~~~~~~~~~~~
+
+   Explanation for issues of type "DefaultLocale":
+   Calling String#toLowerCase() or #toUpperCase() without specifying an
+   explicit locale is a common source of bugs. The reason for that is that
+   those methods will use the current locale on the user's device, and even
+   though the code appears to work correctly when you are developing the app,
+   it will fail in some locales. For example, in the Turkish locale, the
+   uppercase replacement for i is not I.
+
+   If you want the methods to just perform ASCII replacement, for example to
+   convert an enum name, call String#toUpperCase(Locale.US) instead. If you
+   really want to use the current locale, call
+   String#toUpperCase(Locale.getDefault()) instead.
+
+   https://developer.android.com/reference/java/util/Locale.html#default_locale
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/java/com/aiclothes/app/utils/ImageUtils.java:32: Warning: Calling setType after setting URI in Intent constructor will clear the data: Call setDataAndType instead? [IntentReset]
+        intent.setType("image/*");
+               ~~~~~~~~~~~~~~~~~~
+    /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/java/com/aiclothes/app/utils/ImageUtils.java:31: Originally set here
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/java/com/aiclothes/app/fragment/TryOnFragment.java:342: Warning: Calling setType after setting URI in Intent constructor will clear the data: Call setDataAndType instead? [IntentReset]
+        intent.setType("image/*");
+               ~~~~~~~~~~~~~~~~~~
+    /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/java/com/aiclothes/app/fragment/TryOnFragment.java:341: Originally set here
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/java/com/aiclothes/app/fragment/WardrobeFragment.java:115: Warning: Calling setType after setting URI in Intent constructor will clear the data: Call setDataAndType instead? [IntentReset]
+        intent.setType("image/*");
+               ~~~~~~~~~~~~~~~~~~
+    /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/java/com/aiclothes/app/fragment/WardrobeFragment.java:114: Originally set here
+
+   Explanation for issues of type "IntentReset":
+   Intent provides the following APIs: setData(Uri) and setType(String).
+   Unfortunately, setting one clears the other. If you want to set both, you
+   should call setDataAndType(Uri, String) instead.
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build.gradle:12: Warning: Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details. [OldTargetApi]
+        targetSdk 34
+        ~~~~~~~~~~~~
+
+   Explanation for issues of type "OldTargetApi":
+   When your application runs on a version of Android that is more recent than
+   your targetSdkVersion specifies that it has been tested with, various
+   compatibility modes kick in. This ensures that your application continues
+   to work, but it may look out of place. For example, if the targetSdkVersion
+   is less than 14, your app may get an option button in the UI.
+
+   To fix this issue, set the targetSdkVersion to the highest available value.
+   Then test your app to make sure everything works correctly. You may want to
+   consult the compatibility notes to see what changes apply to each version
+   you are adding support for:
+   https://developer.android.com/reference/android/os/Build.VERSION_CODES.html
+   as well as follow this guide:
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.
+   html
+
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.html
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/java/com/aiclothes/app/utils/ImageUtils.java:39: Warning: Consider adding a <queries> declaration to your manifest when calling this method; see https://g.co/dev/packagevisibility for details [QueryPermissionsNeeded]
+        if (takePictureIntent.resolveActivity(activity.getPackageManager()) != null) {
+                              ~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/java/com/aiclothes/app/fragment/TryOnFragment.java:348: Warning: Consider adding a <queries> declaration to your manifest when calling this method; see https://g.co/dev/packagevisibility for details [QueryPermissionsNeeded]
+        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                              ~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/java/com/aiclothes/app/fragment/WardrobeFragment.java:121: Warning: Consider adding a <queries> declaration to your manifest when calling this method; see https://g.co/dev/packagevisibility for details [QueryPermissionsNeeded]
+        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                              ~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "QueryPermissionsNeeded":
+   Apps that target Android 11 cannot query or interact with other installed
+   apps by default. If you need to query or interact with other installed
+   apps, you may need to add a <queries> declaration in your manifest.
+
+   As a corollary, the methods PackageManager#getInstalledPackages and
+   PackageManager#getInstalledApplications will no longer return information
+   about all installed apps. To query specific apps or types of apps, you can
+   use methods like PackageManager#getPackageInfo or
+   PackageManager#queryIntentActivities.
+
+   https://g.co/dev/packagevisibility
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build.gradle:35: Warning: A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.1 [GradleDependency]
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build.gradle:36: Warning: A newer version of com.google.android.material:material than 1.10.0 is available: 1.12.0 [GradleDependency]
+    implementation 'com.google.android.material:material:1.10.0'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build.gradle:37: Warning: A newer version of androidx.constraintlayout:constraintlayout than 2.1.4 is available: 2.2.1 [GradleDependency]
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build.gradle:38: Warning: A newer version of androidx.lifecycle:lifecycle-livedata-ktx than 2.7.0 is available: 2.9.1 [GradleDependency]
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build.gradle:39: Warning: A newer version of androidx.lifecycle:lifecycle-viewmodel-ktx than 2.7.0 is available: 2.9.1 [GradleDependency]
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build.gradle:40: Warning: A newer version of androidx.navigation:navigation-fragment than 2.7.4 is available: 2.9.0 [GradleDependency]
+    implementation 'androidx.navigation:navigation-fragment:2.7.4'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build.gradle:41: Warning: A newer version of androidx.navigation:navigation-ui than 2.7.4 is available: 2.9.0 [GradleDependency]
+    implementation 'androidx.navigation:navigation-ui:2.7.4'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build.gradle:42: Warning: A newer version of androidx.recyclerview:recyclerview than 1.3.2 is available: 1.4.0 [GradleDependency]
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build.gradle:54: Warning: A newer version of androidx.viewpager2:viewpager2 than 1.0.0 is available: 1.1.0 [GradleDependency]
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build.gradle:61: Warning: A newer version of androidx.test.ext:junit than 1.1.5 is available: 1.2.1 [GradleDependency]
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build.gradle:62: Warning: A newer version of androidx.test.espresso:espresso-core than 3.5.1 is available: 3.6.1 [GradleDependency]
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/activity_login.xml:6: Warning: Possible overdraw: Root element paints background @color/background_light with a theme that also paints a background (inferred theme is @style/Theme_AIClothes_NoActionBar) [Overdraw]
+    android:background="@color/background_light"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/activity_register.xml:6: Warning: Possible overdraw: Root element paints background @color/background_light with a theme that also paints a background (inferred theme is @style/Theme_AIClothes_NoActionBar) [Overdraw]
+    android:background="@color/background_light"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:6: Warning: Possible overdraw: Root element paints background @color/background_light with a theme that also paints a background (inferred theme is @style/Theme.AIClothes) [Overdraw]
+    android:background="@color/background_light"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_profile.xml:6: Warning: Possible overdraw: Root element paints background @color/background_light with a theme that also paints a background (inferred theme is @style/Theme.AIClothes) [Overdraw]
+    android:background="@color/background_light"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_try_on.xml:6: Warning: Possible overdraw: Root element paints background @color/background with a theme that also paints a background (inferred theme is @style/Theme.AIClothes) [Overdraw]
+    android:background="@color/background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:6: Warning: Possible overdraw: Root element paints background @color/background_light with a theme that also paints a background (inferred theme is @style/Theme.AIClothes) [Overdraw]
+    android:background="@color/background_light"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:6: Warning: Possible overdraw: Root element paints background @color/background_light with a theme that also paints a background (inferred theme is @style/Theme.AIClothes) [Overdraw]
+    android:background="@color/background_light"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "Overdraw":
+   If you set a background drawable on a root view, then you should use a
+   custom theme where the theme background is null. Otherwise, the theme
+   background will be painted first, only to have your custom background
+   completely cover it; this is called "overdraw".
+
+   NOTE: This detector relies on figuring out which layouts are associated
+   with which activities based on scanning the Java code, and it's currently
+   doing that using an inexact pattern matching algorithm. Therefore, it can
+   incorrectly conclude which activity the layout is associated with and then
+   wrongly complain that a background-theme is hidden.
+
+   If you want your custom background on multiple pages, then you should
+   consider making a custom theme with your custom background and just using
+   that theme instead of a root element background.
+
+   Of course it's possible that your custom drawable is translucent and you
+   want it to be mixed with the background. However, you will get better
+   performance if you pre-mix the background with your drawable and use that
+   resulting image or color as a custom theme background instead.
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/colors.xml:3: Warning: The resource R.color.black appears to be unused [UnusedResources]
+    <color name="black">#FF000000</color>
+           ~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/colors.xml:19: Warning: The resource R.color.card_background appears to be unused [UnusedResources]
+    <color name="card_background">#FFFFFFFF</color>
+           ~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/colors.xml:26: Warning: The resource R.color.text_white appears to be unused [UnusedResources]
+    <color name="text_white">#FFFFFFFF</color>
+           ~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/colors.xml:29: Warning: The resource R.color.success appears to be unused [UnusedResources]
+    <color name="success">#FF28A745</color>
+           ~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/colors.xml:30: Warning: The resource R.color.warning appears to be unused [UnusedResources]
+    <color name="warning">#FFFFC107</color>
+           ~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/colors.xml:32: Warning: The resource R.color.info appears to be unused [UnusedResources]
+    <color name="info">#FF17A2B8</color>
+           ~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/colors.xml:35: Warning: The resource R.color.divider appears to be unused [UnusedResources]
+    <color name="divider">#FFE9ECEF</color>
+           ~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/colors.xml:36: Warning: The resource R.color.border appears to be unused [UnusedResources]
+    <color name="border">#FFDEE2E6</color>
+           ~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/colors.xml:40: Warning: The resource R.color.button_secondary appears to be unused [UnusedResources]
+    <color name="button_secondary">#FF6C757D</color>
+           ~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/colors.xml:41: Warning: The resource R.color.button_disabled appears to be unused [UnusedResources]
+    <color name="button_disabled">#FFADB5BD</color>
+           ~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/colors.xml:44: Warning: The resource R.color.gradient_start appears to be unused [UnusedResources]
+    <color name="gradient_start">#FF6B73FF</color>
+           ~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/colors.xml:45: Warning: The resource R.color.gradient_end appears to be unused [UnusedResources]
+    <color name="gradient_end">#FFFF6B9D</color>
+           ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/colors.xml:48: Warning: The resource R.color.overlay appears to be unused [UnusedResources]
+    <color name="overlay">#80000000</color>
+           ~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/colors.xml:49: Warning: The resource R.color.ripple appears to be unused [UnusedResources]
+    <color name="ripple">#1A6B73FF</color>
+           ~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/drawable/ic_image_error.xml:1: Warning: The resource R.drawable.ic_image_error appears to be unused [UnusedResources]
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+^
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/mipmap-hdpi/ic_launcher.xml:2: Warning: The resource R.mipmap.ic_launcher appears to be unused [UnusedResources]
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+^
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/mipmap-hdpi/ic_launcher_round.xml:2: Warning: The resource R.mipmap.ic_launcher_round appears to be unused [UnusedResources]
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+^
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/drawable/image_placeholder.xml:2: Warning: The resource R.drawable.image_placeholder appears to be unused [UnusedResources]
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+^
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:5: Warning: The resource R.string.confirm appears to be unused [UnusedResources]
+    <string name="confirm">确认</string>
+            ~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:6: Warning: The resource R.string.cancel appears to be unused [UnusedResources]
+    <string name="cancel">取消</string>
+            ~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:7: Warning: The resource R.string.loading appears to be unused [UnusedResources]
+    <string name="loading">加载中...</string>
+            ~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:8: Warning: The resource R.string.error appears to be unused [UnusedResources]
+    <string name="error">错误</string>
+            ~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:9: Warning: The resource R.string.success appears to be unused [UnusedResources]
+    <string name="success">成功</string>
+            ~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:10: Warning: The resource R.string.retry appears to be unused [UnusedResources]
+    <string name="retry">重试</string>
+            ~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:11: Warning: The resource R.string.upload appears to be unused [UnusedResources]
+    <string name="upload">上传</string>
+            ~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:12: Warning: The resource R.string.generate appears to be unused [UnusedResources]
+    <string name="generate">生成</string>
+            ~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:18: Warning: The resource R.string.phone_number appears to be unused [UnusedResources]
+    <string name="phone_number">手机号</string>
+            ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:20: Warning: The resource R.string.new_password appears to be unused [UnusedResources]
+    <string name="new_password">新密码</string>
+            ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:22: Warning: The resource R.string.gender appears to be unused [UnusedResources]
+    <string name="gender">性别</string>
+            ~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:25: Warning: The resource R.string.forgot_password appears to be unused [UnusedResources]
+    <string name="forgot_password">忘记密码？</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:29: Warning: The resource R.string.phone_hint appears to be unused [UnusedResources]
+    <string name="phone_hint">请输入手机号</string>
+            ~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:30: Warning: The resource R.string.password_hint appears to be unused [UnusedResources]
+    <string name="password_hint">请输入密码</string>
+            ~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:31: Warning: The resource R.string.new_password_hint appears to be unused [UnusedResources]
+    <string name="new_password_hint">请输入新密码</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:33: Warning: The resource R.string.has_account appears to be unused [UnusedResources]
+    <string name="has_account">已有账号？点击登录</string>
+            ~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:36: Warning: The resource R.string.weather_outfit appears to be unused [UnusedResources]
+    <string name="weather_outfit">天气穿搭</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:37: Warning: The resource R.string.wardrobe_match appears to be unused [UnusedResources]
+    <string name="wardrobe_match">衣柜搭配</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:39: Warning: The resource R.string.profile appears to be unused [UnusedResources]
+    <string name="profile">个人中心</string>
+            ~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:47: Warning: The resource R.string.select_city appears to be unused [UnusedResources]
+    <string name="select_city">选择城市</string>
+            ~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:48: Warning: The resource R.string.get_weather appears to be unused [UnusedResources]
+    <string name="get_weather">获取天气</string>
+            ~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:49: Warning: The resource R.string.recommend_outfit appears to be unused [UnusedResources]
+    <string name="recommend_outfit">推荐穿搭</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:50: Warning: The resource R.string.generate_image appears to be unused [UnusedResources]
+    <string name="generate_image">生成试穿图</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:51: Warning: The resource R.string.weather_info appears to be unused [UnusedResources]
+    <string name="weather_info">天气信息</string>
+            ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:52: Warning: The resource R.string.outfit_recommendation appears to be unused [UnusedResources]
+    <string name="outfit_recommendation">穿搭推荐</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:55: Warning: The resource R.string.upload_wardrobe appears to be unused [UnusedResources]
+    <string name="upload_wardrobe">上传衣柜照片</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:56: Warning: The resource R.string.purpose_hint appears to be unused [UnusedResources]
+    <string name="purpose_hint">请输入穿衣目的，如：去春游</string>
+            ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:57: Warning: The resource R.string.analyze_wardrobe appears to be unused [UnusedResources]
+    <string name="analyze_wardrobe">分析衣柜</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:58: Warning: The resource R.string.max_5_photos appears to be unused [UnusedResources]
+    <string name="max_5_photos">最多上传5张照片</string>
+            ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:59: Warning: The resource R.string.supported_formats appears to be unused [UnusedResources]
+    <string name="supported_formats">支持jpg、png、jpeg格式</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:68: Warning: The resource R.string.upload_model_photo appears to be unused [UnusedResources]
+    <string name="upload_model_photo">上传模特照片</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:69: Warning: The resource R.string.upload_outfit_photo appears to be unused [UnusedResources]
+    <string name="upload_outfit_photo">上传服装照片</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:70: Warning: The resource R.string.upload_top_photo appears to be unused [UnusedResources]
+    <string name="upload_top_photo">上传上衣照片</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:71: Warning: The resource R.string.upload_bottom_photo appears to be unused [UnusedResources]
+    <string name="upload_bottom_photo">上传下装照片</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:76: Warning: The resource R.string.select_gender appears to be unused [UnusedResources]
+    <string name="select_gender">选择性别</string>
+            ~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:94: Warning: The resource R.string.error_network_request appears to be unused [UnusedResources]
+    <string name="error_network_request">网络请求失败: </string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:96: Warning: The resource R.string.network_error appears to be unused [UnusedResources]
+    <string name="network_error">网络错误，请检查网络连接</string>
+            ~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:97: Warning: The resource R.string.server_error appears to be unused [UnusedResources]
+    <string name="server_error">服务器错误，请稍后重试</string>
+            ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:98: Warning: The resource R.string.login_required appears to be unused [UnusedResources]
+    <string name="login_required">请重新登录</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:99: Warning: The resource R.string.invalid_input appears to be unused [UnusedResources]
+    <string name="invalid_input">输入信息有误</string>
+            ~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:100: Warning: The resource R.string.upload_failed appears to be unused [UnusedResources]
+    <string name="upload_failed">上传失败</string>
+            ~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:101: Warning: The resource R.string.generate_failed appears to be unused [UnusedResources]
+    <string name="generate_failed">生成失败</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:104: Warning: The resource R.string.error_invalid_params appears to be unused [UnusedResources]
+    <string name="error_invalid_params">参数错误</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:105: Warning: The resource R.string.error_file_too_large appears to be unused [UnusedResources]
+    <string name="error_file_too_large">文件过大</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:106: Warning: The resource R.string.error_invalid_file_format appears to be unused [UnusedResources]
+    <string name="error_invalid_file_format">文件格式不支持</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:107: Warning: The resource R.string.error_processing_failed appears to be unused [UnusedResources]
+    <string name="error_processing_failed">处理失败</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:108: Warning: The resource R.string.error_server_busy appears to be unused [UnusedResources]
+    <string name="error_server_busy">服务器繁忙，请稍后重试</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:111: Warning: The resource R.string.select_photo appears to be unused [UnusedResources]
+    <string name="select_photo">选择照片</string>
+            ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:112: Warning: The resource R.string.take_photo appears to be unused [UnusedResources]
+    <string name="take_photo">拍照</string>
+            ~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:113: Warning: The resource R.string.from_gallery appears to be unused [UnusedResources]
+    <string name="from_gallery">从相册选择</string>
+            ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:116: Warning: The resource R.string.select_province appears to be unused [UnusedResources]
+    <string name="select_province">选择省份</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:117: Warning: The resource R.string.confirm_selection appears to be unused [UnusedResources]
+    <string name="confirm_selection">确认选择</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:120: Warning: The resource R.string.about_app appears to be unused [UnusedResources]
+    <string name="about_app">关于应用</string>
+            ~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/themes.xml:27: Warning: The resource R.style.Button_Primary appears to be unused [UnusedResources]
+    <style name="Button.Primary" parent="Widget.Material3.Button">
+           ~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/themes.xml:45: Warning: The resource R.style.Button_Secondary appears to be unused [UnusedResources]
+    <style name="Button.Secondary" parent="Widget.Material3.Button.OutlinedButton">
+           ~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/themes.xml:54: Warning: The resource R.style.TextInputLayout_Outlined appears to be unused [UnusedResources]
+    <style name="TextInputLayout.Outlined" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/themes.xml:65: Warning: The resource R.style.Card_Elevated appears to be unused [UnusedResources]
+    <style name="Card.Elevated" parent="Widget.Material3.CardView.Elevated">
+           ~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/themes.xml:73: Warning: The resource R.style.Text appears to be unused [UnusedResources]
+    <style name="Text">
+           ~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/themes.xml:79: Warning: The resource R.style.Text_Title appears to be unused [UnusedResources]
+    <style name="Text.Title">
+           ~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/themes.xml:85: Warning: The resource R.style.Text_Subtitle appears to be unused [UnusedResources]
+    <style name="Text.Subtitle">
+           ~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/themes.xml:91: Warning: The resource R.style.Text_Body appears to be unused [UnusedResources]
+    <style name="Text.Body">
+           ~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/themes.xml:96: Warning: The resource R.style.Text_Caption appears to be unused [UnusedResources]
+    <style name="Text.Caption">
+           ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/themes.xml:102: Warning: The resource R.style.BottomNavigation appears to be unused [UnusedResources]
+    <style name="BottomNavigation" parent="Widget.Material3.BottomNavigationView">
+           ~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UnusedResources":
+   Unused resources make applications larger and slow down builds.
+
+
+   The unused resource check can ignore tests. If you want to include
+   resources that are only referenced from tests, consider packaging them in a
+   test source set instead.
+
+   You can include test sources in the unused resource check by setting the
+   system property lint.unused-resources.include-tests =true, and to exclude
+   them (usually for performance reasons), use
+   lint.unused-resources.exclude-tests =true.
+   ,
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/values/strings.xml:7: Warning: Replace "..." with ellipsis character (…, &#8230;) ? [TypographyEllipsis]
+    <string name="loading">加载中...</string>
+                           ~~~~~~
+
+   Explanation for issues of type "TypographyEllipsis":
+   You can replace the string "..." with a dedicated ellipsis character,
+   ellipsis character (u2026, &#8230;). This can help make the text more
+   readable.
+
+   https://en.wikipedia.org/wiki/Ellipsis
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/drawable/app_logo.jpg: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+
+   Explanation for issues of type "IconLauncherShape":
+   According to the Android Design Guide
+   (https://material.io/design/iconography/) your launcher icons should "use a
+   distinct silhouette", a "three-dimensional, front view, with a slight
+   perspective as if viewed from above, so that users perceive some depth."
+
+   The unique silhouette implies that your launcher icon should not be a
+   filled square.
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/drawable/app_logo.jpg: Warning: Found bitmap drawable res/drawable/app_logo.jpg in densityless folder [IconLocation]
+
+   Explanation for issues of type "IconLocation":
+   The res/drawable folder is intended for density-independent graphics such
+   as shapes defined in XML. For bitmaps, move it to drawable-mdpi and
+   consider providing higher and lower resolution versions in drawable-ldpi,
+   drawable-hdpi and drawable-xhdpi. If the icon really is density independent
+   (for example a solid color) you can place it in drawable-nodpi.
+
+   https://developer.android.com/guide/practices/screens_support.html
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/drawable/app_logo.jpg: Warning: Misleading file extension; named .jpg but the file format is png [IconExtension]
+
+   Explanation for issues of type "IconExtension":
+   Ensures that icons have the correct file extension (e.g. a .png file is
+   really in the PNG format and not for example a GIF file named .png).
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:125: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:133: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:150: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:159: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:43: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:54: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+                    <Button
+                     ~~~~~~
+
+   Explanation for issues of type "ButtonStyle":
+   Button bars typically use a borderless style for the buttons. Set the
+   style="?android:attr/buttonBarButtonStyle" attribute on each of the
+   buttons, and set style="?android:attr/buttonBarStyle" on the parent layout
+
+   https://material.io/components/dialogs/
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:47: Warning: This text field does not specify an inputType [TextFields]
+                <EditText
+                 ~~~~~~~~
+
+   Explanation for issues of type "TextFields":
+   Providing an inputType attribute on a text field improves usability because
+   depending on the data to be input, optimized keyboards can be shown to the
+   user (such as just digits and parentheses for a phone number). 
+
+   The lint detector also looks at the id of the view, and if the id offers a
+   hint of the purpose of the field (for example, the id contains the phrase
+   phone or email), then lint will also ensure that the inputType contains the
+   corresponding type attributes.
+
+   If you really want to keep the text field generic, you can suppress this
+   warning by setting inputType="text".
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:47: Warning: Missing autofillHints attribute [Autofill]
+                <EditText
+                 ~~~~~~~~
+
+   Explanation for issues of type "Autofill":
+   Specify an autofillHints attribute when targeting SDK version 26 or higher
+   or explicitly specify that the view is not important for autofill. Your app
+   can help an autofill service classify the data correctly by providing the
+   meaning of each view that could be autofillable, such as views representing
+   usernames, passwords, credit card fields, email addresses, etc.
+
+   The hints can have any value, but it is recommended to use predefined
+   values like 'username' for a username or 'creditCardNumber' for a credit
+   card number. For a list of all predefined autofill hint constants, see the
+   AUTOFILL_HINT_ constants in the View reference at
+   https://developer.android.com/reference/android/view/View.html.
+
+   You can mark a view unimportant for autofill by specifying an
+   importantForAutofill attribute on that view or a parent view. See
+   https://developer.android.com/reference/android/view/View.html#setImportant
+   ForAutofill(int).
+
+   https://developer.android.com/guide/topics/text/autofill.html
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/activity_login.xml:12: Warning: Missing contentDescription attribute on image [ContentDescription]
+    <ImageView
+     ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/activity_register.xml:17: Warning: Missing contentDescription attribute on image [ContentDescription]
+        <ImageView
+         ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:49: Warning: Missing contentDescription attribute on image [ContentDescription]
+            <ImageView
+             ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:86: Warning: Missing contentDescription attribute on image [ContentDescription]
+                    <ImageView
+                     ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:117: Warning: Missing contentDescription attribute on image [ContentDescription]
+                    <ImageView
+                     ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:147: Warning: Missing contentDescription attribute on image [ContentDescription]
+                    <ImageView
+                     ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:178: Warning: Missing contentDescription attribute on image [ContentDescription]
+                    <ImageView
+                     ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:208: Warning: Missing contentDescription attribute on image [ContentDescription]
+                    <ImageView
+                     ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:239: Warning: Missing contentDescription attribute on image [ContentDescription]
+                    <ImageView
+                     ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:268: Warning: Missing contentDescription attribute on image [ContentDescription]
+                    <ImageView
+                     ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:299: Warning: Missing contentDescription attribute on image [ContentDescription]
+                    <ImageView
+                     ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_profile.xml:31: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView
+                 ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_profile.xml:81: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView
+                 ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_profile.xml:96: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView
+                 ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_profile.xml:125: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView
+                 ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_profile.xml:140: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView
+                 ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_profile.xml:169: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView
+                 ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_profile.xml:184: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView
+                 ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_try_on.xml:204: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView
+                 ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_try_on.xml:257: Warning: Missing contentDescription attribute on image [ContentDescription]
+                    <ImageView
+                     ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_try_on.xml:287: Warning: Missing contentDescription attribute on image [ContentDescription]
+                    <ImageView
+                     ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_try_on.xml:306: Warning: Missing contentDescription attribute on image [ContentDescription]
+                    <ImageView
+                     ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_try_on.xml:378: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView
+                 ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:98: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView
+                 ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:108: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView
+                 ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:241: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView
+                 ~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:206: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView
+                 ~~~~~~~~~
+
+   Explanation for issues of type "ContentDescription":
+   Non-textual widgets like ImageViews and ImageButtons should use the
+   contentDescription attribute to specify a textual description of the widget
+   such that screen readers and other accessibility tools can adequately
+   describe the user interface.
+
+   Note that elements in application screens that are purely decorative and do
+   not provide any content or enable a user action should not have
+   accessibility content descriptions. In this case, set their descriptions to
+   @null. If your app's minSdkVersion is 16 or higher, you can instead set
+   these graphical elements' android:importantForAccessibility attributes to
+   no.
+
+   Note that for text fields, you should not set both the hint and the
+   contentDescription attributes since the hint will never be shown. Just set
+   the hint.
+
+   https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/java/com/aiclothes/app/fragment/WardrobeFragment.java:225: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            deleteBtn.setText("删除图片" + (i + 1));
+                              ~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/java/com/aiclothes/app/fragment/WardrobeFragment.java:225: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            deleteBtn.setText("删除图片" + (i + 1));
+                                        ~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/java/com/aiclothes/app/fragment/WeatherFragment.java:156: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                            tvCityName.setText(selectedCityName + " (定位)");
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/activity_login.xml:35: Warning: Hardcoded string "欢迎回来", should use @string resource [HardcodedText]
+        android:text="欢迎回来"
+        ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/activity_register.xml:32: Warning: Hardcoded string "创建账户", should use @string resource [HardcodedText]
+            android:text="创建账户"
+            ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/activity_register.xml:41: Warning: Hardcoded string "加入AI智能穿搭助手", should use @string resource [HardcodedText]
+            android:text="加入AI智能穿搭助手"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/activity_register.xml:132: Warning: Hardcoded string "密码至少6个字符", should use @string resource [HardcodedText]
+                    android:text="密码至少6个字符"
+                    ~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/dialog_change_password.xml:15: Warning: Hardcoded string "新密码", should use @string resource [HardcodedText]
+        android:hint="新密码"
+        ~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/dialog_change_password.xml:31: Warning: Hardcoded string "确认新密码", should use @string resource [HardcodedText]
+        android:hint="确认新密码"
+        ~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/dialog_change_password.xml:47: Warning: Hardcoded string "密码至少6个字符", should use @string resource [HardcodedText]
+        android:text="密码至少6个字符"
+        ~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:33: Warning: Hardcoded string "AI智能穿搭助手", should use @string resource [HardcodedText]
+                    android:text="AI智能穿搭助手"
+                    ~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:43: Warning: Hardcoded string "让AI为你推荐最适合的穿搭", should use @string resource [HardcodedText]
+                    android:text="让AI为你推荐最适合的穿搭"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:111: Warning: Hardcoded string "根据天气智能推荐穿搭", should use @string resource [HardcodedText]
+                            android:text="根据天气智能推荐穿搭"
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:172: Warning: Hardcoded string "智能识别衣柜并推荐搭配", should use @string resource [HardcodedText]
+                            android:text="智能识别衣柜并推荐搭配"
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:233: Warning: Hardcoded string "AI虚拟试衣体验", should use @string resource [HardcodedText]
+                            android:text="AI虚拟试衣体验"
+                            ~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_home.xml:293: Warning: Hardcoded string "查看和管理个人信息", should use @string resource [HardcodedText]
+                            android:text="查看和管理个人信息"
+                            ~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_profile.xml:45: Warning: Hardcoded string "用户", should use @string resource [HardcodedText]
+                    android:text="用户"
+                    ~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_profile.xml:54: Warning: Hardcoded string "AI智能穿搭助手", should use @string resource [HardcodedText]
+                    android:text="AI智能穿搭助手"
+                    ~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_profile.xml:136: Warning: Hardcoded string "关于应用", should use @string resource [HardcodedText]
+                    android:text="关于应用"
+                    ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:20: Warning: Hardcoded string "衣柜管理", should use @string resource [HardcodedText]
+            android:text="衣柜管理"
+            ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:42: Warning: Hardcoded string "穿衣目的", should use @string resource [HardcodedText]
+                    android:text="穿衣目的"
+                    ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:52: Warning: Hardcoded string "例如：去春游、参加聚会、上班等", should use @string resource [HardcodedText]
+                    android:hint="例如：去春游、参加聚会、上班等"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:77: Warning: Hardcoded string "上传衣柜照片（最多5张）", should use @string resource [HardcodedText]
+                    android:text="上传衣柜照片（最多5张）"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:86: Warning: Hardcoded string "支持格式：.jpg、.png、.jpeg", should use @string resource [HardcodedText]
+                    android:text="支持格式：.jpg、.png、.jpeg"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:131: Warning: Hardcoded string "选择图片", should use @string resource [HardcodedText]
+                        android:text="选择图片" />
+                        ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:139: Warning: Hardcoded string "拍照", should use @string resource [HardcodedText]
+                        android:text="拍照" />
+                        ~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:157: Warning: Hardcoded string "分析衣橱", should use @string resource [HardcodedText]
+                        android:text="分析衣橱" />
+                        ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:166: Warning: Hardcoded string "生成图片", should use @string resource [HardcodedText]
+                        android:text="生成图片" />
+                        ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:193: Warning: Hardcoded string "衣柜分析结果", should use @string resource [HardcodedText]
+                    android:text="衣柜分析结果"
+                    ~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:203: Warning: Hardcoded string "--", should use @string resource [HardcodedText]
+                    android:text="--"
+                    ~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:212: Warning: Hardcoded string "生成穿搭推荐", should use @string resource [HardcodedText]
+                    android:text="生成穿搭推荐" />
+                    ~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_wardrobe.xml:236: Warning: Hardcoded string "推荐穿搭图片", should use @string resource [HardcodedText]
+                    android:text="推荐穿搭图片"
+                    ~~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:32: Warning: Hardcoded string "选择城市", should use @string resource [HardcodedText]
+                    android:text="选择城市"
+                    ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:49: Warning: Hardcoded string "获取定位", should use @string resource [HardcodedText]
+                        android:text="获取定位"
+                        ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:59: Warning: Hardcoded string "手动选择", should use @string resource [HardcodedText]
+                        android:text="手动选择"
+                        ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:88: Warning: Hardcoded string "当前天气", should use @string resource [HardcodedText]
+                    android:text="当前天气"
+                    ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:98: Warning: Hardcoded string "请选择城市", should use @string resource [HardcodedText]
+                    android:text="请选择城市"
+                    ~~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:107: Warning: Hardcoded string "--", should use @string resource [HardcodedText]
+                    android:text="--"
+                    ~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:116: Warning: Hardcoded string "--", should use @string resource [HardcodedText]
+                    android:text="--"
+                    ~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:127: Warning: Hardcoded string "--°C", should use @string resource [HardcodedText]
+                    android:text="--°C"
+                    ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:154: Warning: Hardcoded string "穿搭推荐", should use @string resource [HardcodedText]
+                    android:text="穿搭推荐"
+                    ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:166: Warning: Hardcoded string "--", should use @string resource [HardcodedText]
+                    android:text="--"
+                    ~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:177: Warning: Hardcoded string "获取推荐", should use @string resource [HardcodedText]
+                    android:text="获取推荐" />
+                    ~~~~~~~~~~~~~~~~~~~
+/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/res/layout/fragment_weather.xml:184: Warning: Hardcoded string "生成穿搭图片", should use @string resource [HardcodedText]
+                    android:text="生成穿搭图片"
+                    ~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "HardcodedText":
+   Hardcoding text attributes directly in layout files is bad for several
+   reasons:
+
+   * When creating configuration variations (for example for landscape or
+   portrait) you have to repeat the actual text (and keep it up to date when
+   making changes)
+
+   * The application cannot be translated to other languages by just adding
+   new translations for existing string resources.
+
+   There are quickfixes to automatically extract this hardcoded string into a
+   resource lookup.
+
+0 errors, 194 warnings

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    
+    <!-- Background circle -->
+    <path
+        android:fillColor="#2196F3"
+        android:pathData="M24,24m-24,0a24,24 0,1 1,48 0a24,24 0,1 1,-48 0" />
+    
+    <!-- Clothing icon -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M18,12h12v2h-12z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M16,14h16v20h-16z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M20,18h8v2h-8z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M20,22h8v2h-8z" />
+</vector>

@@ -1,0 +1,451 @@
+-- Merging decision tree log ---
+provider#androidx.core.content.FileProvider
+INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:51:9-59:20
+	android:grantUriPermissions
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:55:13-47
+	android:authorities
+		INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:53:13-64
+	android:exported
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:54:13-37
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:52:13-62
+manifest
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:2:1-63:12
+INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:2:1-63:12
+INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:2:1-63:12
+INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:2:1-63:12
+MERGED from [androidx.databinding:viewbinding:8.1.2] /Users/easyimpr/.gradle/caches/8.12/transforms/6775eb31799f1a347461c612d436c704/transformed/viewbinding-8.1.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-common:2.7.4] /Users/easyimpr/.gradle/caches/8.12/transforms/37feb10cde0008d9fb782bbeab706078/transformed/navigation-common-2.7.4/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-runtime:2.7.4] /Users/easyimpr/.gradle/caches/8.12/transforms/409c5ee96709bbada60cb58f561bd129/transformed/navigation-runtime-2.7.4/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-fragment:2.7.4] /Users/easyimpr/.gradle/caches/8.12/transforms/1d92186e414146313e22c2ec4a61430b/transformed/navigation-fragment-2.7.4/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-ui:2.7.4] /Users/easyimpr/.gradle/caches/8.12/transforms/81aa464d9e561aac5569ef20f57f3bdd/transformed/navigation-ui-2.7.4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.material:material:1.10.0] /Users/easyimpr/.gradle/caches/8.12/transforms/0cd69e8e26dd7e66522dd44e2c9238b1/transformed/material-1.10.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/easyimpr/.gradle/caches/8.12/transforms/3eb23d9c8315546ab7db82fe3331b27c/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/easyimpr/.gradle/caches/8.12/transforms/27ece17d839d33636b8c52fd211f7895/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/easyimpr/.gradle/caches/8.12/transforms/530a4a66b57fcc344ec81b1b1ce271a8/transformed/appcompat-1.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager2:viewpager2:1.1.0-beta02] /Users/easyimpr/.gradle/caches/8.12/transforms/3f169f41a22cef4084345842f21d2838/transformed/viewpager2-1.1.0-beta02/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.recyclerview:recyclerview:1.3.2] /Users/easyimpr/.gradle/caches/8.12/transforms/9e6e2e7fcbd4bb7b14f68e44265f6fcc/transformed/recyclerview-1.3.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/0d7b26decc86fd4deef9490946160f9b/transformed/emoji2-views-helper-1.2.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:17:1-35:12
+MERGED from [com.github.bumptech.glide:glide:4.16.0] /Users/easyimpr/.gradle/caches/8.12/transforms/345e7ad7aa0a34594f7ca58c85801bbe/transformed/glide-4.16.0/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.fragment:fragment-ktx:1.6.0] /Users/easyimpr/.gradle/caches/8.12/transforms/4f8457e3944ee555969c40884f2e18ac/transformed/fragment-ktx-1.6.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.6.0] /Users/easyimpr/.gradle/caches/8.12/transforms/96513e29627e583e5cbee452f6f91bd1/transformed/fragment-1.6.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity-ktx:1.8.0] /Users/easyimpr/.gradle/caches/8.12/transforms/28f9f8b824f1664ed16a1ac8072563e8/transformed/activity-ktx-1.8.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity:1.8.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a6d45e9b6a83e3d649a68554440f34a6/transformed/activity-1.8.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/39888fa9e1fc6ba4266ced3eec6c2f52/transformed/drawerlayout-1.1.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/easyimpr/.gradle/caches/8.12/transforms/e6b5b8629695dc7847bfae20855ff896/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6f504a884bfa0a6fa92fe75bc4f18917/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/easyimpr/.gradle/caches/8.12/transforms/20cc2013122cc0c3f6852120fe1f9855/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/easyimpr/.gradle/caches/8.12/transforms/d36b4414b1ee8daf1d6b77ead5ba6cbb/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/433028d7798027e69906ed04ea356399/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7b467cd73d8e2c31df6788a449a9f478/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.1.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6f3c429e8d1e2234104763fb2279ef17/transformed/customview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/9ef7dae98976380cf34472fc36e6c825/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/easyimpr/.gradle/caches/8.12/transforms/0ab29f8ebfd477715acad7235060d0a1/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/easyimpr/.gradle/caches/8.12/transforms/964c63829d63161d19bb265fc807d1b1/transformed/savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/29372e93a853b61d4bf3a033bd5ff8b0/transformed/lifecycle-runtime-ktx-2.7.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/05f0c921f7cff66bc1b33982f50d2aac/transformed/lifecycle-livedata-core-2.7.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/9d41ec09fe43ad049bdf1279f3ef9e10/transformed/lifecycle-livedata-core-ktx-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/4e0bcaa112555aa2f6a6db156608e682/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/4da8ebb2674ab7af54d73590a1b141f2/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/af0a1e5251ce0bedbe51fab5325af3d3/transformed/lifecycle-livedata-2.7.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/4c0f61ef976bb56c4198a34704481a58/transformed/lifecycle-viewmodel-2.7.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/5926c157288f20d2096904f02878eebc/transformed/lifecycle-viewmodel-savedstate-2.7.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/c6fa169b3df85c60d0d419941a801d07/transformed/core-ktx-1.9.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.transition:transition:1.4.1] /Users/easyimpr/.gradle/caches/8.12/transforms/e084a8d4880e300797c2ef7029cab032/transformed/transition-1.4.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/c20709c693e0518470f8a2631f27f464/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/287187c8c57267fca72213e26e33e46f/transformed/lifecycle-viewmodel-ktx-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/b9f2ddc80d9e9855939cccaa2d778f80/transformed/lifecycle-livedata-ktx-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/c2d94ac5726111b220e3d5a8a1931ec0/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [io.noties.markwon:html:4.6.2] /Users/easyimpr/.gradle/caches/8.12/transforms/61742be7b39ce81cb922035a13ef42a6/transformed/html-4.6.2/AndroidManifest.xml:2:1-11:12
+MERGED from [io.noties.markwon:core:4.6.2] /Users/easyimpr/.gradle/caches/8.12/transforms/bfddeacf0b45cb919f7bc27907d5d011/transformed/core-4.6.2/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/28bfb515bcfc5f018d9b4c11da4bdafe/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7cc4e4624e41b9ae72b83a0eddcceb1b/transformed/gifdecoder-4.16.0/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] /Users/easyimpr/.gradle/caches/8.12/transforms/80e6b5baa5cf6719878edd18abffc739/transformed/exifinterface-1.3.6/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/afc6cc2209eac397185d59fa05df012d/transformed/startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/aa69b5a863d0c48169aec5714b636f46/transformed/tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/965ab8b823aa8e6a1e8a716be6e36304/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/4547f4a3ab4dd350eb13c123ab2e67f7/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/2864d3c27d4e46e721050afc5691af9c/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/3744c1e51a1bae95e3c651d0ff372fdf/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/13d3bec1f993629fe779582d4a43bf83/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/bd902743effbb11d307a0f5228512cce/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/795ca7870df1f01a1506f15f6d74758d/transformed/annotation-experimental-1.3.0/AndroidManifest.xml:17:1-22:12
+	package
+		INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:6:5-79
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:6:22-76
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:7:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:8:22-78
+uses-permission#android.permission.CAMERA
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:9:5-65
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:9:22-62
+uses-permission#android.permission.READ_MEDIA_IMAGES
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:10:5-76
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:10:22-73
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:11:5-79
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:11:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:12:5-81
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:12:22-78
+uses-feature#android.hardware.camera
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:15:5-85
+	android:required
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:15:58-82
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:15:19-57
+uses-feature#android.hardware.camera.autofocus
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:16:5-95
+	android:required
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:16:68-92
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:16:19-67
+application
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:18:5-61:19
+INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:18:5-61:19
+MERGED from [com.google.android.material:material:1.10.0] /Users/easyimpr/.gradle/caches/8.12/transforms/0cd69e8e26dd7e66522dd44e2c9238b1/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.10.0] /Users/easyimpr/.gradle/caches/8.12/transforms/0cd69e8e26dd7e66522dd44e2c9238b1/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/easyimpr/.gradle/caches/8.12/transforms/3eb23d9c8315546ab7db82fe3331b27c/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/easyimpr/.gradle/caches/8.12/transforms/3eb23d9c8315546ab7db82fe3331b27c/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/afc6cc2209eac397185d59fa05df012d/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/afc6cc2209eac397185d59fa05df012d/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/965ab8b823aa8e6a1e8a716be6e36304/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/965ab8b823aa8e6a1e8a716be6e36304/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+	android:extractNativeLibs
+		INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:25:9-35
+	android:label
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:23:9-41
+	android:fullBackupContent
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:21:9-54
+	android:roundIcon
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:24:9-47
+	tools:targetApi
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:28:9-29
+	android:icon
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:22:9-42
+	android:allowBackup
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:19:9-35
+	android:theme
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:26:9-47
+	android:dataExtractionRules
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:20:9-65
+	android:usesCleartextTraffic
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:27:9-44
+activity#com.aiclothes.app.activity.MainActivity
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:30:9-39:20
+	android:windowSoftInputMode
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:33:13-52
+	android:exported
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:32:13-36
+	android:theme
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:34:13-63
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:31:13-50
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:35:13-38:29
+action#android.intent.action.MAIN
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:36:17-69
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:36:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:37:17-77
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:37:27-74
+activity#com.aiclothes.app.activity.LoginActivity
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:41:9-44:66
+	android:exported
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:43:13-37
+	android:theme
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:44:13-63
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:42:13-51
+activity#com.aiclothes.app.activity.RegisterActivity
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:46:9-49:66
+	android:exported
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:48:13-37
+	android:theme
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:49:13-63
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:47:13-54
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:56:13-58:54
+	android:resource
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:58:17-51
+	android:name
+		ADDED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:57:17-67
+uses-sdk
+INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml
+INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml
+MERGED from [androidx.databinding:viewbinding:8.1.2] /Users/easyimpr/.gradle/caches/8.12/transforms/6775eb31799f1a347461c612d436c704/transformed/viewbinding-8.1.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:viewbinding:8.1.2] /Users/easyimpr/.gradle/caches/8.12/transforms/6775eb31799f1a347461c612d436c704/transformed/viewbinding-8.1.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-common:2.7.4] /Users/easyimpr/.gradle/caches/8.12/transforms/37feb10cde0008d9fb782bbeab706078/transformed/navigation-common-2.7.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.7.4] /Users/easyimpr/.gradle/caches/8.12/transforms/37feb10cde0008d9fb782bbeab706078/transformed/navigation-common-2.7.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.7.4] /Users/easyimpr/.gradle/caches/8.12/transforms/409c5ee96709bbada60cb58f561bd129/transformed/navigation-runtime-2.7.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.7.4] /Users/easyimpr/.gradle/caches/8.12/transforms/409c5ee96709bbada60cb58f561bd129/transformed/navigation-runtime-2.7.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-fragment:2.7.4] /Users/easyimpr/.gradle/caches/8.12/transforms/1d92186e414146313e22c2ec4a61430b/transformed/navigation-fragment-2.7.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-fragment:2.7.4] /Users/easyimpr/.gradle/caches/8.12/transforms/1d92186e414146313e22c2ec4a61430b/transformed/navigation-fragment-2.7.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-ui:2.7.4] /Users/easyimpr/.gradle/caches/8.12/transforms/81aa464d9e561aac5569ef20f57f3bdd/transformed/navigation-ui-2.7.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-ui:2.7.4] /Users/easyimpr/.gradle/caches/8.12/transforms/81aa464d9e561aac5569ef20f57f3bdd/transformed/navigation-ui-2.7.4/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.10.0] /Users/easyimpr/.gradle/caches/8.12/transforms/0cd69e8e26dd7e66522dd44e2c9238b1/transformed/material-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.10.0] /Users/easyimpr/.gradle/caches/8.12/transforms/0cd69e8e26dd7e66522dd44e2c9238b1/transformed/material-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/easyimpr/.gradle/caches/8.12/transforms/3eb23d9c8315546ab7db82fe3331b27c/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/easyimpr/.gradle/caches/8.12/transforms/3eb23d9c8315546ab7db82fe3331b27c/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/easyimpr/.gradle/caches/8.12/transforms/27ece17d839d33636b8c52fd211f7895/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/easyimpr/.gradle/caches/8.12/transforms/27ece17d839d33636b8c52fd211f7895/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/easyimpr/.gradle/caches/8.12/transforms/530a4a66b57fcc344ec81b1b1ce271a8/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/easyimpr/.gradle/caches/8.12/transforms/530a4a66b57fcc344ec81b1b1ce271a8/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.1.0-beta02] /Users/easyimpr/.gradle/caches/8.12/transforms/3f169f41a22cef4084345842f21d2838/transformed/viewpager2-1.1.0-beta02/AndroidManifest.xml:5:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.1.0-beta02] /Users/easyimpr/.gradle/caches/8.12/transforms/3f169f41a22cef4084345842f21d2838/transformed/viewpager2-1.1.0-beta02/AndroidManifest.xml:5:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.3.2] /Users/easyimpr/.gradle/caches/8.12/transforms/9e6e2e7fcbd4bb7b14f68e44265f6fcc/transformed/recyclerview-1.3.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.3.2] /Users/easyimpr/.gradle/caches/8.12/transforms/9e6e2e7fcbd4bb7b14f68e44265f6fcc/transformed/recyclerview-1.3.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/0d7b26decc86fd4deef9490946160f9b/transformed/emoji2-views-helper-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/0d7b26decc86fd4deef9490946160f9b/transformed/emoji2-views-helper-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [com.github.bumptech.glide:glide:4.16.0] /Users/easyimpr/.gradle/caches/8.12/transforms/345e7ad7aa0a34594f7ca58c85801bbe/transformed/glide-4.16.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:glide:4.16.0] /Users/easyimpr/.gradle/caches/8.12/transforms/345e7ad7aa0a34594f7ca58c85801bbe/transformed/glide-4.16.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.fragment:fragment-ktx:1.6.0] /Users/easyimpr/.gradle/caches/8.12/transforms/4f8457e3944ee555969c40884f2e18ac/transformed/fragment-ktx-1.6.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment-ktx:1.6.0] /Users/easyimpr/.gradle/caches/8.12/transforms/4f8457e3944ee555969c40884f2e18ac/transformed/fragment-ktx-1.6.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.6.0] /Users/easyimpr/.gradle/caches/8.12/transforms/96513e29627e583e5cbee452f6f91bd1/transformed/fragment-1.6.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.6.0] /Users/easyimpr/.gradle/caches/8.12/transforms/96513e29627e583e5cbee452f6f91bd1/transformed/fragment-1.6.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-ktx:1.8.0] /Users/easyimpr/.gradle/caches/8.12/transforms/28f9f8b824f1664ed16a1ac8072563e8/transformed/activity-ktx-1.8.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.8.0] /Users/easyimpr/.gradle/caches/8.12/transforms/28f9f8b824f1664ed16a1ac8072563e8/transformed/activity-ktx-1.8.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity:1.8.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a6d45e9b6a83e3d649a68554440f34a6/transformed/activity-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.8.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a6d45e9b6a83e3d649a68554440f34a6/transformed/activity-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/39888fa9e1fc6ba4266ced3eec6c2f52/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/39888fa9e1fc6ba4266ced3eec6c2f52/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/easyimpr/.gradle/caches/8.12/transforms/e6b5b8629695dc7847bfae20855ff896/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/easyimpr/.gradle/caches/8.12/transforms/e6b5b8629695dc7847bfae20855ff896/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6f504a884bfa0a6fa92fe75bc4f18917/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6f504a884bfa0a6fa92fe75bc4f18917/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/easyimpr/.gradle/caches/8.12/transforms/20cc2013122cc0c3f6852120fe1f9855/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/easyimpr/.gradle/caches/8.12/transforms/20cc2013122cc0c3f6852120fe1f9855/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/easyimpr/.gradle/caches/8.12/transforms/d36b4414b1ee8daf1d6b77ead5ba6cbb/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/easyimpr/.gradle/caches/8.12/transforms/d36b4414b1ee8daf1d6b77ead5ba6cbb/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/433028d7798027e69906ed04ea356399/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/433028d7798027e69906ed04ea356399/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7b467cd73d8e2c31df6788a449a9f478/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7b467cd73d8e2c31df6788a449a9f478/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.1.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6f3c429e8d1e2234104763fb2279ef17/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6f3c429e8d1e2234104763fb2279ef17/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/9ef7dae98976380cf34472fc36e6c825/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/9ef7dae98976380cf34472fc36e6c825/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/easyimpr/.gradle/caches/8.12/transforms/0ab29f8ebfd477715acad7235060d0a1/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/easyimpr/.gradle/caches/8.12/transforms/0ab29f8ebfd477715acad7235060d0a1/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/easyimpr/.gradle/caches/8.12/transforms/964c63829d63161d19bb265fc807d1b1/transformed/savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/easyimpr/.gradle/caches/8.12/transforms/964c63829d63161d19bb265fc807d1b1/transformed/savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/29372e93a853b61d4bf3a033bd5ff8b0/transformed/lifecycle-runtime-ktx-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/29372e93a853b61d4bf3a033bd5ff8b0/transformed/lifecycle-runtime-ktx-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/05f0c921f7cff66bc1b33982f50d2aac/transformed/lifecycle-livedata-core-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/05f0c921f7cff66bc1b33982f50d2aac/transformed/lifecycle-livedata-core-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/9d41ec09fe43ad049bdf1279f3ef9e10/transformed/lifecycle-livedata-core-ktx-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/9d41ec09fe43ad049bdf1279f3ef9e10/transformed/lifecycle-livedata-core-ktx-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/4e0bcaa112555aa2f6a6db156608e682/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/4e0bcaa112555aa2f6a6db156608e682/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/4da8ebb2674ab7af54d73590a1b141f2/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/4da8ebb2674ab7af54d73590a1b141f2/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/af0a1e5251ce0bedbe51fab5325af3d3/transformed/lifecycle-livedata-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/af0a1e5251ce0bedbe51fab5325af3d3/transformed/lifecycle-livedata-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/4c0f61ef976bb56c4198a34704481a58/transformed/lifecycle-viewmodel-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/4c0f61ef976bb56c4198a34704481a58/transformed/lifecycle-viewmodel-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/5926c157288f20d2096904f02878eebc/transformed/lifecycle-viewmodel-savedstate-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/5926c157288f20d2096904f02878eebc/transformed/lifecycle-viewmodel-savedstate-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/c6fa169b3df85c60d0d419941a801d07/transformed/core-ktx-1.9.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/c6fa169b3df85c60d0d419941a801d07/transformed/core-ktx-1.9.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.transition:transition:1.4.1] /Users/easyimpr/.gradle/caches/8.12/transforms/e084a8d4880e300797c2ef7029cab032/transformed/transition-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.4.1] /Users/easyimpr/.gradle/caches/8.12/transforms/e084a8d4880e300797c2ef7029cab032/transformed/transition-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/c20709c693e0518470f8a2631f27f464/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/c20709c693e0518470f8a2631f27f464/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/287187c8c57267fca72213e26e33e46f/transformed/lifecycle-viewmodel-ktx-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/287187c8c57267fca72213e26e33e46f/transformed/lifecycle-viewmodel-ktx-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/b9f2ddc80d9e9855939cccaa2d778f80/transformed/lifecycle-livedata-ktx-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/b9f2ddc80d9e9855939cccaa2d778f80/transformed/lifecycle-livedata-ktx-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/c2d94ac5726111b220e3d5a8a1931ec0/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/c2d94ac5726111b220e3d5a8a1931ec0/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [io.noties.markwon:html:4.6.2] /Users/easyimpr/.gradle/caches/8.12/transforms/61742be7b39ce81cb922035a13ef42a6/transformed/html-4.6.2/AndroidManifest.xml:7:5-9:41
+MERGED from [io.noties.markwon:html:4.6.2] /Users/easyimpr/.gradle/caches/8.12/transforms/61742be7b39ce81cb922035a13ef42a6/transformed/html-4.6.2/AndroidManifest.xml:7:5-9:41
+MERGED from [io.noties.markwon:core:4.6.2] /Users/easyimpr/.gradle/caches/8.12/transforms/bfddeacf0b45cb919f7bc27907d5d011/transformed/core-4.6.2/AndroidManifest.xml:7:5-9:41
+MERGED from [io.noties.markwon:core:4.6.2] /Users/easyimpr/.gradle/caches/8.12/transforms/bfddeacf0b45cb919f7bc27907d5d011/transformed/core-4.6.2/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/28bfb515bcfc5f018d9b4c11da4bdafe/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/28bfb515bcfc5f018d9b4c11da4bdafe/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7cc4e4624e41b9ae72b83a0eddcceb1b/transformed/gifdecoder-4.16.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7cc4e4624e41b9ae72b83a0eddcceb1b/transformed/gifdecoder-4.16.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] /Users/easyimpr/.gradle/caches/8.12/transforms/80e6b5baa5cf6719878edd18abffc739/transformed/exifinterface-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] /Users/easyimpr/.gradle/caches/8.12/transforms/80e6b5baa5cf6719878edd18abffc739/transformed/exifinterface-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/afc6cc2209eac397185d59fa05df012d/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/afc6cc2209eac397185d59fa05df012d/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/aa69b5a863d0c48169aec5714b636f46/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/aa69b5a863d0c48169aec5714b636f46/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/965ab8b823aa8e6a1e8a716be6e36304/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/965ab8b823aa8e6a1e8a716be6e36304/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/4547f4a3ab4dd350eb13c123ab2e67f7/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/4547f4a3ab4dd350eb13c123ab2e67f7/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/2864d3c27d4e46e721050afc5691af9c/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/2864d3c27d4e46e721050afc5691af9c/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/3744c1e51a1bae95e3c651d0ff372fdf/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/3744c1e51a1bae95e3c651d0ff372fdf/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/13d3bec1f993629fe779582d4a43bf83/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/13d3bec1f993629fe779582d4a43bf83/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/bd902743effbb11d307a0f5228512cce/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/bd902743effbb11d307a0f5228512cce/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/795ca7870df1f01a1506f15f6d74758d/transformed/annotation-experimental-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/795ca7870df1f01a1506f15f6d74758d/transformed/annotation-experimental-1.3.0/AndroidManifest.xml:20:5-44
+	android:targetSdkVersion
+		INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/afc6cc2209eac397185d59fa05df012d/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/afc6cc2209eac397185d59fa05df012d/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+permission#com.aiclothes.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+uses-permission#com.aiclothes.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92

@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "com.aiclothes.app-mergeReleaseResources-46:/layout/fragment_wardrobe.xml",
+        "source": "com.aiclothes.app-main-48:/layout/fragment_wardrobe.xml"
+    },
+    {
+        "merged": "com.aiclothes.app-mergeReleaseResources-46:/layout/activity_login.xml",
+        "source": "com.aiclothes.app-main-48:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.aiclothes.app-mergeReleaseResources-46:/layout/fragment_weather.xml",
+        "source": "com.aiclothes.app-main-48:/layout/fragment_weather.xml"
+    },
+    {
+        "merged": "com.aiclothes.app-mergeReleaseResources-46:/layout/dialog_change_password.xml",
+        "source": "com.aiclothes.app-main-48:/layout/dialog_change_password.xml"
+    },
+    {
+        "merged": "com.aiclothes.app-mergeReleaseResources-46:/layout/fragment_try_on.xml",
+        "source": "com.aiclothes.app-main-48:/layout/fragment_try_on.xml"
+    },
+    {
+        "merged": "com.aiclothes.app-mergeReleaseResources-46:/layout/activity_register.xml",
+        "source": "com.aiclothes.app-main-48:/layout/activity_register.xml"
+    },
+    {
+        "merged": "com.aiclothes.app-mergeReleaseResources-46:/layout/activity_main.xml",
+        "source": "com.aiclothes.app-main-48:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.aiclothes.app-mergeReleaseResources-46:/layout/fragment_home.xml",
+        "source": "com.aiclothes.app-main-48:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "com.aiclothes.app-mergeReleaseResources-46:/layout/fragment_profile.xml",
+        "source": "com.aiclothes.app-main-48:/layout/fragment_profile.xml"
+    }
+]

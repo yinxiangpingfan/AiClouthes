@@ -1,0 +1,2167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.1.2" type="incidents">
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/activity_login.xml"
+            line="12"
+            column="6"
+            startOffset="416"
+            endLine="12"
+            endColumn="15"
+            endOffset="425"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;欢迎回来&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/activity_login.xml"
+            line="35"
+            column="9"
+            startOffset="1188"
+            endLine="35"
+            endColumn="28"
+            endOffset="1207"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/activity_register.xml"
+            line="17"
+            column="10"
+            startOffset="575"
+            endLine="17"
+            endColumn="19"
+            endOffset="584"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;创建账户&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/activity_register.xml"
+            line="32"
+            column="13"
+            startOffset="1140"
+            endLine="32"
+            endColumn="32"
+            endOffset="1159"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;加入AI智能穿搭助手&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/activity_register.xml"
+            line="41"
+            column="13"
+            startOffset="1463"
+            endLine="41"
+            endColumn="38"
+            endOffset="1488"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;密码至少6个字符&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/activity_register.xml"
+            line="132"
+            column="21"
+            startOffset="5828"
+            endLine="132"
+            endColumn="44"
+            endOffset="5851"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;新密码&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/dialog_change_password.xml"
+            line="15"
+            column="9"
+            startOffset="506"
+            endLine="15"
+            endColumn="27"
+            endOffset="524"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;确认新密码&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/dialog_change_password.xml"
+            line="31"
+            column="9"
+            startOffset="1131"
+            endLine="31"
+            endColumn="29"
+            endOffset="1151"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;密码至少6个字符&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/dialog_change_password.xml"
+            line="47"
+            column="9"
+            startOffset="1737"
+            endLine="47"
+            endColumn="32"
+            endOffset="1760"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;AI智能穿搭助手&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="33"
+            column="21"
+            startOffset="1211"
+            endLine="33"
+            endColumn="44"
+            endOffset="1234"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;让AI为你推荐最适合的穿搭&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="43"
+            column="21"
+            startOffset="1648"
+            endLine="43"
+            endColumn="49"
+            endOffset="1676"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="49"
+            column="14"
+            startOffset="1829"
+            endLine="49"
+            endColumn="23"
+            endOffset="1838"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="86"
+            column="22"
+            startOffset="3294"
+            endLine="86"
+            endColumn="31"
+            endOffset="3303"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;根据天气智能推荐穿搭&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="111"
+            column="29"
+            startOffset="4491"
+            endLine="111"
+            endColumn="54"
+            endOffset="4516"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="117"
+            column="22"
+            startOffset="4695"
+            endLine="117"
+            endColumn="31"
+            endOffset="4704"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="147"
+            column="22"
+            startOffset="5925"
+            endLine="147"
+            endColumn="31"
+            endOffset="5934"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;智能识别衣柜并推荐搭配&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="172"
+            column="29"
+            startOffset="7124"
+            endLine="172"
+            endColumn="55"
+            endOffset="7150"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="178"
+            column="22"
+            startOffset="7329"
+            endLine="178"
+            endColumn="31"
+            endOffset="7338"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="208"
+            column="22"
+            startOffset="8554"
+            endLine="208"
+            endColumn="31"
+            endOffset="8563"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;AI虚拟试衣体验&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="233"
+            column="29"
+            startOffset="9749"
+            endLine="233"
+            endColumn="52"
+            endOffset="9772"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="239"
+            column="22"
+            startOffset="9951"
+            endLine="239"
+            endColumn="31"
+            endOffset="9960"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="268"
+            column="22"
+            startOffset="11128"
+            endLine="268"
+            endColumn="31"
+            endOffset="11137"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;查看和管理个人信息&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="293"
+            column="29"
+            startOffset="12322"
+            endLine="293"
+            endColumn="53"
+            endOffset="12346"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="299"
+            column="22"
+            startOffset="12525"
+            endLine="299"
+            endColumn="31"
+            endOffset="12534"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_profile.xml"
+            line="31"
+            column="18"
+            startOffset="1103"
+            endLine="31"
+            endColumn="27"
+            endOffset="1112"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;用户&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_profile.xml"
+            line="45"
+            column="21"
+            startOffset="1723"
+            endLine="45"
+            endColumn="38"
+            endOffset="1740"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;AI智能穿搭助手&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_profile.xml"
+            line="54"
+            column="21"
+            startOffset="2104"
+            endLine="54"
+            endColumn="44"
+            endOffset="2127"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_profile.xml"
+            line="81"
+            column="18"
+            startOffset="3084"
+            endLine="81"
+            endColumn="27"
+            endOffset="3093"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_profile.xml"
+            line="96"
+            column="18"
+            startOffset="3705"
+            endLine="96"
+            endColumn="27"
+            endOffset="3714"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_profile.xml"
+            line="125"
+            column="18"
+            startOffset="4764"
+            endLine="125"
+            endColumn="27"
+            endOffset="4773"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;关于应用&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_profile.xml"
+            line="136"
+            column="21"
+            startOffset="5221"
+            endLine="136"
+            endColumn="40"
+            endOffset="5240"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_profile.xml"
+            line="140"
+            column="18"
+            startOffset="5366"
+            endLine="140"
+            endColumn="27"
+            endOffset="5375"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_profile.xml"
+            line="169"
+            column="18"
+            startOffset="6423"
+            endLine="169"
+            endColumn="27"
+            endOffset="6432"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_profile.xml"
+            line="184"
+            column="18"
+            startOffset="7028"
+            endLine="184"
+            endColumn="27"
+            endOffset="7037"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_try_on.xml"
+            line="204"
+            column="18"
+            startOffset="7940"
+            endLine="204"
+            endColumn="27"
+            endOffset="7949"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_try_on.xml"
+            line="257"
+            column="22"
+            startOffset="10145"
+            endLine="257"
+            endColumn="31"
+            endOffset="10154"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_try_on.xml"
+            line="287"
+            column="22"
+            startOffset="11526"
+            endLine="287"
+            endColumn="31"
+            endOffset="11535"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_try_on.xml"
+            line="306"
+            column="22"
+            startOffset="12485"
+            endLine="306"
+            endColumn="31"
+            endOffset="12494"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_try_on.xml"
+            line="378"
+            column="18"
+            startOffset="15224"
+            endLine="378"
+            endColumn="27"
+            endOffset="15233"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;衣柜管理&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="20"
+            column="13"
+            startOffset="705"
+            endLine="20"
+            endColumn="32"
+            endOffset="724"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;穿衣目的&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="42"
+            column="21"
+            startOffset="1523"
+            endLine="42"
+            endColumn="40"
+            endOffset="1542"/>
+    </incident>
+
+    <incident
+        id="Autofill"
+        severity="warning"
+        message="Missing `autofillHints` attribute">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set autofillHints"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="autofillHints"
+                value=""
+                dot="0"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAutofill=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAutofill"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="47"
+            column="18"
+            startOffset="1713"
+            endLine="47"
+            endColumn="26"
+            endOffset="1721"/>
+    </incident>
+
+    <incident
+        id="TextFields"
+        severity="warning"
+        message="This text field does not specify an `inputType`">
+        <fix-attribute
+            description="Set inputType"
+            namespace="http://schemas.android.com/apk/res/android"
+            attribute="inputType"
+            value="TODO"
+            dot="4"
+            mark="0"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="47"
+            column="18"
+            startOffset="1713"
+            endLine="47"
+            endColumn="26"
+            endOffset="1721"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;例如：去春游、参加聚会、上班等&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="52"
+            column="21"
+            startOffset="1961"
+            endLine="52"
+            endColumn="51"
+            endOffset="1991"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;上传衣柜照片（最多5张）&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="77"
+            column="21"
+            startOffset="2842"
+            endLine="77"
+            endColumn="48"
+            endOffset="2869"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;支持格式：.jpg、.png、.jpeg&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="86"
+            column="21"
+            startOffset="3233"
+            endLine="86"
+            endColumn="56"
+            endOffset="3268"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="98"
+            column="18"
+            startOffset="3736"
+            endLine="98"
+            endColumn="27"
+            endOffset="3745"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="108"
+            column="18"
+            startOffset="4195"
+            endLine="108"
+            endColumn="27"
+            endOffset="4204"/>
+    </incident>
+
+    <incident
+        id="ButtonStyle"
+        severity="warning"
+        message="Buttons in button bars should be borderless; use `style=&quot;?android:attr/buttonBarButtonStyle&quot;` (and `?android:attr/buttonBarStyle` on the parent)">
+        <fix-composite
+            description="Make borderless">
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+                    startOffset="4690"
+                    endOffset="5657"/>
+            </fix-attribute>
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarButtonStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarButtonStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+                    startOffset="4944"
+                    endOffset="5274"/>
+            </fix-attribute>
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarButtonStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarButtonStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+                    startOffset="5296"
+                    endOffset="5624"/>
+            </fix-attribute>
+        </fix-composite>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="125"
+            column="22"
+            startOffset="4945"
+            endLine="125"
+            endColumn="28"
+            endOffset="4951"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;选择图片&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="131"
+            column="25"
+            startOffset="5252"
+            endLine="131"
+            endColumn="44"
+            endOffset="5271"/>
+    </incident>
+
+    <incident
+        id="ButtonStyle"
+        severity="warning"
+        message="Buttons in button bars should be borderless; use `style=&quot;?android:attr/buttonBarButtonStyle&quot;` (and `?android:attr/buttonBarStyle` on the parent)">
+        <fix-composite
+            description="Make borderless">
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+                    startOffset="4690"
+                    endOffset="5657"/>
+            </fix-attribute>
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarButtonStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarButtonStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+                    startOffset="4944"
+                    endOffset="5274"/>
+            </fix-attribute>
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarButtonStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarButtonStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+                    startOffset="5296"
+                    endOffset="5624"/>
+            </fix-attribute>
+        </fix-composite>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="133"
+            column="22"
+            startOffset="5297"
+            endLine="133"
+            endColumn="28"
+            endOffset="5303"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;拍照&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="139"
+            column="25"
+            startOffset="5604"
+            endLine="139"
+            endColumn="42"
+            endOffset="5621"/>
+    </incident>
+
+    <incident
+        id="ButtonStyle"
+        severity="warning"
+        message="Buttons in button bars should be borderless; use `style=&quot;?android:attr/buttonBarButtonStyle&quot;` (and `?android:attr/buttonBarStyle` on the parent)">
+        <fix-composite
+            description="Make borderless">
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+                    startOffset="5706"
+                    endOffset="6778"/>
+            </fix-attribute>
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarButtonStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarButtonStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+                    startOffset="5959"
+                    endOffset="6341"/>
+            </fix-attribute>
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarButtonStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarButtonStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+                    startOffset="6363"
+                    endOffset="6745"/>
+            </fix-attribute>
+        </fix-composite>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="150"
+            column="22"
+            startOffset="5960"
+            endLine="150"
+            endColumn="28"
+            endOffset="5966"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;分析衣橱&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="157"
+            column="25"
+            startOffset="6319"
+            endLine="157"
+            endColumn="44"
+            endOffset="6338"/>
+    </incident>
+
+    <incident
+        id="ButtonStyle"
+        severity="warning"
+        message="Buttons in button bars should be borderless; use `style=&quot;?android:attr/buttonBarButtonStyle&quot;` (and `?android:attr/buttonBarStyle` on the parent)">
+        <fix-composite
+            description="Make borderless">
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+                    startOffset="5706"
+                    endOffset="6778"/>
+            </fix-attribute>
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarButtonStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarButtonStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+                    startOffset="5959"
+                    endOffset="6341"/>
+            </fix-attribute>
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarButtonStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarButtonStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+                    startOffset="6363"
+                    endOffset="6745"/>
+            </fix-attribute>
+        </fix-composite>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="159"
+            column="22"
+            startOffset="6364"
+            endLine="159"
+            endColumn="28"
+            endOffset="6370"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;生成图片&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="166"
+            column="25"
+            startOffset="6723"
+            endLine="166"
+            endColumn="44"
+            endOffset="6742"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;衣柜分析结果&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="193"
+            column="21"
+            startOffset="7611"
+            endLine="193"
+            endColumn="42"
+            endOffset="7632"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;--&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="203"
+            column="21"
+            startOffset="8053"
+            endLine="203"
+            endColumn="38"
+            endOffset="8070"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;生成穿搭推荐&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="212"
+            column="21"
+            startOffset="8456"
+            endLine="212"
+            endColumn="42"
+            endOffset="8477"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;推荐穿搭图片&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="236"
+            column="21"
+            startOffset="9273"
+            endLine="236"
+            endColumn="42"
+            endOffset="9294"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="241"
+            column="18"
+            startOffset="9465"
+            endLine="241"
+            endColumn="27"
+            endOffset="9474"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;选择城市&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="32"
+            column="21"
+            startOffset="1176"
+            endLine="32"
+            endColumn="40"
+            endOffset="1195"/>
+    </incident>
+
+    <incident
+        id="ButtonStyle"
+        severity="warning"
+        message="Buttons in button bars should be borderless; use `style=&quot;?android:attr/buttonBarButtonStyle&quot;` (and `?android:attr/buttonBarStyle` on the parent)">
+        <fix-composite
+            description="Make borderless">
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+                    startOffset="1365"
+                    endOffset="2649"/>
+            </fix-attribute>
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarButtonStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarButtonStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+                    startOffset="1618"
+                    endOffset="2133"/>
+            </fix-attribute>
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarButtonStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarButtonStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+                    startOffset="2155"
+                    endOffset="2616"/>
+            </fix-attribute>
+        </fix-composite>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="43"
+            column="22"
+            startOffset="1619"
+            endLine="43"
+            endColumn="28"
+            endOffset="1625"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;获取定位&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="49"
+            column="25"
+            startOffset="1926"
+            endLine="49"
+            endColumn="44"
+            endOffset="1945"/>
+    </incident>
+
+    <incident
+        id="ButtonStyle"
+        severity="warning"
+        message="Buttons in button bars should be borderless; use `style=&quot;?android:attr/buttonBarButtonStyle&quot;` (and `?android:attr/buttonBarStyle` on the parent)">
+        <fix-composite
+            description="Make borderless">
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+                    startOffset="1365"
+                    endOffset="2649"/>
+            </fix-attribute>
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarButtonStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarButtonStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+                    startOffset="1618"
+                    endOffset="2133"/>
+            </fix-attribute>
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarButtonStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarButtonStyle">
+                <range
+                    file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+                    startOffset="2155"
+                    endOffset="2616"/>
+            </fix-attribute>
+        </fix-composite>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="54"
+            column="22"
+            startOffset="2156"
+            endLine="54"
+            endColumn="28"
+            endOffset="2162"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;手动选择&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="59"
+            column="25"
+            startOffset="2407"
+            endLine="59"
+            endColumn="44"
+            endOffset="2426"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;当前天气&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="88"
+            column="21"
+            startOffset="3436"
+            endLine="88"
+            endColumn="40"
+            endOffset="3455"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;请选择城市&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="98"
+            column="21"
+            startOffset="3870"
+            endLine="98"
+            endColumn="41"
+            endOffset="3890"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;--&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="107"
+            column="21"
+            startOffset="4272"
+            endLine="107"
+            endColumn="38"
+            endOffset="4289"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;--&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="116"
+            column="21"
+            startOffset="4662"
+            endLine="116"
+            endColumn="38"
+            endOffset="4679"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;--°C&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="127"
+            column="21"
+            startOffset="5055"
+            endLine="127"
+            endColumn="40"
+            endOffset="5074"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;穿搭推荐&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="154"
+            column="21"
+            startOffset="6015"
+            endLine="154"
+            endColumn="40"
+            endOffset="6034"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;--&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="166"
+            column="21"
+            startOffset="6456"
+            endLine="166"
+            endColumn="38"
+            endOffset="6473"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;获取推荐&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="177"
+            column="21"
+            startOffset="6853"
+            endLine="177"
+            endColumn="40"
+            endOffset="6872"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;生成穿搭图片&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="184"
+            column="21"
+            startOffset="7143"
+            endLine="184"
+            endColumn="42"
+            endOffset="7164"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="206"
+            column="18"
+            startOffset="7858"
+            endLine="206"
+            endColumn="27"
+            endOffset="7867"/>
+    </incident>
+
+    <incident
+        id="TypographyEllipsis"
+        severity="warning"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?">
+        <fix-replace
+            description="Replace with …"
+            oldString="..."
+            replacement="…"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="7"
+            column="28"
+            startOffset="181"
+            endLine="7"
+            endColumn="34"
+            endOffset="187"/>
+    </incident>
+
+    <incident
+        id="IntentReset"
+        severity="warning"
+        message="Calling `setType` after setting URI in `Intent` constructor will clear the data: Call `setDataAndType` instead?">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/aiclothes/app/fragment/TryOnFragment.java"
+            line="342"
+            column="16"
+            startOffset="13108"
+            endLine="342"
+            endColumn="34"
+            endOffset="13126"/>
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/aiclothes/app/fragment/TryOnFragment.java"
+            line="341"
+            column="56"
+            startOffset="13046"
+            endLine="341"
+            endColumn="100"
+            endOffset="13090"
+            message="Originally set here"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/aiclothes/app/fragment/TryOnFragment.java"
+            line="438"
+            column="48"
+            startOffset="17456"
+            endLine="438"
+            endColumn="59"
+            endOffset="17467"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/aiclothes/app/fragment/TryOnFragment.java"
+            line="765"
+            column="47"
+            startOffset="33608"
+            endLine="765"
+            endColumn="58"
+            endOffset="33619"/>
+    </incident>
+
+    <incident
+        id="IntentReset"
+        severity="warning"
+        message="Calling `setType` after setting URI in `Intent` constructor will clear the data: Call `setDataAndType` instead?">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/aiclothes/app/fragment/WardrobeFragment.java"
+            line="115"
+            column="16"
+            startOffset="4174"
+            endLine="115"
+            endColumn="34"
+            endOffset="4192"/>
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/aiclothes/app/fragment/WardrobeFragment.java"
+            line="114"
+            column="56"
+            startOffset="4112"
+            endLine="114"
+            endColumn="100"
+            endOffset="4156"
+            message="Originally set here"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/aiclothes/app/fragment/WardrobeFragment.java"
+            line="225"
+            column="31"
+            startOffset="8598"
+            endLine="225"
+            endColumn="47"
+            endOffset="8614"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/aiclothes/app/fragment/WardrobeFragment.java"
+            line="225"
+            column="41"
+            startOffset="8608"
+            endLine="225"
+            endColumn="46"
+            endOffset="8613"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/aiclothes/app/fragment/WeatherFragment.java"
+            line="156"
+            column="48"
+            startOffset="6531"
+            endLine="156"
+            endColumn="74"
+            endOffset="6557"/>
+    </incident>
+
+    <incident
+        id="IntentReset"
+        severity="warning"
+        message="Calling `setType` after setting URI in `Intent` constructor will clear the data: Call `setDataAndType` instead?">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/aiclothes/app/utils/ImageUtils.java"
+            line="32"
+            column="16"
+            startOffset="944"
+            endLine="32"
+            endColumn="34"
+            endOffset="962"/>
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/aiclothes/app/utils/ImageUtils.java"
+            line="31"
+            column="56"
+            startOffset="882"
+            endLine="31"
+            endColumn="100"
+            endOffset="926"
+            message="Originally set here"/>
+    </incident>
+
+    <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/aiclothes/app/utils/ImageUtils.java"
+            line="141"
+            column="37"
+            startOffset="5173"
+            endLine="141"
+            endColumn="48"
+            endOffset="5184"/>
+    </incident>
+
+    <incident
+        id="OldTargetApi"
+        severity="warning"
+        message="Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details.">
+        <fix-replace
+            description="Update targetSdkVersion to 35"
+            oldString="34"
+            replacement="35"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="12"
+            column="9"
+            startOffset="197"
+            endLine="12"
+            endColumn="21"
+            endOffset="209"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.1">
+        <fix-replace
+            description="Change to 1.7.1"
+            family="Update versions"
+            oldString="1.6.1"
+            replacement="1.7.1"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="35"
+            column="20"
+            startOffset="748"
+            endLine="35"
+            endColumn="56"
+            endOffset="784"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.android.material:material than 1.10.0 is available: 1.12.0">
+        <fix-replace
+            description="Change to 1.12.0"
+            family="Update versions"
+            oldString="1.10.0"
+            replacement="1.12.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="36"
+            column="20"
+            startOffset="804"
+            endLine="36"
+            endColumn="65"
+            endOffset="849"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.constraintlayout:constraintlayout than 2.1.4 is available: 2.2.1">
+        <fix-replace
+            description="Change to 2.2.1"
+            family="Update versions"
+            oldString="2.1.4"
+            replacement="2.2.1"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="37"
+            column="20"
+            startOffset="869"
+            endLine="37"
+            endColumn="70"
+            endOffset="919"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.lifecycle:lifecycle-livedata-ktx than 2.7.0 is available: 2.9.1">
+        <fix-replace
+            description="Change to 2.9.1"
+            family="Update versions"
+            oldString="2.7.0"
+            replacement="2.9.1"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="38"
+            column="20"
+            startOffset="939"
+            endLine="38"
+            endColumn="69"
+            endOffset="988"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.lifecycle:lifecycle-viewmodel-ktx than 2.7.0 is available: 2.9.1">
+        <fix-replace
+            description="Change to 2.9.1"
+            family="Update versions"
+            oldString="2.7.0"
+            replacement="2.9.1"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="39"
+            column="20"
+            startOffset="1008"
+            endLine="39"
+            endColumn="70"
+            endOffset="1058"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.navigation:navigation-fragment than 2.7.4 is available: 2.9.0">
+        <fix-replace
+            description="Change to 2.9.0"
+            family="Update versions"
+            oldString="2.7.4"
+            replacement="2.9.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="40"
+            column="20"
+            startOffset="1078"
+            endLine="40"
+            endColumn="67"
+            endOffset="1125"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.navigation:navigation-ui than 2.7.4 is available: 2.9.0">
+        <fix-replace
+            description="Change to 2.9.0"
+            family="Update versions"
+            oldString="2.7.4"
+            replacement="2.9.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="41"
+            column="20"
+            startOffset="1145"
+            endLine="41"
+            endColumn="61"
+            endOffset="1186"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.recyclerview:recyclerview than 1.3.2 is available: 1.4.0">
+        <fix-replace
+            description="Change to 1.4.0"
+            family="Update versions"
+            oldString="1.3.2"
+            replacement="1.4.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="42"
+            column="20"
+            startOffset="1206"
+            endLine="42"
+            endColumn="62"
+            endOffset="1248"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.viewpager2:viewpager2 than 1.0.0 is available: 1.1.0">
+        <fix-replace
+            description="Change to 1.1.0"
+            family="Update versions"
+            oldString="1.0.0"
+            replacement="1.1.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="54"
+            column="20"
+            startOffset="1630"
+            endLine="54"
+            endColumn="58"
+            endOffset="1668"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.ext:junit than 1.1.5 is available: 1.2.1">
+        <fix-replace
+            description="Change to 1.2.1"
+            family="Update versions"
+            oldString="1.1.5"
+            replacement="1.2.1"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="61"
+            column="31"
+            startOffset="1880"
+            endLine="61"
+            endColumn="62"
+            endOffset="1911"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.5.1 is available: 3.6.1">
+        <fix-replace
+            description="Change to 3.6.1"
+            family="Update versions"
+            oldString="3.5.1"
+            replacement="3.6.1"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="62"
+            column="31"
+            startOffset="1942"
+            endLine="62"
+            endColumn="75"
+            endOffset="1986"/>
+    </incident>
+
+    <incident
+        id="IconLocation"
+        severity="warning"
+        message="Found bitmap drawable `res/drawable/app_logo.jpg` in densityless folder">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/drawable/app_logo.jpg"/>
+    </incident>
+
+    <incident
+        id="IconExtension"
+        severity="warning"
+        message="Misleading file extension; named `.jpg` but the file format is `png`">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/drawable/app_logo.jpg"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icon used as round icon did not have a circular shape">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/drawable/app_logo.jpg"/>
+    </incident>
+
+    <incident
+        id="Overdraw"
+        severity="warning"
+        message="Possible overdraw: Root element paints background `@color/background_light` with a theme that also paints a background (inferred theme is `@style/Theme_AIClothes_NoActionBar`)">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/activity_login.xml"
+            line="6"
+            column="5"
+            startOffset="253"
+            endLine="6"
+            endColumn="49"
+            endOffset="297"/>
+    </incident>
+
+    <incident
+        id="Overdraw"
+        severity="warning"
+        message="Possible overdraw: Root element paints background `@color/background_light` with a theme that also paints a background (inferred theme is `@style/Theme_AIClothes_NoActionBar`)">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/activity_register.xml"
+            line="6"
+            column="5"
+            startOffset="251"
+            endLine="6"
+            endColumn="49"
+            endOffset="295"/>
+    </incident>
+
+    <incident
+        id="Overdraw"
+        severity="warning"
+        message="Possible overdraw: Root element paints background `@color/background_light` with a theme that also paints a background (inferred theme is `@style/Theme.AIClothes`)">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_home.xml"
+            line="6"
+            column="5"
+            startOffset="251"
+            endLine="6"
+            endColumn="49"
+            endOffset="295"/>
+    </incident>
+
+    <incident
+        id="Overdraw"
+        severity="warning"
+        message="Possible overdraw: Root element paints background `@color/background_light` with a theme that also paints a background (inferred theme is `@style/Theme.AIClothes`)">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_profile.xml"
+            line="6"
+            column="5"
+            startOffset="251"
+            endLine="6"
+            endColumn="49"
+            endOffset="295"/>
+    </incident>
+
+    <incident
+        id="Overdraw"
+        severity="warning"
+        message="Possible overdraw: Root element paints background `@color/background` with a theme that also paints a background (inferred theme is `@style/Theme.AIClothes`)">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_try_on.xml"
+            line="6"
+            column="5"
+            startOffset="251"
+            endLine="6"
+            endColumn="43"
+            endOffset="289"/>
+    </incident>
+
+    <incident
+        id="Overdraw"
+        severity="warning"
+        message="Possible overdraw: Root element paints background `@color/background_light` with a theme that also paints a background (inferred theme is `@style/Theme.AIClothes`)">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_wardrobe.xml"
+            line="6"
+            column="5"
+            startOffset="251"
+            endLine="6"
+            endColumn="49"
+            endOffset="295"/>
+    </incident>
+
+    <incident
+        id="Overdraw"
+        severity="warning"
+        message="Possible overdraw: Root element paints background `@color/background_light` with a theme that also paints a background (inferred theme is `@style/Theme.AIClothes`)">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/fragment_weather.xml"
+            line="6"
+            column="5"
+            startOffset="251"
+            endLine="6"
+            endColumn="49"
+            endOffset="295"/>
+    </incident>
+
+</incidents>

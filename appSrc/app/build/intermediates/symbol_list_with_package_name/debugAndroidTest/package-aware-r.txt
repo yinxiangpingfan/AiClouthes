@@ -1,0 +1,3 @@
+com.aiclothes.app.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme
