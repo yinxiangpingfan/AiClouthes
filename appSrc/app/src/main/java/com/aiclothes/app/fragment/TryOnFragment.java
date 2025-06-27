@@ -445,24 +445,31 @@ public class TryOnFragment extends Fragment {
          }
          
          // 检查文件大小 (5KB - 5MB)
-         long fileSize = imageFile.length();
-         android.util.Log.d("TryOnFragment", "图片文件大小: " + fileSize + " bytes");
-         
-         if (fileSize < 5 * 1024) { // 小于5KB
-             android.util.Log.e("TryOnFragment", "图片文件太小: " + fileSize + " bytes");
-             Toast.makeText(getContext(), "图片文件太小，请选择大于5KB的图片", Toast.LENGTH_SHORT).show();
-             return;
-         }
-         
-         if (fileSize > 5 * 1024 * 1024) { // 大于5MB
-            android.util.Log.w("TryOnFragment", "图片文件较大，开始压缩: " + fileSize + " bytes");
-            try {
-                imageFile = ImageUtils.compressImage(imageFile, 1024, 1024, 80);
-                android.util.Log.d("TryOnFragment", "图片压缩完成，新大小: " + imageFile.length() + " bytes");
-            } catch (Exception e) {
-                android.util.Log.e("TryOnFragment", "图片压缩失败", e);
-                Toast.makeText(getContext(), "图片处理失败", Toast.LENGTH_SHORT).show();
+        long fileSize = imageFile.length();
+        android.util.Log.d("TryOnFragment", "图片文件大小: " + fileSize + " bytes (" + ImageUtils.getFileSizeDescription(imageFile) + ")");
+        
+        if (!ImageUtils.isFileSizeValid(imageFile)) {
+            if (fileSize < 5 * 1024) { // 小于5KB
+                android.util.Log.e("TryOnFragment", "图片文件太小: " + fileSize + " bytes");
+                Toast.makeText(getContext(), "图片文件太小，请选择大于5KB的图片", Toast.LENGTH_SHORT).show();
                 return;
+            } else if (fileSize > 5 * 1024 * 1024) { // 大于5MB
+                android.util.Log.w("TryOnFragment", "图片文件较大，开始压缩: " + fileSize + " bytes");
+                try {
+                    imageFile = ImageUtils.compressImage(imageFile, 1024, 1024, 80);
+                    android.util.Log.d("TryOnFragment", "图片压缩完成，新大小: " + imageFile.length() + " bytes (" + ImageUtils.getFileSizeDescription(imageFile) + ")");
+                    
+                    // 压缩后再次检查大小
+                    if (!ImageUtils.isFileSizeValid(imageFile)) {
+                        android.util.Log.e("TryOnFragment", "压缩后文件仍不符合要求");
+                        Toast.makeText(getContext(), "图片文件大小不符合要求（5KB-5MB）", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                } catch (Exception e) {
+                    android.util.Log.e("TryOnFragment", "图片压缩失败", e);
+                    Toast.makeText(getContext(), "图片处理失败", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
         }
          
@@ -774,9 +781,9 @@ public class TryOnFragment extends Fragment {
         }
         
         // 检查文件大小（5KB - 5MB）
-        long fileSize = imageFile.length();
-        if (fileSize < 5 * 1024 || fileSize > 5 * 1024 * 1024) {
-            showError(imageType + "文件大小必须在5KB到5MB之间");
+        if (!ImageUtils.isFileSizeValid(imageFile)) {
+            String fileSize = ImageUtils.getFileSizeDescription(imageFile);
+            showError(imageType + "文件大小必须在5KB到5MB之间（当前：" + fileSize + "）");
             return false;
         }
         

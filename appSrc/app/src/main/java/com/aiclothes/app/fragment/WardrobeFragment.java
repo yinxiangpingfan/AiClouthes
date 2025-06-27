@@ -22,6 +22,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 
@@ -35,6 +36,11 @@ import com.aiclothes.app.network.ApiService;
 import com.aiclothes.app.utils.ImageUtils;
 import com.aiclothes.app.utils.PermissionUtils;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.DataSource;
+import android.graphics.drawable.Drawable;
 
 import org.json.JSONObject;
 import com.google.gson.JsonObject;
@@ -45,13 +51,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WardrobeFragment extends Fragment {
-    private ImageView ivWardrobeImage, ivRecommendationImage;
+    private ImageView ivWardrobeImage, ivRecommendationImage, ivRecommendationDisplay;
     private Button btnSelectImage, btnTakePhoto, btnAnalyzeWardrobe, btnGenerateImage, btnGenerateRecommendation;
     private TextView tvAnalysisResult;
     private EditText tvPurposeInput;
     private ProgressBar progressBar;
     private LinearLayout llImageContainer;
-    private CardView cardAnalysisResult;
+    private CardView cardAnalysisResult, cardRecommendationImage;
+    private ScrollView scrollView;
     
     private ApiService apiService;
     private List<File> selectedImageFiles;
@@ -74,6 +81,7 @@ public class WardrobeFragment extends Fragment {
     private void initViews(View view) {
         ivWardrobeImage = view.findViewById(R.id.iv_wardrobe_image);
         ivRecommendationImage = view.findViewById(R.id.iv_recommendation_image);
+        ivRecommendationDisplay = view.findViewById(R.id.iv_recommendation_display);
         btnSelectImage = view.findViewById(R.id.btn_select_image);
         btnTakePhoto = view.findViewById(R.id.btn_take_photo);
         btnAnalyzeWardrobe = view.findViewById(R.id.btn_analyze_wardrobe);
@@ -84,6 +92,8 @@ public class WardrobeFragment extends Fragment {
         progressBar = view.findViewById(R.id.progress_bar);
         llImageContainer = view.findViewById(R.id.ll_image_container);
         cardAnalysisResult = view.findViewById(R.id.card_analysis_result);
+        cardRecommendationImage = view.findViewById(R.id.card_recommendation_image);
+        scrollView = view.findViewById(R.id.scroll_view);
         
         // WebView相关功能已移除，使用TextView显示流式内容
     }
@@ -95,9 +105,12 @@ public class WardrobeFragment extends Fragment {
         // 初始化Markdown处理器
         markwon = Markwon.create(getContext());
         
-        // 初始时隐藏分析结果卡片
+        // 初始时隐藏分析结果卡片和推荐图片卡片
         if (cardAnalysisResult != null) {
             cardAnalysisResult.setVisibility(View.GONE);
+        }
+        if (cardRecommendationImage != null) {
+            cardRecommendationImage.setVisibility(View.GONE);
         }
     }
     
@@ -127,6 +140,7 @@ public class WardrobeFragment extends Fragment {
     private void selectImageFromGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         startActivityForResult(intent, ImageUtils.REQUEST_IMAGE_PICK);
     }
     
@@ -153,9 +167,44 @@ public class WardrobeFragment extends Fragment {
         
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == ImageUtils.REQUEST_IMAGE_PICK && data != null) {
-                Uri selectedImageUri = data.getData();
-                if (selectedImageUri != null) {
+                // 处理多选图片
+                if (data.getClipData() != null) {
+                    // 多张图片
+                    int count = data.getClipData().getItemCount();
+                    int remainingSlots = MAX_IMAGES - selectedImageFiles.size();
+                    
+                    if (count > remainingSlots) {
+                        Toast.makeText(getContext(), "最多只能上传" + MAX_IMAGES + "张图片，当前还可以选择" + remainingSlots + "张", Toast.LENGTH_LONG).show();
+                        count = remainingSlots;
+                    }
+                    
+                    for (int i = 0; i < count; i++) {
+                        Uri imageUri = data.getClipData().getItemAt(i).getUri();
+                        File imageFile = ImageUtils.getFileFromUri(getContext(), imageUri);
+                        
+                        // 预检查文件大小
+                        if (imageFile != null && !ImageUtils.isWardrobeFileSizeValid(imageFile)) {
+                            String fileName = imageFile.getName();
+                            String fileSize = ImageUtils.getFileSizeDescription(imageFile);
+                            Toast.makeText(getContext(), "文件 " + fileName + " (" + fileSize + ") 超过10MB限制，已跳过", Toast.LENGTH_LONG).show();
+                            continue;
+                        }
+                        
+                        addSelectedImage(imageFile);
+                    }
+                } else if (data.getData() != null) {
+                    // 单张图片
+                    Uri selectedImageUri = data.getData();
                     File imageFile = ImageUtils.getFileFromUri(getContext(), selectedImageUri);
+                    
+                    // 预检查文件大小
+                    if (imageFile != null && !ImageUtils.isWardrobeFileSizeValid(imageFile)) {
+                        String fileName = imageFile.getName();
+                        String fileSize = ImageUtils.getFileSizeDescription(imageFile);
+                        Toast.makeText(getContext(), "文件 " + fileName + " (" + fileSize + ") 超过10MB限制", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    
                     addSelectedImage(imageFile);
                 }
             } else if (requestCode == ImageUtils.REQUEST_IMAGE_CAPTURE) {
@@ -180,8 +229,11 @@ public class WardrobeFragment extends Fragment {
     
     private void addSelectedImage(File imageFile) {
         if (imageFile == null || !imageFile.exists()) {
+            Log.w("WardrobeFragment", "图片文件为空或不存在");
             return;
         }
+        
+        Log.d("WardrobeFragment", "尝试添加图片: " + imageFile.getName() + ", 当前已有: " + selectedImageFiles.size() + " 张");
         
         // 检查是否已达到最大图片数量
         if (selectedImageFiles.size() >= MAX_IMAGES) {
@@ -195,13 +247,14 @@ public class WardrobeFragment extends Fragment {
             return;
         }
         
-        if (!ImageUtils.isFileSizeValid(imageFile)) {
-            Toast.makeText(getContext(), "图片大小不符合要求（5KB-5MB）", Toast.LENGTH_SHORT).show();
+        if (!ImageUtils.isWardrobeFileSizeValid(imageFile)) {
+            Toast.makeText(getContext(), "图片大小不符合要求（10MB以下）", Toast.LENGTH_SHORT).show();
             return;
         }
         
         // 添加到列表
         selectedImageFiles.add(imageFile);
+        Log.d("WardrobeFragment", "成功添加图片: " + imageFile.getName() + ", 总数: " + selectedImageFiles.size());
         displaySelectedImages();
     }
     
@@ -255,6 +308,7 @@ public class WardrobeFragment extends Fragment {
         // 重置分析结果和推荐图片
         tvAnalysisResult.setText("");
         ivRecommendationImage.setVisibility(View.GONE);
+        cardRecommendationImage.setVisibility(View.GONE);
         btnGenerateImage.setEnabled(false);
         btnGenerateRecommendation.setEnabled(false);
     }
@@ -275,8 +329,36 @@ public class WardrobeFragment extends Fragment {
             return;
         }
         
-        // 使用TextView进行流式显示
-        parseWardrobe(purpose);
+        // 先上传图片，然后进行分析
+        uploadPhotosAndAnalyze(purpose);
+    }
+    
+    private void uploadPhotosAndAnalyze(String purpose) {
+        // 显示上传提示
+        Log.d("WardrobeFragment", "准备上传 " + selectedImageFiles.size() + " 张图片");
+        Toast.makeText(getContext(), "正在上传 " + selectedImageFiles.size() + " 张图片...", Toast.LENGTH_SHORT).show();
+        
+        // 打印每张图片的信息
+        for (int i = 0; i < selectedImageFiles.size(); i++) {
+            File file = selectedImageFiles.get(i);
+            Log.d("WardrobeFragment", "图片 " + (i+1) + ": " + file.getName() + ", 大小: " + file.length() + " bytes");
+        }
+        
+        // 上传衣柜照片
+        apiService.uploadWardrobePhotos(selectedImageFiles, new ApiService.ApiCallback<JsonObject>() {
+            @Override
+            public void onSuccess(JsonObject response) {
+                Log.d("WardrobeFragment", "图片上传成功: " + response.toString());
+                // 上传成功后进行分析
+                parseWardrobe(purpose);
+            }
+            
+            @Override
+            public void onError(String error) {
+                Log.e("WardrobeFragment", "图片上传失败: " + error);
+                Toast.makeText(getContext(), "图片上传失败: " + error, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     
     private void parseWardrobe(String purpose) {
@@ -356,6 +438,14 @@ public class WardrobeFragment extends Fragment {
     
     // 滚动到底部显示最新内容
     private void scrollToBottom() {
+        if (scrollView != null) {
+            scrollView.post(() -> {
+                // 平滑滚动到ScrollView的底部
+                scrollView.smoothScrollTo(0, scrollView.getChildAt(0).getHeight());
+            });
+        }
+        
+        // 保留TextView的滚动逻辑作为备用
         if (tvAnalysisResult != null) {
             tvAnalysisResult.post(() -> {
                 // 检查Layout是否已经创建，避免空指针异常
@@ -394,14 +484,28 @@ public class WardrobeFragment extends Fragment {
                             String imageUrl = jsonObject.optString("url").trim();
                             
                             if (!TextUtils.isEmpty(imageUrl)) {
-                                // 使用Glide加载图片
+                                // 显示推荐图片卡片
+                                cardRecommendationImage.setVisibility(View.VISIBLE);
+                                
+                                // 使用Glide加载图片到专用的推荐图片显示区域
                                 Glide.with(WardrobeFragment.this)
                                         .load(imageUrl)
                                         .placeholder(android.R.drawable.ic_menu_gallery)
                                         .error(android.R.drawable.ic_dialog_alert)
-                                        .into(ivRecommendationImage);
-                                
-                                ivRecommendationImage.setVisibility(View.VISIBLE);
+                                        .listener(new RequestListener<Drawable>() {
+                                            @Override
+                                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                                                return false;
+                                            }
+                                            
+                                            @Override
+                                            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                                                // 图片加载完成后自动滚动到底部
+                                                scrollToBottom();
+                                                return false;
+                                            }
+                                        })
+                                        .into(ivRecommendationDisplay);
                             } else {
                                 Toast.makeText(getContext(), "生成图片失败", Toast.LENGTH_SHORT).show();
                             }

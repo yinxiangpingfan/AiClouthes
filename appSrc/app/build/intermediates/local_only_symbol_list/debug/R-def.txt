@@ -115,6 +115,7 @@ id rb_without_model
 id rg_clothing_type
 id rg_gender
 id rg_try_on_mode
+id scroll_view
 id tv_analysis_result
 id tv_city_name
 id tv_instructions

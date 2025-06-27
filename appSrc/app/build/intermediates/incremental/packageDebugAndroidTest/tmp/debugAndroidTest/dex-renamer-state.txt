@@ -1,4 +1,4 @@
-#Fri Jun 27 16:33:07 CST 2025
+#Fri Jun 27 23:07:30 CST 2025
 base.0=/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build/intermediates/dex/debugAndroidTest/mergeExtDexDebugAndroidTest/classes.dex
 base.1=/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/0/classes.dex
 path.0=classes.dex

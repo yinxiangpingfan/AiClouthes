@@ -191,6 +191,14 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="文件大小：5KB-5MB"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_hint"
                     android:layout_marginBottom="12dp" />
 
                 <Button
@@ -199,7 +207,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/select_model_photo"
                     android:background="@drawable/button_secondary"
-                    android:textColor="@color/text_secondary" />
+                    android:textColor="@color/white" />
 
                 <ImageView
                     android:id="@+id/iv_model_image"
@@ -237,6 +245,14 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="文件大小：5KB-5MB"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_hint"
                     android:layout_marginBottom="12dp" />
 
                 <!-- 套装选择 -->
@@ -252,7 +268,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/select_outfit_photo"
                         android:background="@drawable/button_secondary"
-                        android:textColor="@color/text_secondary" />
+                        android:textColor="@color/white" />
 
                     <ImageView
                         android:id="@+id/iv_clothing_image"
@@ -281,7 +297,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/select_top_photo"
                         android:background="@drawable/button_secondary"
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@color/white"
                         android:layout_marginBottom="8dp" />
 
                     <ImageView
@@ -301,7 +317,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/select_bottom_photo"
                         android:background="@drawable/button_secondary"
-                        android:textColor="@color/text_secondary" />
+                        android:textColor="@color/white" />
 
                     <ImageView
                         android:id="@+id/iv_bottom_image"

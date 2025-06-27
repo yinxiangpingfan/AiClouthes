@@ -63,6 +63,9 @@ public final class FragmentWardrobeBinding implements ViewBinding {
   public final ProgressBar progressBar;
 
   @NonNull
+  public final ScrollView scrollView;
+
+  @NonNull
   public final TextView tvAnalysisResult;
 
   @NonNull
@@ -77,8 +80,9 @@ public final class FragmentWardrobeBinding implements ViewBinding {
       @NonNull CardView cardAnalysisResult, @NonNull CardView cardRecommendationImage,
       @NonNull ImageView ivRecommendationDisplay, @NonNull ImageView ivRecommendationImage,
       @NonNull ImageView ivWardrobeImage, @NonNull LinearLayout llImageContainer,
-      @NonNull ProgressBar progressBar, @NonNull TextView tvAnalysisResult,
-      @NonNull EditText tvPurposeInput, @NonNull WebView webviewAnalysis) {
+      @NonNull ProgressBar progressBar, @NonNull ScrollView scrollView,
+      @NonNull TextView tvAnalysisResult, @NonNull EditText tvPurposeInput,
+      @NonNull WebView webviewAnalysis) {
     this.rootView = rootView;
     this.btnAnalyzeWardrobe = btnAnalyzeWardrobe;
     this.btnGenerateImage = btnGenerateImage;
@@ -92,6 +96,7 @@ public final class FragmentWardrobeBinding implements ViewBinding {
     this.ivWardrobeImage = ivWardrobeImage;
     this.llImageContainer = llImageContainer;
     this.progressBar = progressBar;
+    this.scrollView = scrollView;
     this.tvAnalysisResult = tvAnalysisResult;
     this.tvPurposeInput = tvPurposeInput;
     this.webviewAnalysis = webviewAnalysis;
@@ -196,6 +201,8 @@ public final class FragmentWardrobeBinding implements ViewBinding {
         break missingId;
       }
 
+      ScrollView scrollView = (ScrollView) rootView;
+
       id = R.id.tv_analysis_result;
       TextView tvAnalysisResult = ViewBindings.findChildViewById(rootView, id);
       if (tvAnalysisResult == null) {
@@ -217,8 +224,8 @@ public final class FragmentWardrobeBinding implements ViewBinding {
       return new FragmentWardrobeBinding((ScrollView) rootView, btnAnalyzeWardrobe,
           btnGenerateImage, btnGenerateRecommendation, btnSelectImage, btnTakePhoto,
           cardAnalysisResult, cardRecommendationImage, ivRecommendationDisplay,
-          ivRecommendationImage, ivWardrobeImage, llImageContainer, progressBar, tvAnalysisResult,
-          tvPurposeInput, webviewAnalysis);
+          ivRecommendationImage, ivWardrobeImage, llImageContainer, progressBar, scrollView,
+          tvAnalysisResult, tvPurposeInput, webviewAnalysis);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
