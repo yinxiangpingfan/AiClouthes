@@ -80,10 +80,25 @@
             android:authorities="com.aiclothes.app.androidx-startup"
             android:exported="false" >
             <meta-data
+                android:name="com.mikepenz.iconics.animation.SpinProcessor"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="com.mikepenz.iconics.animation.BlinkAlphaProcessor"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="com.mikepenz.iconics.animation.BlinkScaleProcessor"
+                android:value="androidx.startup" />
+            <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"
                 android:value="androidx.startup" />
             <meta-data
                 android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="com.mikepenz.iconics.typeface.library.materialdesigniconic.Initializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="com.mikepenz.iconics.typeface.library.googlematerial.Initializer"
                 android:value="androidx.startup" />
             <meta-data
                 android:name="androidx.profileinstaller.ProfileInstallerInitializer"

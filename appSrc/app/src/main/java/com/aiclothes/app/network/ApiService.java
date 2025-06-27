@@ -43,44 +43,59 @@ public class ApiService {
     
     private static ApiService instance;
     private OkHttpClient client;
+    private OkHttpClient streamingClient;
     private Gson gson;
     private Context context;
     private SharedPreferences prefs;
-    
+
     private ApiService(Context context) {
         this.context = context.getApplicationContext();
         this.prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         this.gson = new Gson();
-        
+
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-        
+
+        CookieJar cookieJar = new CookieJar() {
+            private final HashMap<String, List<Cookie>> cookieStore = new HashMap<>();
+
+            @Override
+            public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
+                cookieStore.put(url.host(), cookies);
+                // 保存token到SharedPreferences
+                for (Cookie cookie : cookies) {
+                    if ("token".equals(cookie.name())) {
+                        saveToken(cookie.value());
+                    }
+                }
+            }
+
+            @Override
+            public List<Cookie> loadForRequest(HttpUrl url) {
+                List<Cookie> cookies = cookieStore.get(url.host());
+                return cookies != null ? cookies : new ArrayList<>();
+            }
+        };
+
         this.client = new OkHttpClient.Builder()
                 .addInterceptor(logging)
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(120, TimeUnit.SECONDS)
                 .writeTimeout(60, TimeUnit.SECONDS)
                 .cache(null) // 禁用缓存以支持流式响应
-                .cookieJar(new CookieJar() {
-                    private final HashMap<String, List<Cookie>> cookieStore = new HashMap<>();
-                    
-                    @Override
-                    public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
-                        cookieStore.put(url.host(), cookies);
-                        // 保存token到SharedPreferences
-                        for (Cookie cookie : cookies) {
-                            if ("token".equals(cookie.name())) {
-                                saveToken(cookie.value());
-                            }
-                        }
-                    }
-                    
-                    @Override
-                    public List<Cookie> loadForRequest(HttpUrl url) {
-                        List<Cookie> cookies = cookieStore.get(url.host());
-                        return cookies != null ? cookies : new ArrayList<>();
-                    }
-                })
+                .cookieJar(cookieJar)
+                .build();
+
+        HttpLoggingInterceptor streamingLogging = new HttpLoggingInterceptor();
+        streamingLogging.setLevel(HttpLoggingInterceptor.Level.HEADERS);
+
+        this.streamingClient = new OkHttpClient.Builder()
+                .addInterceptor(streamingLogging)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(0, TimeUnit.SECONDS) // No read timeout for streaming
+                .writeTimeout(60, TimeUnit.SECONDS)
+                .cache(null)
+                .cookieJar(cookieJar)
                 .build();
     }
     
@@ -326,7 +341,7 @@ public class ApiService {
                 .addHeader("Connection", "keep-alive")
                 .build();
         
-        client.newCall(request).enqueue(new Callback() {
+        streamingClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e(TAG, "流式请求失败: " + e.getMessage(), e);
@@ -351,53 +366,25 @@ public class ApiService {
                 String contentType = response.header("Content-Type");
                 Log.d(TAG, "响应Content-Type: " + contentType);
                 
-                // 处理Server-Sent Events流式响应 - 仿照前端实现
+                // 处理Server-Sent Events流式响应 - 改进版本
                 InputStream inputStream = null;
                 try {
                     inputStream = response.body().byteStream();
-                    byte[] buffer = new byte[1024];
-                    StringBuilder dataBuffer = new StringBuilder();
+                    java.io.BufferedReader reader = new java.io.BufferedReader(
+                        new java.io.InputStreamReader(inputStream, java.nio.charset.StandardCharsets.UTF_8));
                     
-                    while (true) {
-                        int bytesRead = inputStream.read(buffer);
-                        if (bytesRead == -1) {
-                            Log.d(TAG, "流式响应读取完成");
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        Log.d(TAG, "收到SSE行: " + line);
+                        
+                        // 立即处理每一行，实现真正的流式输出
+                        processSSELine(line, callback);
+                        
+                        // 检查是否为结束标记
+                        if (line.contains("[DONE]")) {
+                            Log.d(TAG, "收到流式结束标记，停止读取");
                             break;
                         }
-                        
-                        // 将读取的字节转换为字符串
-                        String chunk = new String(buffer, 0, bytesRead, "UTF-8");
-                        Log.d(TAG, "收到数据块: " + chunk);
-                        
-                        dataBuffer.append(chunk);
-                        
-                        // 按行处理数据
-                        String[] lines = dataBuffer.toString().split("\n");
-                        
-                        // 保留最后一行（可能不完整）
-                        if (lines.length > 0) {
-                            dataBuffer = new StringBuilder();
-                            String lastLine = lines[lines.length - 1];
-                            
-                            // 如果最后一行不以换行符结尾，说明可能不完整
-                            if (!chunk.endsWith("\n")) {
-                                dataBuffer.append(lastLine);
-                                // 处理除最后一行外的所有行
-                                for (int i = 0; i < lines.length - 1; i++) {
-                                    processSSELine(lines[i], callback);
-                                }
-                            } else {
-                                // 处理所有行
-                                for (String line : lines) {
-                                    processSSELine(line, callback);
-                                }
-                            }
-                        }
-                    }
-                    
-                    // 处理缓冲区中剩余的数据
-                    if (dataBuffer.length() > 0) {
-                        processSSELine(dataBuffer.toString(), callback);
                     }
                     
                     Log.d(TAG, "流式响应完成");
@@ -515,7 +502,7 @@ public class ApiService {
         Log.d(TAG, "发送请求到: " + request.url());
         Log.d(TAG, "请求方法: " + request.method());
         
-        client.newCall(request).enqueue(new Callback() {
+        streamingClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e(TAG, "网络请求失败 - URL: " + request.url() + ", 错误: " + e.getMessage(), e);
@@ -528,15 +515,33 @@ public class ApiService {
             public void onResponse(Call call, Response response) throws IOException {
                 Log.d(TAG, "收到响应 - 状态码: " + response.code() + ", URL: " + request.url());
                 
+                String responseBody = response.body().string();
+                Log.d(TAG, "响应内容: " + responseBody);
+                
+                // 对于HTTP错误状态码，也尝试解析响应体中的错误信息
                 if (!response.isSuccessful()) {
                     Log.e(TAG, "HTTP错误 - 状态码: " + response.code() + ", 消息: " + response.message());
+                    
+                    // 尝试解析错误响应中的具体信息
+                    if (responseBody != null && !responseBody.trim().isEmpty()) {
+                        try {
+                            JsonObject jsonObject = JsonParser.parseString(responseBody).getAsJsonObject();
+                            // 直接传递整个JsonObject给callback，让上层处理具体的错误码
+                            new Handler(Looper.getMainLooper()).post(() -> {
+                                callback.onSuccess(jsonObject);
+                            });
+                            return;
+                        } catch (Exception e) {
+                            Log.e(TAG, "解析错误响应失败: " + e.getMessage());
+                        }
+                    }
+                    
+                    // 如果无法解析错误响应，返回通用错误信息
                     new Handler(Looper.getMainLooper()).post(() -> {
                         callback.onError("HTTP错误: " + response.code() + " " + response.message());
                     });
                     return;
                 }
-                
-                String responseBody = response.body().string();
                 Log.d(TAG, "响应内容: " + responseBody);
                 
                 if (responseBody == null || responseBody.trim().isEmpty()) {

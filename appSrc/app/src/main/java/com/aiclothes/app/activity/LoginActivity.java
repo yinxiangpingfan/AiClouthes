@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = etPassword.getText().toString().trim();
         
         if (TextUtils.isEmpty(username)) {
-            etUsername.setError("请输入用户名");
+            etUsername.setError("请输入手机号");
             return;
         }
         
@@ -101,8 +101,24 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, "登录失败：未获取到token", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            String message = jsonObject.optString("msg", "登录失败");
-                            Toast.makeText(LoginActivity.this, "登录失败：" + message, Toast.LENGTH_SHORT).show();
+                            // 根据接口文档处理不同的错误码
+                            String message;
+                            switch (code) {
+                                case 1022:
+                                    message = "该手机号不存在";
+                                    break;
+                                case 1023:
+                                    message = "密码错误";
+                                    break;
+                                case 1021:
+                                case 1024:
+                                    message = "登录账号失败，请稍后再试";
+                                    break;
+                                default:
+                                    message = jsonObject.optString("msg", "登录失败");
+                                    break;
+                            }
+                            Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

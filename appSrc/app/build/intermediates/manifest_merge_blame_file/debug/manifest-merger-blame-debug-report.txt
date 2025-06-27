@@ -140,83 +140,113 @@
 76-->/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml:59:17-51
 77        </provider>
 78        <provider
-78-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+78-->[com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:26:9-40:20
 79            android:name="androidx.startup.InitializationProvider"
-79-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+79-->[com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:27:13-67
 80            android:authorities="com.aiclothes.app.androidx-startup"
-80-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+80-->[com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:28:13-68
 81            android:exported="false" >
-81-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+81-->[com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:29:13-37
 82            <meta-data
-82-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
-83                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-83-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+82-->[com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:31:13-33:52
+83                android:name="com.mikepenz.iconics.animation.SpinProcessor"
+83-->[com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:32:17-76
 84                android:value="androidx.startup" />
-84-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+84-->[com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:33:17-49
 85            <meta-data
-85-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
-86                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-86-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+85-->[com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:34:13-36:52
+86                android:name="com.mikepenz.iconics.animation.BlinkAlphaProcessor"
+86-->[com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:35:17-82
 87                android:value="androidx.startup" />
-87-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+87-->[com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:36:17-49
 88            <meta-data
-88-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
-89                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-89-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+88-->[com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:37:13-39:52
+89                android:name="com.mikepenz.iconics.animation.BlinkScaleProcessor"
+89-->[com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:38:17-82
 90                android:value="androidx.startup" />
-90-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
-91        </provider>
-92
-93        <uses-library
-93-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
-94            android:name="androidx.window.extensions"
-94-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
-95            android:required="false" />
-95-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
-96        <uses-library
-96-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
-97            android:name="androidx.window.sidecar"
-97-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
-98            android:required="false" />
-98-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
-99
-100        <receiver
-100-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
-101            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-101-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
-102            android:directBootAware="false"
-102-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
-103            android:enabled="true"
-103-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
-104            android:exported="true"
-104-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
-105            android:permission="android.permission.DUMP" >
-105-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
-106            <intent-filter>
-106-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
-107                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-107-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
-107-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
-108            </intent-filter>
-109            <intent-filter>
-109-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
-110                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-110-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
-110-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
-111            </intent-filter>
-112            <intent-filter>
-112-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
-113                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-113-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
-113-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
-114            </intent-filter>
-115            <intent-filter>
-115-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
-116                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-116-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
-116-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
-117            </intent-filter>
-118        </receiver>
-119    </application>
-120
-121</manifest>
+90-->[com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:39:17-49
+91            <meta-data
+91-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+92                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+92-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+93                android:value="androidx.startup" />
+93-->[androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+94            <meta-data
+94-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+95                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+95-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+96                android:value="androidx.startup" />
+96-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+97            <meta-data
+97-->[com.mikepenz:material-design-iconic-typeface:2.2.0.8-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/da911ff511ff2f31870cc5cc00e6e44a/transformed/material-design-iconic-typeface-2.2.0.8-kotlin/AndroidManifest.xml:33:13-35:52
+98                android:name="com.mikepenz.iconics.typeface.library.materialdesigniconic.Initializer"
+98-->[com.mikepenz:material-design-iconic-typeface:2.2.0.8-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/da911ff511ff2f31870cc5cc00e6e44a/transformed/material-design-iconic-typeface-2.2.0.8-kotlin/AndroidManifest.xml:34:17-102
+99                android:value="androidx.startup" />
+99-->[com.mikepenz:material-design-iconic-typeface:2.2.0.8-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/da911ff511ff2f31870cc5cc00e6e44a/transformed/material-design-iconic-typeface-2.2.0.8-kotlin/AndroidManifest.xml:35:17-49
+100            <meta-data
+100-->[com.mikepenz:google-material-typeface:4.0.0.3-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/df03d4dc44f7ed4edcb5f83563b44221/transformed/google-material-typeface-4.0.0.3-kotlin/AndroidManifest.xml:29:13-31:52
+101                android:name="com.mikepenz.iconics.typeface.library.googlematerial.Initializer"
+101-->[com.mikepenz:google-material-typeface:4.0.0.3-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/df03d4dc44f7ed4edcb5f83563b44221/transformed/google-material-typeface-4.0.0.3-kotlin/AndroidManifest.xml:30:17-96
+102                android:value="androidx.startup" />
+102-->[com.mikepenz:google-material-typeface:4.0.0.3-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/df03d4dc44f7ed4edcb5f83563b44221/transformed/google-material-typeface-4.0.0.3-kotlin/AndroidManifest.xml:31:17-49
+103            <meta-data
+103-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+104                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+104-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+105                android:value="androidx.startup" />
+105-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+106        </provider>
+107
+108        <uses-library
+108-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
+109            android:name="androidx.window.extensions"
+109-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
+110            android:required="false" />
+110-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
+111        <uses-library
+111-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
+112            android:name="androidx.window.sidecar"
+112-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
+113            android:required="false" />
+113-->[androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
+114
+115        <receiver
+115-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+116            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+116-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+117            android:directBootAware="false"
+117-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+118            android:enabled="true"
+118-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+119            android:exported="true"
+119-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+120            android:permission="android.permission.DUMP" >
+120-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+121            <intent-filter>
+121-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+122                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+122-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+122-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+123            </intent-filter>
+124            <intent-filter>
+124-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+125                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+125-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+125-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+126            </intent-filter>
+127            <intent-filter>
+127-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+128                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+128-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+128-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+129            </intent-filter>
+130            <intent-filter>
+130-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+131                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+131-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+131-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+132            </intent-filter>
+133        </receiver>
+134    </application>
+135
+136</manifest>

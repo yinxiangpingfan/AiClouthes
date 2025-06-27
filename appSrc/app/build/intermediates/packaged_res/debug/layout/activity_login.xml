@@ -14,9 +14,9 @@
         android:layout_height="120dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/circle_background"
-        android:padding="30dp"
+        android:padding="15dp"
         android:src="@drawable/app_logo"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerInside" />
 
     <!-- 标题 -->
     <TextView
@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:hint="@string/username"
+                android:hint="@string/phone_number"
                 app:boxCornerRadiusBottomEnd="8dp"
                 app:boxCornerRadiusBottomStart="8dp"
                 app:boxCornerRadiusTopEnd="8dp"

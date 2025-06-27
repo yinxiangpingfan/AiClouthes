@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.aiclothes.app-mergeDebugResources-45:/values-large-v4/values-large-v4.xml",
+            "outputFile": "com.aiclothes.app-mergeDebugResources-49:/values-large-v4/values-large-v4.xml",
             "map": [
                 {
                     "source": "/Users/easyimpr/.gradle/caches/8.12/transforms/530a4a66b57fcc344ec81b1b1ce271a8/transformed/appcompat-1.6.1/res/values-large-v4/values-large-v4.xml",

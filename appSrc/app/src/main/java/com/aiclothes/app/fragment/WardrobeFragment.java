@@ -23,10 +23,7 @@ import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import android.webkit.WebView;
-import android.webkit.WebSettings;
-import android.webkit.JavascriptInterface;
-import android.webkit.WebViewClient;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -49,13 +46,12 @@ import java.util.List;
 
 public class WardrobeFragment extends Fragment {
     private ImageView ivWardrobeImage, ivRecommendationImage;
-    private Button btnSelectImage, btnTakePhoto, btnAnalyzeWardrobe, btnGenerateImage;
+    private Button btnSelectImage, btnTakePhoto, btnAnalyzeWardrobe, btnGenerateImage, btnGenerateRecommendation;
     private TextView tvAnalysisResult;
     private EditText tvPurposeInput;
     private ProgressBar progressBar;
     private LinearLayout llImageContainer;
     private CardView cardAnalysisResult;
-    private WebView webViewAnalysis;
     
     private ApiService apiService;
     private List<File> selectedImageFiles;
@@ -82,15 +78,14 @@ public class WardrobeFragment extends Fragment {
         btnTakePhoto = view.findViewById(R.id.btn_take_photo);
         btnAnalyzeWardrobe = view.findViewById(R.id.btn_analyze_wardrobe);
         btnGenerateImage = view.findViewById(R.id.btn_generate_image);
+        btnGenerateRecommendation = view.findViewById(R.id.btn_generate_recommendation);
         tvAnalysisResult = view.findViewById(R.id.tv_analysis_result);
         tvPurposeInput = view.findViewById(R.id.tv_purpose_input);
         progressBar = view.findViewById(R.id.progress_bar);
         llImageContainer = view.findViewById(R.id.ll_image_container);
         cardAnalysisResult = view.findViewById(R.id.card_analysis_result);
-        webViewAnalysis = view.findViewById(R.id.webview_analysis);
         
-        // 初始化WebView
-        initWebView();
+        // WebView相关功能已移除，使用TextView显示流式内容
     }
     
     private void initData() {
@@ -126,6 +121,7 @@ public class WardrobeFragment extends Fragment {
         
         btnAnalyzeWardrobe.setOnClickListener(v -> analyzeWardrobe());
         btnGenerateImage.setOnClickListener(v -> generateRecommendationImage());
+        btnGenerateRecommendation.setOnClickListener(v -> generateRecommendationImage());
     }
     
     private void selectImageFromGallery() {
@@ -260,116 +256,27 @@ public class WardrobeFragment extends Fragment {
         tvAnalysisResult.setText("");
         ivRecommendationImage.setVisibility(View.GONE);
         btnGenerateImage.setEnabled(false);
+        btnGenerateRecommendation.setEnabled(false);
     }
     
-    private void initWebView() {
-        if (webViewAnalysis != null) {
-            WebSettings webSettings = webViewAnalysis.getSettings();
-            webSettings.setJavaScriptEnabled(true);
-            webSettings.setDomStorageEnabled(true);
-            webSettings.setAllowFileAccess(true);
-            webSettings.setAllowContentAccess(true);
-            
-            // 添加JavaScript接口
-            webViewAnalysis.addJavascriptInterface(new WebAppInterface(), "Android");
-            
-            // 设置WebViewClient
-            webViewAnalysis.setWebViewClient(new WebViewClient() {
-                @Override
-                public void onPageFinished(WebView view, String url) {
-                    super.onPageFinished(view, url);
-                    Log.d("WardrobeFragment", "WebView页面加载完成");
-                }
-            });
-            
-            // 加载HTML文件
-            webViewAnalysis.loadUrl("file:///android_asset/wardrobe_stream.html");
-            
-            // 初始时隐藏WebView
-            webViewAnalysis.setVisibility(View.GONE);
-        }
-    }
+
     
-    public class WebAppInterface {
-        @JavascriptInterface
-        public String getBaseUrl() {
-            // 返回API基础URL
-            return "http://192.168.1.100:8000"; // 根据实际情况修改
-        }
-        
-        @JavascriptInterface
-        public String getPurpose() {
-            // 返回用户输入的目的
-            return tvPurposeInput != null ? tvPurposeInput.getText().toString().trim() : "";
-        }
-        
-        @JavascriptInterface
-        public void onAnalysisComplete(String result) {
-            // 分析完成回调
-            if (getActivity() != null) {
-                getActivity().runOnUiThread(() -> {
-                    showLoading(false);
-                    wardrobeAnalysisResult = result;
-                    btnGenerateImage.setEnabled(true);
-                    Log.d("WardrobeFragment", "WebView分析完成，结果长度: " + result.length());
-                });
-            }
-        }
-        
-        @JavascriptInterface
-        public void onAnalysisError(String error) {
-            // 分析错误回调
-            if (getActivity() != null) {
-                getActivity().runOnUiThread(() -> {
-                    showLoading(false);
-                    showError("分析失败：" + error);
-                });
-            }
-        }
-    }
+
 
     private void analyzeWardrobe() {
-        if (selectedImageFiles.isEmpty()) {
-            Toast.makeText(getContext(), "请先选择衣柜照片", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        
-        // 获取用户输入的目的
         String purpose = tvPurposeInput.getText().toString().trim();
         if (TextUtils.isEmpty(purpose)) {
             Toast.makeText(getContext(), "请输入穿衣目的", Toast.LENGTH_SHORT).show();
             return;
         }
         
-        showLoading(true);
+        if (selectedImageFiles.isEmpty()) {
+            Toast.makeText(getContext(), "请选择至少一张衣柜照片", Toast.LENGTH_SHORT).show();
+            return;
+        }
         
-        // 先上传图片
-        apiService.uploadWardrobePhotos(selectedImageFiles, new ApiService.ApiCallback<JsonObject>() {
-            @Override
-            public void onSuccess(JsonObject response) {
-                String responseStr = response.toString();
-                try {
-                    JSONObject jsonObject = new JSONObject(responseStr);
-                    int code = jsonObject.optInt("code", -1);
-                    
-                    if (code == 1000) {
-                        // 上传成功后，直接分析衣柜（根据接口文档，上传接口不返回URL）
-                        parseWardrobe(purpose);
-                    } else {
-                        String message = jsonObject.optString("msg", "上传失败");
-                        showError("上传失败：" + message);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    showError("上传响应解析失败");
-                }
-            }
-            
-            @Override
-            public void onError(String error) {
-                showError("上传失败：" + error);
-            }
-        });
+        // 使用TextView进行流式显示
+        parseWardrobe(purpose);
     }
     
     private void parseWardrobe(String purpose) {
@@ -377,15 +284,15 @@ public class WardrobeFragment extends Fragment {
         analysisTextBuilder.setLength(0);
         tvAnalysisResult.setText("");
         
+        // 显示等待提示
+        Toast.makeText(getContext(), "衣柜分析中，时间可能较长，请耐心等待，不要离开...", Toast.LENGTH_LONG).show();
+        
         // 显示分析结果卡片
         if (cardAnalysisResult != null) {
             cardAnalysisResult.setVisibility(View.VISIBLE);
         }
         
-        // 显示TextView，隐藏WebView
-        if (webViewAnalysis != null) {
-            webViewAnalysis.setVisibility(View.GONE);
-        }
+        // 显示TextView
         if (tvAnalysisResult != null) {
             tvAnalysisResult.setVisibility(View.VISIBLE);
         }
@@ -394,24 +301,7 @@ public class WardrobeFragment extends Fragment {
         parseWardrobeWithOriginalMethod(purpose);
     }
     
-    private void useWebViewForStreaming(String purpose) {
-        if (webViewAnalysis != null) {
-            // 显示WebView，隐藏TextView
-            webViewAnalysis.setVisibility(View.VISIBLE);
-            tvAnalysisResult.setVisibility(View.GONE);
-            
-            // 调用JavaScript函数开始分析
-            webViewAnalysis.post(() -> {
-                String jsCode = "if(typeof startAnalysis === 'function') { startAnalysis(); } else { console.log('startAnalysis function not found'); }";
-                webViewAnalysis.evaluateJavascript(jsCode, result -> {
-                    Log.d("WardrobeFragment", "JavaScript调用结果: " + result);
-                });
-            });
-        } else {
-            // 如果WebView不可用，回退到原来的方式
-            parseWardrobeWithOriginalMethod(purpose);
-        }
-    }
+
     
     private void parseWardrobeWithOriginalMethod(String purpose) {
         apiService.parseWardrobeAndRecommend(purpose, new ApiService.StreamCallback() {
@@ -442,6 +332,7 @@ public class WardrobeFragment extends Fragment {
                     wardrobeAnalysisResult = analysisTextBuilder.toString();
                     Log.d("WardrobeFragment", "最终分析结果长度: " + wardrobeAnalysisResult.length());
                     btnGenerateImage.setEnabled(true);
+                    btnGenerateRecommendation.setEnabled(true);
                     
                     // 最终渲染完整的Markdown内容
                     markwon.setMarkdown(tvAnalysisResult, wardrobeAnalysisResult);
@@ -487,6 +378,9 @@ public class WardrobeFragment extends Fragment {
         }
         
         showLoading(true);
+        
+        // 显示等待提示
+        Toast.makeText(getContext(), "推荐图片生成中，时间可能较长，请耐心等待，不要离开...", Toast.LENGTH_LONG).show();
         
         apiService.generateWardrobeImage(new ApiService.ApiCallback<JsonObject>() {
             @Override

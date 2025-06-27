@@ -648,6 +648,24 @@ attr homeLayout
 attr horizontalOffset
 attr horizontalOffsetWithText
 attr hoveredFocusedTranslationZ
+attr ico_animations
+attr ico_automirror
+attr ico_background_color
+attr ico_background_contour_color
+attr ico_background_contour_width
+attr ico_color
+attr ico_contour_color
+attr ico_contour_width
+attr ico_corner_radius
+attr ico_icon
+attr ico_offset_x
+attr ico_offset_y
+attr ico_padding
+attr ico_shadow_color
+attr ico_shadow_dx
+attr ico_shadow_dy
+attr ico_shadow_radius
+attr ico_size
 attr icon
 attr iconEndPadding
 attr iconGravity
@@ -3040,6 +3058,7 @@ drawable ic_arrow_back_black_24
 drawable ic_arrow_right
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
+drawable ic_cloud_sun
 drawable ic_home
 drawable ic_image_error
 drawable ic_info
@@ -3055,6 +3074,7 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_person
 drawable ic_search_black_24
+drawable ic_shirt
 drawable ic_try_on
 drawable ic_wardrobe
 drawable ic_weather
@@ -3134,6 +3154,8 @@ drawable notify_panel_notification_icon_bg
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+font google_material_font_filled_v4_0_0_0_original
+font material_design_iconic_font_v2_2_0
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -3385,6 +3407,7 @@ id honorRequest
 id horizontal_only
 id icon
 id icon_group
+id iconics_tag_id
 id ifRoom
 id ignore
 id ignoreRequest
@@ -3970,6 +3993,10 @@ string clothing_type
 string confirm
 string confirm_password
 string confirm_selection
+string define_AndroidIconics
+string define_GoogleMaterialDesignIcons
+string define_MaterialDesignIconicIcons
+string define_font_materialdesigniconic
 string dest_title
 string error
 string error_a11y_label
@@ -3997,16 +4024,49 @@ string generate
 string generate_failed
 string generate_image
 string get_weather
+string googlematerial_version
 string has_account
 string have_account
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
+string iconics_lib_version
+string iconics_typeface_api_version
 string instruction_with_model_double
 string instruction_with_model_single
 string instruction_without_model_double
 string instruction_without_model_single
 string invalid_input
 string item_view_role_description
+string library_AndroidIconics_author
+string library_AndroidIconics_authorWebsite
+string library_AndroidIconics_isOpenSource
+string library_AndroidIconics_libraryDescription
+string library_AndroidIconics_libraryName
+string library_AndroidIconics_libraryVersion
+string library_AndroidIconics_libraryWebsite
+string library_AndroidIconics_licenseId
+string library_AndroidIconics_owner
+string library_AndroidIconics_repositoryLink
+string library_AndroidIconics_year
+string library_GoogleMaterialDesignIcons_author
+string library_GoogleMaterialDesignIcons_authorWebsite
+string library_GoogleMaterialDesignIcons_isOpenSource
+string library_GoogleMaterialDesignIcons_libraryDescription
+string library_GoogleMaterialDesignIcons_libraryName
+string library_GoogleMaterialDesignIcons_libraryVersion
+string library_GoogleMaterialDesignIcons_libraryWebsite
+string library_GoogleMaterialDesignIcons_licenseId
+string library_GoogleMaterialDesignIcons_repositoryLink
+string library_MaterialDesignIconicIcons_author
+string library_MaterialDesignIconicIcons_authorWebsite
+string library_MaterialDesignIconicIcons_isOpenSource
+string library_MaterialDesignIconicIcons_libraryDescription
+string library_MaterialDesignIconicIcons_libraryName
+string library_MaterialDesignIconicIcons_libraryVersion
+string library_MaterialDesignIconicIcons_libraryWebsite
+string library_MaterialDesignIconicIcons_licenseId
+string library_MaterialDesignIconicIcons_repositoryLink
+string library_MaterialDesignIconicIcons_year
 string loading
 string login
 string login_now
@@ -4028,6 +4088,7 @@ string m3_sys_motion_easing_linear
 string m3_sys_motion_easing_standard
 string m3_sys_motion_easing_standard_accelerate
 string m3_sys_motion_easing_standard_decelerate
+string main_features
 string male
 string material_clock_display_divider
 string material_clock_toggle_content_description
@@ -4051,6 +4112,7 @@ string material_timepicker_minute
 string material_timepicker_pm
 string material_timepicker_select_time
 string material_timepicker_text_input_mode_description
+string materialdesigniconic_version
 string max_5_photos
 string mtrl_badge_numberless_content_description
 string mtrl_checkbox_button_icon_path_checked
@@ -4164,6 +4226,10 @@ string status_bar_notification_info_overflow
 string success
 string supported_formats
 string take_photo
+string tip_image_requirements
+string tip_virtual_try_on
+string tip_wardrobe_recommend
+string tip_weather_outfit
 string try_on
 string try_on_instructions
 string try_on_mode
@@ -4175,10 +4241,19 @@ string upload_model_photo
 string upload_outfit_photo
 string upload_top_photo
 string upload_wardrobe
+string usage_tips
 string username
+string virtual_try_on_desc
+string virtual_try_on_title
 string wardrobe_match
+string wardrobe_recommend_desc
+string wardrobe_recommend_title
 string weather_info
 string weather_outfit
+string weather_outfit_desc
+string weather_outfit_title
+string welcome_subtitle
+string welcome_title
 string with_model
 string without_model
 style AlertDialog_AppCompat
@@ -5375,6 +5450,7 @@ styleable FragmentContainerView android_name android_tag
 styleable FragmentNavigator android_name
 styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY
 styleable GradientColorItem android_color android_offset
+styleable Iconics ico_animations ico_automirror ico_background_color ico_background_contour_color ico_background_contour_width ico_color ico_contour_color ico_contour_width ico_corner_radius ico_icon ico_offset_x ico_offset_y ico_padding ico_shadow_color ico_shadow_dx ico_shadow_dy ico_shadow_radius ico_size
 styleable ImageFilterView altSrc blendSrc brightness contrast crossfade imagePanX imagePanY imageRotate imageZoom overlay round roundPercent saturation warmth
 styleable Insets marginLeftSystemWindowInsets marginRightSystemWindowInsets marginTopSystemWindowInsets paddingBottomSystemWindowInsets paddingLeftSystemWindowInsets paddingRightSystemWindowInsets paddingStartSystemWindowInsets paddingTopSystemWindowInsets
 styleable KeyAttribute android_alpha android_transformPivotX android_transformPivotY android_translationX android_translationY android_scaleX android_scaleY android_rotation android_rotationX android_rotationY android_translationZ android_elevation curveFit framePosition motionProgress motionTarget transformPivotTarget transitionEasing transitionPathRotate

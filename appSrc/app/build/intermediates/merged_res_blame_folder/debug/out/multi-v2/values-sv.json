@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.aiclothes.app-mergeDebugResources-45:/values-sv/values-sv.xml",
+            "outputFile": "com.aiclothes.app-mergeDebugResources-49:/values-sv/values-sv.xml",
             "map": [
                 {
                     "source": "/Users/easyimpr/.gradle/caches/8.12/transforms/0cd69e8e26dd7e66522dd44e2c9238b1/transformed/material-1.10.0/res/values-sv/values-sv.xml",

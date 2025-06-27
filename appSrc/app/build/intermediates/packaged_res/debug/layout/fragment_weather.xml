@@ -12,6 +12,17 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- 页面标题 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="@string/weather_outfit_title"
+            android:textAlignment="center"
+            android:textColor="@color/text_primary"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
         <!-- 城市选择区域 -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

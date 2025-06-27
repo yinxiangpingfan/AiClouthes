@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -38,11 +40,21 @@ public final class ActivityRegisterBinding implements ViewBinding {
   public final ProgressBar progressBar;
 
   @NonNull
+  public final RadioButton rbFemale;
+
+  @NonNull
+  public final RadioButton rbMale;
+
+  @NonNull
+  public final RadioGroup rgGender;
+
+  @NonNull
   public final TextView tvLogin;
 
   private ActivityRegisterBinding(@NonNull ScrollView rootView, @NonNull Button btnRegister,
       @NonNull TextInputEditText etConfirmPassword, @NonNull TextInputEditText etPassword,
       @NonNull TextInputEditText etUsername, @NonNull ProgressBar progressBar,
+      @NonNull RadioButton rbFemale, @NonNull RadioButton rbMale, @NonNull RadioGroup rgGender,
       @NonNull TextView tvLogin) {
     this.rootView = rootView;
     this.btnRegister = btnRegister;
@@ -50,6 +62,9 @@ public final class ActivityRegisterBinding implements ViewBinding {
     this.etPassword = etPassword;
     this.etUsername = etUsername;
     this.progressBar = progressBar;
+    this.rbFemale = rbFemale;
+    this.rbMale = rbMale;
+    this.rgGender = rgGender;
     this.tvLogin = tvLogin;
   }
 
@@ -110,6 +125,24 @@ public final class ActivityRegisterBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.rb_female;
+      RadioButton rbFemale = ViewBindings.findChildViewById(rootView, id);
+      if (rbFemale == null) {
+        break missingId;
+      }
+
+      id = R.id.rb_male;
+      RadioButton rbMale = ViewBindings.findChildViewById(rootView, id);
+      if (rbMale == null) {
+        break missingId;
+      }
+
+      id = R.id.rg_gender;
+      RadioGroup rgGender = ViewBindings.findChildViewById(rootView, id);
+      if (rgGender == null) {
+        break missingId;
+      }
+
       id = R.id.tv_login;
       TextView tvLogin = ViewBindings.findChildViewById(rootView, id);
       if (tvLogin == null) {
@@ -117,7 +150,7 @@ public final class ActivityRegisterBinding implements ViewBinding {
       }
 
       return new ActivityRegisterBinding((ScrollView) rootView, btnRegister, etConfirmPassword,
-          etPassword, etUsername, progressBar, tvLogin);
+          etPassword, etUsername, progressBar, rbFemale, rbMale, rgGender, tvLogin);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

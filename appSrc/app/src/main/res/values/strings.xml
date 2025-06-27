@@ -1,5 +1,23 @@
 <resources>
     <string name="app_name">AI智能穿搭</string>
+    <string name="welcome_title">欢迎使用 AI智能穿搭</string>
+    <string name="welcome_subtitle">让人工智能为您提供个性化的穿搭建议</string>
+    
+    <!-- 主要功能 -->
+    <string name="main_features">主要功能</string>
+    <string name="weather_outfit_title">天气穿搭</string>
+    <string name="weather_outfit_desc">根据当前天气为您推荐最适合的穿搭方案</string>
+    <string name="wardrobe_recommend_title">衣柜推荐</string>
+    <string name="wardrobe_recommend_desc">上传您的衣柜照片，AI为您智能推荐搭配</string>
+    <string name="virtual_try_on_title">虚拟试衣</string>
+    <string name="virtual_try_on_desc">AI试衣技术，让您提前看到穿搭效果</string>
+    
+    <!-- 使用小贴士 -->
+    <string name="usage_tips">使用小贴士</string>
+    <string name="tip_weather_outfit">天气穿搭：选择您的城市，获取实时天气推荐</string>
+    <string name="tip_wardrobe_recommend">衣柜推荐：拍摄清晰的衣柜照片，效果更佳</string>
+    <string name="tip_virtual_try_on">虚拟试衣：支持有模特和无模特两种试衣模式</string>
+    <string name="tip_image_requirements">图片要求：建议使用高清照片，光线充足</string>
     
     <!-- 通用 -->
     <string name="confirm">确认</string>
@@ -38,10 +56,10 @@
     <string name="try_on">AI试衣</string>
     <string name="profile">个人中心</string>
     <string name="nav_home">首页</string>
-    <string name="nav_weather">天气</string>
-    <string name="nav_wardrobe">衣柜</string>
-    <string name="nav_try_on">试衣</string>
-    <string name="nav_profile">我的</string>
+    <string name="nav_weather">天气穿搭</string>
+    <string name="nav_wardrobe">衣柜推荐</string>
+    <string name="nav_try_on">虚拟试衣</string>
+    <string name="nav_profile">个人中心</string>
     
     <!-- 天气穿搭 -->
     <string name="select_city">选择城市</string>

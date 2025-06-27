@@ -12,12 +12,13 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- 标题区域 -->
+        <!-- 页面标题 -->
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="衣柜管理"
+            android:layout_marginBottom="24dp"
+            android:text="@string/wardrobe_recommend_title"
+            android:textAlignment="center"
             android:textColor="@color/text_primary"
             android:textSize="24sp"
             android:textStyle="bold" />

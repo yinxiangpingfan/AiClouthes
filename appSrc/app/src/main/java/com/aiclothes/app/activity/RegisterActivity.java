@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button btnRegister;
     private TextView tvLogin;
     private ProgressBar progressBar;
+    private RadioGroup rgGender;
     private ApiService apiService;
     
     @Override
@@ -43,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.btn_register);
         tvLogin = findViewById(R.id.tv_login);
         progressBar = findViewById(R.id.progress_bar);
+        rgGender = findViewById(R.id.rg_gender);
     }
     
     private void initListeners() {
@@ -58,12 +61,12 @@ public class RegisterActivity extends AppCompatActivity {
         String confirmPassword = etConfirmPassword.getText().toString().trim();
         
         if (TextUtils.isEmpty(username)) {
-            etUsername.setError("请输入用户名");
+            etUsername.setError("请输入手机号");
             return;
         }
         
-        if (username.length() < 3) {
-            etUsername.setError("用户名至少3个字符");
+        if (username.length() < 11) {
+            etUsername.setError("请输入正确的手机号");
             return;
         }
         
@@ -87,9 +90,16 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
         
+        // 获取选择的性别
+        String gender = "male"; // 默认值
+        int checkedId = rgGender.getCheckedRadioButtonId();
+        if (checkedId == R.id.rb_female) {
+            gender = "female";
+        }
+        
         showLoading(true);
         
-        apiService.register(username, password, "male", new ApiService.ApiCallback<JsonObject>() {
+        apiService.register(username, password, gender, new ApiService.ApiCallback<JsonObject>() {
             @Override
             public void onSuccess(JsonObject response) {
                 String responseStr = response.toString();
@@ -104,8 +114,26 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(RegisterActivity.this, msg, Toast.LENGTH_SHORT).show();
                             finish();
                         } else {
-                            String message = jsonObject.optString("msg", "注册失败");
-                            Toast.makeText(RegisterActivity.this, "注册失败：" + message, Toast.LENGTH_SHORT).show();
+                            // 根据接口文档处理不同的错误码
+                            String message;
+                            switch (code) {
+                                case 1012:
+                                    message = "该手机号已被注册";
+                                    break;
+                                case 1016:
+                                    message = "性别参数错误";
+                                    break;
+                                case 1011:
+                                case 1013:
+                                case 1014:
+                                case 1015:
+                                    message = "注册账号失败，请稍后再试";
+                                    break;
+                                default:
+                                    message = jsonObject.optString("msg", "注册失败");
+                                    break;
+                            }
+                            Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -130,5 +158,6 @@ public class RegisterActivity extends AppCompatActivity {
         etUsername.setEnabled(!show);
         etPassword.setEnabled(!show);
         etConfirmPassword.setEnabled(!show);
+        rgGender.setEnabled(!show);
     }
 }

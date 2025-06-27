@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.aiclothes.app-mergeDebugResources-45:/values-hy/values-hy.xml",
+            "outputFile": "com.aiclothes.app-mergeDebugResources-49:/values-hy/values-hy.xml",
             "map": [
                 {
                     "source": "/Users/easyimpr/.gradle/caches/8.12/transforms/81aa464d9e561aac5569ef20f57f3bdd/transformed/navigation-ui-2.7.4/res/values-hy/values-hy.xml",

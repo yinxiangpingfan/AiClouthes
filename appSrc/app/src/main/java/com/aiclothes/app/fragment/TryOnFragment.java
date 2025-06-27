@@ -624,6 +624,9 @@ public class TryOnFragment extends Fragment {
         btnStartTryOn.setAlpha(0.6f); // 降低透明度
         showLoading(true);
         
+        // 显示等待提示
+        Toast.makeText(getContext(), "AI试衣生成中，时间可能较长，请耐心等待，不要离开...", Toast.LENGTH_LONG).show();
+        
         String sex = null;
         if (!withModel) {
             sex = rbMale.isChecked() ? "male" : "female";

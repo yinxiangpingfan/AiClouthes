@@ -22,6 +22,7 @@ MERGED from [androidx.navigation:navigation-fragment:2.7.4] /Users/easyimpr/.gra
 MERGED from [androidx.navigation:navigation-ui:2.7.4] /Users/easyimpr/.gradle/caches/8.12/transforms/81aa464d9e561aac5569ef20f57f3bdd/transformed/navigation-ui-2.7.4/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.material:material:1.10.0] /Users/easyimpr/.gradle/caches/8.12/transforms/0cd69e8e26dd7e66522dd44e2c9238b1/transformed/material-1.10.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/easyimpr/.gradle/caches/8.12/transforms/3eb23d9c8315546ab7db82fe3331b27c/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
+MERGED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:17:1-43:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/easyimpr/.gradle/caches/8.12/transforms/27ece17d839d33636b8c52fd211f7895/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/easyimpr/.gradle/caches/8.12/transforms/530a4a66b57fcc344ec81b1b1ce271a8/transformed/appcompat-1.6.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager2:viewpager2:1.1.0-beta02] /Users/easyimpr/.gradle/caches/8.12/transforms/3f169f41a22cef4084345842f21d2838/transformed/viewpager2-1.1.0-beta02/AndroidManifest.xml:2:1-7:12
@@ -42,6 +43,7 @@ MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /Users/easyimpr
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7b467cd73d8e2c31df6788a449a9f478/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview:1.1.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6f3c429e8d1e2234104763fb2279ef17/transformed/customview-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/9ef7dae98976380cf34472fc36e6c825/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:17:1-23:12
+MERGED from [com.mikepenz:iconics-typeface-api:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/088330fe38e3d6e36661c5d10762b349/transformed/iconics-typeface-api-5.4.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/easyimpr/.gradle/caches/8.12/transforms/0ab29f8ebfd477715acad7235060d0a1/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/easyimpr/.gradle/caches/8.12/transforms/964c63829d63161d19bb265fc807d1b1/transformed/savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/29372e93a853b61d4bf3a033bd5ff8b0/transformed/lifecycle-runtime-ktx-2.7.0/AndroidManifest.xml:17:1-22:12
@@ -63,6 +65,8 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.7.0] /Users/easyimpr/.g
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/c2d94ac5726111b220e3d5a8a1931ec0/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [io.noties.markwon:html:4.6.2] /Users/easyimpr/.gradle/caches/8.12/transforms/61742be7b39ce81cb922035a13ef42a6/transformed/html-4.6.2/AndroidManifest.xml:2:1-11:12
 MERGED from [io.noties.markwon:core:4.6.2] /Users/easyimpr/.gradle/caches/8.12/transforms/bfddeacf0b45cb919f7bc27907d5d011/transformed/core-4.6.2/AndroidManifest.xml:2:1-11:12
+MERGED from [com.mikepenz:material-design-iconic-typeface:2.2.0.8-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/da911ff511ff2f31870cc5cc00e6e44a/transformed/material-design-iconic-typeface-2.2.0.8-kotlin/AndroidManifest.xml:17:1-39:12
+MERGED from [com.mikepenz:google-material-typeface:4.0.0.3-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/df03d4dc44f7ed4edcb5f83563b44221/transformed/google-material-typeface-4.0.0.3-kotlin/AndroidManifest.xml:17:1-35:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/28bfb515bcfc5f018d9b4c11da4bdafe/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7cc4e4624e41b9ae72b83a0eddcceb1b/transformed/gifdecoder-4.16.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.exifinterface:exifinterface:1.3.6] /Users/easyimpr/.gradle/caches/8.12/transforms/80e6b5baa5cf6719878edd18abffc739/transformed/exifinterface-1.3.6/AndroidManifest.xml:17:1-24:12
@@ -137,6 +141,8 @@ MERGED from [com.google.android.material:material:1.10.0] /Users/easyimpr/.gradl
 MERGED from [com.google.android.material:material:1.10.0] /Users/easyimpr/.gradle/caches/8.12/transforms/0cd69e8e26dd7e66522dd44e2c9238b1/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/easyimpr/.gradle/caches/8.12/transforms/3eb23d9c8315546ab7db82fe3331b27c/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/easyimpr/.gradle/caches/8.12/transforms/3eb23d9c8315546ab7db82fe3331b27c/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
+MERGED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:25:5-41:19
+MERGED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:25:5-41:19
 MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:23:5-33:19
@@ -145,6 +151,10 @@ MERGED from [androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/t
 MERGED from [androidx.window:window:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/a7e58ffa5c0c44821ec50e651d947ffe/transformed/window-1.0.0/AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:28:5-89
 MERGED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:28:5-89
+MERGED from [com.mikepenz:material-design-iconic-typeface:2.2.0.8-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/da911ff511ff2f31870cc5cc00e6e44a/transformed/material-design-iconic-typeface-2.2.0.8-kotlin/AndroidManifest.xml:27:5-37:19
+MERGED from [com.mikepenz:material-design-iconic-typeface:2.2.0.8-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/da911ff511ff2f31870cc5cc00e6e44a/transformed/material-design-iconic-typeface-2.2.0.8-kotlin/AndroidManifest.xml:27:5-37:19
+MERGED from [com.mikepenz:google-material-typeface:4.0.0.3-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/df03d4dc44f7ed4edcb5f83563b44221/transformed/google-material-typeface-4.0.0.3-kotlin/AndroidManifest.xml:23:5-33:19
+MERGED from [com.mikepenz:google-material-typeface:4.0.0.3-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/df03d4dc44f7ed4edcb5f83563b44221/transformed/google-material-typeface-4.0.0.3-kotlin/AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:23:5-53:19
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:23:5-53:19
 MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/afc6cc2209eac397185d59fa05df012d/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
@@ -237,6 +247,8 @@ MERGED from [com.google.android.material:material:1.10.0] /Users/easyimpr/.gradl
 MERGED from [com.google.android.material:material:1.10.0] /Users/easyimpr/.gradle/caches/8.12/transforms/0cd69e8e26dd7e66522dd44e2c9238b1/transformed/material-1.10.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/easyimpr/.gradle/caches/8.12/transforms/3eb23d9c8315546ab7db82fe3331b27c/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/easyimpr/.gradle/caches/8.12/transforms/3eb23d9c8315546ab7db82fe3331b27c/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
+MERGED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:21:5-23:41
+MERGED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/easyimpr/.gradle/caches/8.12/transforms/27ece17d839d33636b8c52fd211f7895/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/easyimpr/.gradle/caches/8.12/transforms/27ece17d839d33636b8c52fd211f7895/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/easyimpr/.gradle/caches/8.12/transforms/530a4a66b57fcc344ec81b1b1ce271a8/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
@@ -277,6 +289,8 @@ MERGED from [androidx.customview:customview:1.1.0] /Users/easyimpr/.gradle/cache
 MERGED from [androidx.customview:customview:1.1.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6f3c429e8d1e2234104763fb2279ef17/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/9ef7dae98976380cf34472fc36e6c825/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
 MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/9ef7dae98976380cf34472fc36e6c825/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [com.mikepenz:iconics-typeface-api:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/088330fe38e3d6e36661c5d10762b349/transformed/iconics-typeface-api-5.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.mikepenz:iconics-typeface-api:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/088330fe38e3d6e36661c5d10762b349/transformed/iconics-typeface-api-5.4.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/easyimpr/.gradle/caches/8.12/transforms/0ab29f8ebfd477715acad7235060d0a1/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /Users/easyimpr/.gradle/caches/8.12/transforms/0ab29f8ebfd477715acad7235060d0a1/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/easyimpr/.gradle/caches/8.12/transforms/964c63829d63161d19bb265fc807d1b1/transformed/savedstate-1.2.1/AndroidManifest.xml:20:5-44
@@ -319,6 +333,10 @@ MERGED from [io.noties.markwon:html:4.6.2] /Users/easyimpr/.gradle/caches/8.12/t
 MERGED from [io.noties.markwon:html:4.6.2] /Users/easyimpr/.gradle/caches/8.12/transforms/61742be7b39ce81cb922035a13ef42a6/transformed/html-4.6.2/AndroidManifest.xml:7:5-9:41
 MERGED from [io.noties.markwon:core:4.6.2] /Users/easyimpr/.gradle/caches/8.12/transforms/bfddeacf0b45cb919f7bc27907d5d011/transformed/core-4.6.2/AndroidManifest.xml:7:5-9:41
 MERGED from [io.noties.markwon:core:4.6.2] /Users/easyimpr/.gradle/caches/8.12/transforms/bfddeacf0b45cb919f7bc27907d5d011/transformed/core-4.6.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.mikepenz:material-design-iconic-typeface:2.2.0.8-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/da911ff511ff2f31870cc5cc00e6e44a/transformed/material-design-iconic-typeface-2.2.0.8-kotlin/AndroidManifest.xml:23:5-25:41
+MERGED from [com.mikepenz:material-design-iconic-typeface:2.2.0.8-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/da911ff511ff2f31870cc5cc00e6e44a/transformed/material-design-iconic-typeface-2.2.0.8-kotlin/AndroidManifest.xml:23:5-25:41
+MERGED from [com.mikepenz:google-material-typeface:4.0.0.3-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/df03d4dc44f7ed4edcb5f83563b44221/transformed/google-material-typeface-4.0.0.3-kotlin/AndroidManifest.xml:21:5-44
+MERGED from [com.mikepenz:google-material-typeface:4.0.0.3-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/df03d4dc44f7ed4edcb5f83563b44221/transformed/google-material-typeface-4.0.0.3-kotlin/AndroidManifest.xml:21:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/28bfb515bcfc5f018d9b4c11da4bdafe/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/easyimpr/.gradle/caches/8.12/transforms/28bfb515bcfc5f018d9b4c11da4bdafe/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7cc4e4624e41b9ae72b83a0eddcceb1b/transformed/gifdecoder-4.16.0/AndroidManifest.xml:5:5-7:41
@@ -350,21 +368,45 @@ MERGED from [androidx.annotation:annotation-experimental:1.3.0] /Users/easyimpr/
 	android:minSdkVersion
 		INJECTED from /Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/src/main/AndroidManifest.xml
 provider#androidx.startup.InitializationProvider
-ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+ADDED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:26:9-40:20
+MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
 MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:24:9-32:20
 MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /Users/easyimpr/.gradle/caches/8.12/transforms/98f8a783f3e52ae09dee4af245c39cef/transformed/lifecycle-process-2.7.0/AndroidManifest.xml:24:9-32:20
+MERGED from [com.mikepenz:material-design-iconic-typeface:2.2.0.8-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/da911ff511ff2f31870cc5cc00e6e44a/transformed/material-design-iconic-typeface-2.2.0.8-kotlin/AndroidManifest.xml:28:9-36:20
+MERGED from [com.mikepenz:material-design-iconic-typeface:2.2.0.8-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/da911ff511ff2f31870cc5cc00e6e44a/transformed/material-design-iconic-typeface-2.2.0.8-kotlin/AndroidManifest.xml:28:9-36:20
+MERGED from [com.mikepenz:google-material-typeface:4.0.0.3-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/df03d4dc44f7ed4edcb5f83563b44221/transformed/google-material-typeface-4.0.0.3-kotlin/AndroidManifest.xml:24:9-32:20
+MERGED from [com.mikepenz:google-material-typeface:4.0.0.3-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/df03d4dc44f7ed4edcb5f83563b44221/transformed/google-material-typeface-4.0.0.3-kotlin/AndroidManifest.xml:24:9-32:20
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20
 MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/afc6cc2209eac397185d59fa05df012d/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
 MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/easyimpr/.gradle/caches/8.12/transforms/afc6cc2209eac397185d59fa05df012d/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
 	tools:node
-		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:28:13-31
+		ADDED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:30:13-31
 	android:authorities
-		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+		ADDED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:28:13-68
 	android:exported
-		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+		ADDED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:29:13-37
 	android:name
-		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+		ADDED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:27:13-67
+meta-data#com.mikepenz.iconics.animation.SpinProcessor
+ADDED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:31:13-33:52
+	android:value
+		ADDED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:33:17-49
+	android:name
+		ADDED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:32:17-76
+meta-data#com.mikepenz.iconics.animation.BlinkAlphaProcessor
+ADDED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:34:13-36:52
+	android:value
+		ADDED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:36:17-49
+	android:name
+		ADDED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:35:17-82
+meta-data#com.mikepenz.iconics.animation.BlinkScaleProcessor
+ADDED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:37:13-39:52
+	android:value
+		ADDED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:39:17-49
+	android:name
+		ADDED from [com.mikepenz:iconics-core:5.4.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7c7a2d50d3e150f2f7ca8758a5721eae/transformed/iconics-core-5.4.0/AndroidManifest.xml:38:17-82
 meta-data#androidx.emoji2.text.EmojiCompatInitializer
 ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/easyimpr/.gradle/caches/8.12/transforms/55f06d0089b1dd1cc8e72356d3268c7d/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
 	android:value
@@ -409,6 +451,18 @@ uses-permission#com.aiclothes.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.9.0] /Users/easyimpr/.gradle/caches/8.12/transforms/6743cb5246d222a263a575759be8a733/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+meta-data#com.mikepenz.iconics.typeface.library.materialdesigniconic.Initializer
+ADDED from [com.mikepenz:material-design-iconic-typeface:2.2.0.8-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/da911ff511ff2f31870cc5cc00e6e44a/transformed/material-design-iconic-typeface-2.2.0.8-kotlin/AndroidManifest.xml:33:13-35:52
+	android:value
+		ADDED from [com.mikepenz:material-design-iconic-typeface:2.2.0.8-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/da911ff511ff2f31870cc5cc00e6e44a/transformed/material-design-iconic-typeface-2.2.0.8-kotlin/AndroidManifest.xml:35:17-49
+	android:name
+		ADDED from [com.mikepenz:material-design-iconic-typeface:2.2.0.8-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/da911ff511ff2f31870cc5cc00e6e44a/transformed/material-design-iconic-typeface-2.2.0.8-kotlin/AndroidManifest.xml:34:17-102
+meta-data#com.mikepenz.iconics.typeface.library.googlematerial.Initializer
+ADDED from [com.mikepenz:google-material-typeface:4.0.0.3-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/df03d4dc44f7ed4edcb5f83563b44221/transformed/google-material-typeface-4.0.0.3-kotlin/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [com.mikepenz:google-material-typeface:4.0.0.3-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/df03d4dc44f7ed4edcb5f83563b44221/transformed/google-material-typeface-4.0.0.3-kotlin/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [com.mikepenz:google-material-typeface:4.0.0.3-kotlin] /Users/easyimpr/.gradle/caches/8.12/transforms/df03d4dc44f7ed4edcb5f83563b44221/transformed/google-material-typeface-4.0.0.3-kotlin/AndroidManifest.xml:30:17-96
 meta-data#androidx.profileinstaller.ProfileInstallerInitializer
 ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /Users/easyimpr/.gradle/caches/8.12/transforms/7032da171e6a026885f0e8adfd307019/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
 	android:value

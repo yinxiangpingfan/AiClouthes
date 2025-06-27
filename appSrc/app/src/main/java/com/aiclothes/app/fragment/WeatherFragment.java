@@ -143,6 +143,9 @@ public class WeatherFragment extends Fragment {
         showLoading(true);
         isLocationMode = true;
         
+        // 显示等待提示
+        Toast.makeText(getContext(), "正在获取位置信息，请耐心等待...", Toast.LENGTH_SHORT).show();
+        
         LocationUtils.getCurrentLocation(requireContext(), new LocationUtils.LocationCallback() {
             @Override
             public void onLocationReceived(double latitude, double longitude, String cityName) {
@@ -199,6 +202,9 @@ public class WeatherFragment extends Fragment {
         }
         
         showLoading(true);
+        
+        // 显示等待提示
+        Toast.makeText(getContext(), "正在获取天气信息，请耐心等待...", Toast.LENGTH_SHORT).show();
         
         apiService.getWeather(selectedAdcode, new ApiService.ApiCallback<JsonObject>() {
             @Override
@@ -285,6 +291,9 @@ public class WeatherFragment extends Fragment {
         
         showLoading(true);
         
+        // 显示等待提示
+        Toast.makeText(getContext(), "获取穿搭推荐中，时间可能较长，请耐心等待，不要离开...", Toast.LENGTH_LONG).show();
+        
         // 构建天气描述
         WeatherData.Forecast forecast = currentWeatherData.getForecasts().get(0);
         WeatherData.Cast todayCast = forecast.getCasts().get(0);
@@ -349,6 +358,9 @@ public class WeatherFragment extends Fragment {
         }
         
         showLoading(true);
+        
+        // 显示等待提示
+        Toast.makeText(getContext(), "推荐图片生成中，时间可能较长，请耐心等待，不要离开...", Toast.LENGTH_LONG).show();
         
         ClothingRecommendation.ClothingMatch match = currentRecommendation.getClothingMatch();
         
