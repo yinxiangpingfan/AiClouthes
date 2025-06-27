@@ -202,6 +202,9 @@ public class WeatherFragment extends Fragment {
         }
         
         showLoading(true);
+        // 禁用按钮防止重复点击
+        btnGetLocation.setEnabled(false);
+        btnSelectCity.setEnabled(false);
         
         // 显示等待提示
         Toast.makeText(getContext(), "正在获取天气信息，请耐心等待...", Toast.LENGTH_SHORT).show();
@@ -212,6 +215,10 @@ public class WeatherFragment extends Fragment {
                 if (getActivity() != null) {
                     getActivity().runOnUiThread(() -> {
                         showLoading(false);
+                        // 重新启用按钮
+                        btnGetLocation.setEnabled(true);
+                        btnSelectCity.setEnabled(true);
+                        btnGetRecommendation.setEnabled(true);
                         try {
                             // 检查响应状态
                             int code = response.get("code").getAsInt();
@@ -249,6 +256,9 @@ public class WeatherFragment extends Fragment {
                 if (getActivity() != null) {
                     getActivity().runOnUiThread(() -> {
                         showLoading(false);
+                        // 重新启用按钮
+                        btnGetLocation.setEnabled(true);
+                        btnSelectCity.setEnabled(true);
                         Toast.makeText(getContext(), "获取天气失败：" + error, Toast.LENGTH_SHORT).show();
                     });
                 }
@@ -290,6 +300,8 @@ public class WeatherFragment extends Fragment {
         }
         
         showLoading(true);
+        // 禁用按钮防止重复点击
+        btnGetRecommendation.setEnabled(false);
         
         // 显示等待提示
         Toast.makeText(getContext(), "获取穿搭推荐中，时间可能较长，请耐心等待，不要离开...", Toast.LENGTH_LONG).show();
@@ -305,6 +317,8 @@ public class WeatherFragment extends Fragment {
                 if (getActivity() != null) {
                     getActivity().runOnUiThread(() -> {
                         showLoading(false);
+                        // 重新启用按钮
+                        btnGetRecommendation.setEnabled(true);
                         try {
                             // 检查响应状态
                             int code = response.get("code").getAsInt();
@@ -336,6 +350,8 @@ public class WeatherFragment extends Fragment {
                 if (getActivity() != null) {
                     getActivity().runOnUiThread(() -> {
                         showLoading(false);
+                        // 重新启用按钮
+                        btnGetRecommendation.setEnabled(true);
                         Toast.makeText(getContext(), "获取推荐失败：" + error, Toast.LENGTH_SHORT).show();
                     });
                 }
@@ -358,6 +374,8 @@ public class WeatherFragment extends Fragment {
         }
         
         showLoading(true);
+        // 禁用按钮防止重复点击
+        btnGenerateImage.setEnabled(false);
         
         // 显示等待提示
         Toast.makeText(getContext(), "推荐图片生成中，时间可能较长，请耐心等待，不要离开...", Toast.LENGTH_LONG).show();
@@ -372,6 +390,8 @@ public class WeatherFragment extends Fragment {
                     if (getActivity() != null) {
                         getActivity().runOnUiThread(() -> {
                             showLoading(false);
+                            // 重新启用按钮
+                            btnGenerateImage.setEnabled(true);
                             try {
                                 JSONObject jsonObject = new JSONObject(responseStr);
                                 String imageUrl = jsonObject.optString("url").trim();
@@ -402,6 +422,8 @@ public class WeatherFragment extends Fragment {
                     if (getActivity() != null) {
                         getActivity().runOnUiThread(() -> {
                             showLoading(false);
+                            // 重新启用按钮
+                            btnGenerateImage.setEnabled(true);
                             Toast.makeText(getContext(), "生成图片失败：" + error, Toast.LENGTH_SHORT).show();
                         });
                     }

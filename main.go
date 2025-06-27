@@ -22,7 +22,9 @@ func main() {
 	config.GetConfig(&config.Configs)
 	//启动数据库
 	database.OpenDatabase()
-	app := fiber.New()
+	app := fiber.New(fiber.Config{
+		BodyLimit: 50 * 1024 * 1024, // 50MB
+	})
 	// 关键：CORS 中间件必须放在最前面
 	app.Use(cors.New(cors.Config{
 		// 允许的前端域名（生产+开发环境）

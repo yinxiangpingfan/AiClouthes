@@ -329,6 +329,14 @@ public class WardrobeFragment extends Fragment {
             return;
         }
         
+        // 禁用按钮防止重复点击
+        btnAnalyzeWardrobe.setEnabled(false);
+        btnGenerateImage.setEnabled(false);
+        btnGenerateRecommendation.setEnabled(false);
+        
+        // 显示加载指示器
+        showLoading(true);
+        
         // 先上传图片，然后进行分析
         uploadPhotosAndAnalyze(purpose);
     }
@@ -413,6 +421,9 @@ public class WardrobeFragment extends Fragment {
                     showLoading(false);
                     wardrobeAnalysisResult = analysisTextBuilder.toString();
                     Log.d("WardrobeFragment", "最终分析结果长度: " + wardrobeAnalysisResult.length());
+                    
+                    // 重新启用按钮
+                    btnAnalyzeWardrobe.setEnabled(true);
                     btnGenerateImage.setEnabled(true);
                     btnGenerateRecommendation.setEnabled(true);
                     
@@ -428,6 +439,12 @@ public class WardrobeFragment extends Fragment {
                 Log.e("WardrobeFragment", "流式响应错误: " + error);
                 if (getActivity() != null && isAdded()) {
                     showLoading(false);
+                    
+                    // 重新启用按钮
+                    btnAnalyzeWardrobe.setEnabled(true);
+                    btnGenerateImage.setEnabled(false); // 分析失败时不能生成图片
+                    btnGenerateRecommendation.setEnabled(false);
+                    
                     showError("分析失败：" + error);
                 } else {
                     Log.w("WardrobeFragment", "onError: Fragment未添加或Activity为空");
@@ -467,6 +484,10 @@ public class WardrobeFragment extends Fragment {
             return;
         }
         
+        // 禁用按钮防止重复点击
+        btnGenerateImage.setEnabled(false);
+        btnGenerateRecommendation.setEnabled(false);
+        
         showLoading(true);
         
         // 显示等待提示
@@ -486,6 +507,10 @@ public class WardrobeFragment extends Fragment {
                             if (!TextUtils.isEmpty(imageUrl)) {
                                 // 显示推荐图片卡片
                                 cardRecommendationImage.setVisibility(View.VISIBLE);
+                                
+                                // 重新启用按钮
+                                btnGenerateImage.setEnabled(true);
+                                btnGenerateRecommendation.setEnabled(true);
                                 
                                 // 使用Glide加载图片到专用的推荐图片显示区域
                                 Glide.with(WardrobeFragment.this)
@@ -507,6 +532,9 @@ public class WardrobeFragment extends Fragment {
                                         })
                                         .into(ivRecommendationDisplay);
                             } else {
+                                // 重新启用按钮
+                                btnGenerateImage.setEnabled(true);
+                                btnGenerateRecommendation.setEnabled(true);
                                 Toast.makeText(getContext(), "生成图片失败", Toast.LENGTH_SHORT).show();
                             }
                         } catch (Exception e) {
@@ -520,6 +548,9 @@ public class WardrobeFragment extends Fragment {
             @Override
             public void onError(String error) {
                 showError("生成图片失败：" + error);
+                // 重新启用按钮
+                btnGenerateImage.setEnabled(true);
+                btnGenerateRecommendation.setEnabled(true);
             }
         });
     }
