@@ -131,7 +131,7 @@ public class ImageUtils {
     public static boolean isFileSizeValid(File file) {
         long fileSizeInBytes = file.length();
         long fileSizeInKB = fileSizeInBytes / 1024;
-        long fileSizeInMB = fileSizeInKB / 1024;
+        long fileSizeInMB = fileSizeInBytes / (1024 * 1024);
         
         return fileSizeInKB >= 5 && fileSizeInMB <= 5;
     }
