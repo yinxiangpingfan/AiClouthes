@@ -147,15 +147,8 @@ public class ProfileFragment extends Fragment {
                                     break;
                                 case 1101:
                                 case 1102:
-                                    // 需要重新登录
-                                    Toast.makeText(getContext(), "登录已过期，请重新登录", Toast.LENGTH_SHORT).show();
-                                    // 跳转到登录页面
-                                    Intent intent = new Intent(getActivity(), com.aiclothes.app.activity.LoginActivity.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(intent);
-                                    if (getActivity() != null) {
-                                        getActivity().finish();
-                                    }
+                                    // 登录过期处理已由ApiService统一处理
+                                    // 这里不需要额外处理，ApiService会自动跳转到登录页面
                                     break;
                                 default:
                                     // 其他错误

@@ -47,6 +47,17 @@ public class ApiService {
     private Gson gson;
     private Context context;
     private SharedPreferences prefs;
+    private LoginExpiredListener loginExpiredListener;
+    
+    // 登录过期监听器接口
+    public interface LoginExpiredListener {
+        void onLoginExpired();
+    }
+    
+    // 设置登录过期监听器
+    public void setLoginExpiredListener(LoginExpiredListener listener) {
+        this.loginExpiredListener = listener;
+    }
 
     private ApiService(Context context) {
         this.context = context.getApplicationContext();
@@ -526,7 +537,28 @@ public class ApiService {
                     if (responseBody != null && !responseBody.trim().isEmpty()) {
                         try {
                             JsonObject jsonObject = JsonParser.parseString(responseBody).getAsJsonObject();
-                            // 直接传递整个JsonObject给callback，让上层处理具体的错误码
+                            
+                            // 检查是否有错误码字段，如果有则进入正常的错误码处理流程
+                            if (jsonObject.has("code")) {
+                                int code = jsonObject.get("code").getAsInt();
+                                Log.d(TAG, "HTTP错误响应中的错误码: " + code);
+                                
+                                // 检查是否需要重新登录
+                                if (code == 1101 || code == 1102) {
+                                    Log.w(TAG, "登录已过期，清除token并跳转到登录界面");
+                                    clearToken();
+                                    new Handler(Looper.getMainLooper()).post(() -> {
+                                        // 先通知登录过期监听器
+                                        if (loginExpiredListener != null) {
+                                            loginExpiredListener.onLoginExpired();
+                                        }
+                                        callback.onError("登录已过期，请重新登录");
+                                    });
+                                    return;
+                                }
+                            }
+                            
+                            // 对于其他HTTP错误，传递JsonObject给callback处理
                             new Handler(Looper.getMainLooper()).post(() -> {
                                 callback.onSuccess(jsonObject);
                             });
@@ -568,10 +600,14 @@ public class ApiService {
                     
                     // 检查是否需要重新登录
                     if (code == 1101 || code == 1102) {
-                        Log.w(TAG, "需要重新登录，清除token");
+                        Log.w(TAG, "登录已过期，清除token并跳转到登录界面");
                         clearToken();
                         new Handler(Looper.getMainLooper()).post(() -> {
-                            callback.onError("请重新登录");
+                            // 先通知登录过期监听器
+                            if (loginExpiredListener != null) {
+                                loginExpiredListener.onLoginExpired();
+                            }
+                            callback.onError("登录已过期，请重新登录");
                         });
                         return;
                     }

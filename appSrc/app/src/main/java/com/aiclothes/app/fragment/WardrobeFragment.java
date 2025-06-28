@@ -186,7 +186,7 @@ public class WardrobeFragment extends Fragment {
                         if (imageFile != null && !ImageUtils.isWardrobeFileSizeValid(imageFile)) {
                             String fileName = imageFile.getName();
                             String fileSize = ImageUtils.getFileSizeDescription(imageFile);
-                            Toast.makeText(getContext(), "文件 " + fileName + " (" + fileSize + ") 超过10MB限制，已跳过", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), "文件 " + fileName + " (" + fileSize + ") 不符合大小要求（5KB-5MB），已跳过", Toast.LENGTH_LONG).show();
                             continue;
                         }
                         
@@ -201,7 +201,7 @@ public class WardrobeFragment extends Fragment {
                     if (imageFile != null && !ImageUtils.isWardrobeFileSizeValid(imageFile)) {
                         String fileName = imageFile.getName();
                         String fileSize = ImageUtils.getFileSizeDescription(imageFile);
-                        Toast.makeText(getContext(), "文件 " + fileName + " (" + fileSize + ") 超过10MB限制", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "文件 " + fileName + " (" + fileSize + ") 不符合大小要求（5KB-5MB）", Toast.LENGTH_LONG).show();
                         return;
                     }
                     
@@ -247,9 +247,28 @@ public class WardrobeFragment extends Fragment {
             return;
         }
         
-        if (!ImageUtils.isWardrobeFileSizeValid(imageFile)) {
-            Toast.makeText(getContext(), "图片大小不符合要求（10MB以下）", Toast.LENGTH_SHORT).show();
+        // 检查文件大小并进行压缩处理
+        long fileSize = imageFile.length();
+        if (fileSize < 5 * 1024) { // 小于5KB
+            Toast.makeText(getContext(), "图片文件太小（最小5KB）", Toast.LENGTH_SHORT).show();
             return;
+        } else if (fileSize > 5 * 1024 * 1024) { // 大于5MB
+            Log.w("WardrobeFragment", "图片文件较大，开始压缩: " + fileSize + " bytes");
+            try {
+                imageFile = ImageUtils.compressImage(imageFile, 1024, 1024, 80);
+                Log.d("WardrobeFragment", "图片压缩完成，新大小: " + imageFile.length() + " bytes (" + ImageUtils.getFileSizeDescription(imageFile) + ")");
+                
+                // 压缩后再次检查大小
+                if (!ImageUtils.isWardrobeFileSizeValid(imageFile)) {
+                    Log.e("WardrobeFragment", "压缩后文件仍不符合要求");
+                    Toast.makeText(getContext(), "图片文件大小不符合要求（5KB-5MB）", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            } catch (Exception e) {
+                Log.e("WardrobeFragment", "图片压缩失败", e);
+                Toast.makeText(getContext(), "图片处理失败", Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
         
         // 添加到列表

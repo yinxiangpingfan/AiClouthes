@@ -93,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="文件大小：10MB以下"
+                    android:text="建议文件大小：5KB-5MB"
                     android:textColor="@color/text_secondary"
                     android:textSize="12sp" />
 

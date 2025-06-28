@@ -1,15 +1,91 @@
 [
     {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_gradient_secondary.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/gradient_secondary.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_image_placeholder.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/image_placeholder.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/layout_fragment_profile.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/layout/fragment_profile.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_gradient_tertiary.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/gradient_tertiary.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/layout_activity_main.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/mipmap-xhdpi_ic_launcher.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/mipmap-xhdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/mipmap-hdpi_ic_launcher.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/mipmap-hdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_ic_weather.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/ic_weather.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_ic_person.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/ic_person.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_ic_cloud_sun.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/ic_cloud_sun.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_ic_lock.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/ic_lock.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/layout_fragment_wardrobe.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/layout/fragment_wardrobe.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_ic_image_error.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/ic_image_error.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/layout_fragment_try_on.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/layout/fragment_try_on.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_circle_background.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/circle_background.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/mipmap-xxhdpi_ic_launcher_round.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/mipmap-xxhdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/mipmap-hdpi_ic_launcher_round.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/mipmap-hdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/layout_fragment_weather.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/layout/fragment_weather.xml"
+    },
+    {
+        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/mipmap-xxhdpi_ic_launcher.xml.flat",
+        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/mipmap-xxhdpi/ic_launcher.xml"
+    },
+    {
         "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_gradient_accent.xml.flat",
         "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/gradient_accent.xml"
     },
     {
         "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_ic_arrow_right.xml.flat",
         "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/ic_arrow_right.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_gradient_secondary.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/gradient_secondary.xml"
     },
     {
         "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/layout_activity_login.xml.flat",
@@ -32,28 +108,12 @@
         "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/app_logo.jpg"
     },
     {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/xml_data_extraction_rules.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/xml/data_extraction_rules.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_image_placeholder.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/image_placeholder.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/layout_fragment_profile.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/layout/fragment_profile.xml"
+        "merged": "com.aiclothes.app-merged_res-51:/layout_fragment_wardrobe.xml.flat",
+        "source": "com.aiclothes.app-main-53:/layout/fragment_wardrobe.xml"
     },
     {
         "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/xml_network_security_config.xml.flat",
         "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/xml/network_security_config.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_gradient_tertiary.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/gradient_tertiary.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/layout_activity_main.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/layout/activity_main.xml"
     },
     {
         "merged": "com.aiclothes.app-merged_res-51:/layout_fragment_try_on.xml.flat",
@@ -64,28 +124,12 @@
         "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/mipmap-mdpi/ic_launcher.xml"
     },
     {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/mipmap-xhdpi_ic_launcher.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/mipmap-xhdpi/ic_launcher.xml"
-    },
-    {
         "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_gradient_primary.xml.flat",
         "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/gradient_primary.xml"
     },
     {
         "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_ic_shirt.xml.flat",
         "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/ic_shirt.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/mipmap-hdpi_ic_launcher.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/mipmap-hdpi/ic_launcher.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_ic_weather.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/ic_weather.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_ic_person.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/ic_person.xml"
     },
     {
         "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/mipmap-xhdpi_ic_launcher_round.xml.flat",
@@ -96,40 +140,12 @@
         "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/menu/bottom_navigation.xml"
     },
     {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/layout_fragment_wardrobe.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/layout/fragment_wardrobe.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_ic_lock.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/ic_lock.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_ic_cloud_sun.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/ic_cloud_sun.xml"
-    },
-    {
         "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_button_secondary.xml.flat",
         "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/button_secondary.xml"
     },
     {
         "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_ic_logout.xml.flat",
         "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/ic_logout.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_ic_image_error.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/ic_image_error.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_circle_background.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/circle_background.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/mipmap-xxhdpi_ic_launcher_round.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/mipmap-xxhdpi/ic_launcher_round.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/layout_fragment_try_on.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/layout/fragment_try_on.xml"
     },
     {
         "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_ic_wardrobe.xml.flat",
@@ -144,24 +160,12 @@
         "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/button_primary.xml"
     },
     {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/mipmap-hdpi_ic_launcher_round.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/mipmap-hdpi/ic_launcher_round.xml"
-    },
-    {
         "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/layout_fragment_home.xml.flat",
         "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/layout/fragment_home.xml"
     },
     {
         "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/drawable_ic_try_on.xml.flat",
         "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/drawable/ic_try_on.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/layout_fragment_weather.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/layout/fragment_weather.xml"
-    },
-    {
-        "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/mipmap-xxhdpi_ic_launcher.xml.flat",
-        "source": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-main-53:/mipmap-xxhdpi/ic_launcher.xml"
     },
     {
         "merged": "/Users/easyimpr/.gradle/daemon/8.12/com.aiclothes.app-merged_res-51:/layout_dialog_change_password.xml.flat",

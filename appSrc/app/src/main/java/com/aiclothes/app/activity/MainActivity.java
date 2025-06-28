@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         
         apiService = ApiService.getInstance(this);
         
+        // 设置登录过期监听器
+        apiService.setLoginExpiredListener(() -> {
+            Toast.makeText(MainActivity.this, "登录已过期，请重新登录", Toast.LENGTH_LONG).show();
+            redirectToLogin();
+        });
+        
         // 检查登录状态
         if (!checkLoginStatus()) {
             redirectToLogin();

@@ -136,12 +136,13 @@ public class ImageUtils {
         return fileSizeInKB >= 5 && fileSizeInMB <= 5;
     }
     
-    // 检查文件大小 (AI衣橱管理功能: 10MB以下)
+    // 检查文件大小 (AI衣橱管理功能: 5KB-5MB)
     public static boolean isWardrobeFileSizeValid(File file) {
         long fileSizeInBytes = file.length();
+        long fileSizeInKB = fileSizeInBytes / 1024;
         long fileSizeInMB = fileSizeInBytes / (1024 * 1024);
         
-        return fileSizeInMB <= 10;
+        return fileSizeInKB >= 5 && fileSizeInMB <= 5;
     }
     
     // 检查图片格式
