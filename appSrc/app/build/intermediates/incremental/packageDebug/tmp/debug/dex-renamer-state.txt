@@ -1,4 +1,4 @@
-#Sat Jun 28 18:47:44 CST 2025
+#Sat Jun 28 21:21:29 CST 2025
 base.0=/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 base.2=/Users/easyimpr/Documents/ai_clouthes_backed/appSrc/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex

@@ -23,12 +23,13 @@ import com.aiclothes.app.R;
 import com.aiclothes.app.activity.LoginActivity;
 import android.content.Intent;
 import com.aiclothes.app.network.ApiService;
+import com.aiclothes.app.utils.CacheManager;
 
 import org.json.JSONObject;
 
 public class ProfileFragment extends Fragment {
-    private TextView tvUsername;
-    private CardView cardChangePassword, cardLogout, cardAbout;
+    private TextView tvUsername, tvCacheSize;
+    private CardView cardChangePassword, cardLogout, cardAbout, cardCacheManagement;
     private ProgressBar progressBar;
     
     private ApiService apiService;
@@ -45,9 +46,11 @@ public class ProfileFragment extends Fragment {
     
     private void initViews(View view) {
         tvUsername = view.findViewById(R.id.tv_username);
+        tvCacheSize = view.findViewById(R.id.tv_cache_size);
         cardChangePassword = view.findViewById(R.id.card_change_password);
         cardLogout = view.findViewById(R.id.card_logout);
         cardAbout = view.findViewById(R.id.card_about);
+        cardCacheManagement = view.findViewById(R.id.card_cache_management);
         progressBar = view.findViewById(R.id.progress_bar);
     }
     
@@ -58,12 +61,16 @@ public class ProfileFragment extends Fragment {
         String username = getContext().getSharedPreferences("app_prefs", getContext().MODE_PRIVATE)
                 .getString("username", "用户");
         tvUsername.setText(username);
+        
+        // 更新缓存大小显示
+        updateCacheSize();
     }
     
     private void initListeners() {
         cardChangePassword.setOnClickListener(v -> showChangePasswordDialog());
         cardLogout.setOnClickListener(v -> showLogoutDialog());
         cardAbout.setOnClickListener(v -> showAboutDialog());
+        cardCacheManagement.setOnClickListener(v -> showCacheManagementDialog());
     }
     
     private void showChangePasswordDialog() {
@@ -240,5 +247,130 @@ public class ProfileFragment extends Fragment {
         if (progressBar != null) {
             progressBar.setVisibility(show ? View.VISIBLE : View.GONE);
         }
+    }
+    
+    private void updateCacheSize() {
+        new Thread(() -> {
+            String cacheInfo = CacheManager.getCacheSizeInfo(getContext());
+            if (getActivity() != null) {
+                getActivity().runOnUiThread(() -> {
+                    if (tvCacheSize != null) {
+                        tvCacheSize.setText(cacheInfo);
+                    }
+                });
+            }
+        }).start();
+    }
+    
+    private void showCacheManagementDialog() {
+        String[] options = {"清理衣橱缓存", "清理试衣缓存", "清理所有缓存", "查看缓存详情"};
+        
+        new AlertDialog.Builder(getContext())
+                .setTitle("缓存管理")
+                .setItems(options, (dialog, which) -> {
+                    switch (which) {
+                        case 0:
+                            clearWardrobeCache();
+                            break;
+                        case 1:
+                            clearTryOnCache();
+                            break;
+                        case 2:
+                            clearAllCache();
+                            break;
+                        case 3:
+                            showCacheDetails();
+                            break;
+                    }
+                })
+                .setNegativeButton("取消", null)
+                .show();
+    }
+    
+    private void clearWardrobeCache() {
+        new AlertDialog.Builder(getContext())
+                .setTitle("清理衣橱缓存")
+                .setMessage("确定要清理衣橱相关的缓存图片吗？")
+                .setPositiveButton("确定", (dialog, which) -> {
+                    showLoading(true);
+                    new Thread(() -> {
+                        CacheManager.clearWardrobeCache(getContext());
+                        if (getActivity() != null) {
+                            getActivity().runOnUiThread(() -> {
+                                showLoading(false);
+                                Toast.makeText(getContext(), "衣橱缓存已清理", Toast.LENGTH_SHORT).show();
+                                updateCacheSize();
+                            });
+                        }
+                    }).start();
+                })
+                .setNegativeButton("取消", null)
+                .show();
+    }
+    
+    private void clearTryOnCache() {
+        new AlertDialog.Builder(getContext())
+                .setTitle("清理试衣缓存")
+                .setMessage("确定要清理试衣相关的缓存图片吗？")
+                .setPositiveButton("确定", (dialog, which) -> {
+                    showLoading(true);
+                    new Thread(() -> {
+                        CacheManager.clearTryOnCache(getContext(), false);
+                        if (getActivity() != null) {
+                            getActivity().runOnUiThread(() -> {
+                                showLoading(false);
+                                Toast.makeText(getContext(), "试衣缓存已清理", Toast.LENGTH_SHORT).show();
+                                updateCacheSize();
+                            });
+                        }
+                    }).start();
+                })
+                .setNegativeButton("取消", null)
+                .show();
+    }
+    
+    private void clearAllCache() {
+        new AlertDialog.Builder(getContext())
+                .setTitle("清理所有缓存")
+                .setMessage("确定要清理所有缓存数据吗？这将释放更多存储空间。")
+                .setPositiveButton("确定", (dialog, which) -> {
+                    showLoading(true);
+                    new Thread(() -> {
+                        CacheManager.clearAllImageCache(getContext());
+                        if (getActivity() != null) {
+                            getActivity().runOnUiThread(() -> {
+                                showLoading(false);
+                                Toast.makeText(getContext(), "所有缓存已清理", Toast.LENGTH_SHORT).show();
+                                updateCacheSize();
+                            });
+                        }
+                    }).start();
+                })
+                .setNegativeButton("取消", null)
+                .show();
+    }
+    
+    private void showCacheDetails() {
+        showLoading(true);
+        new Thread(() -> {
+            String details = CacheManager.getCacheSizeInfo(getContext());
+            if (getActivity() != null) {
+                getActivity().runOnUiThread(() -> {
+                    showLoading(false);
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("缓存详情")
+                            .setMessage(details)
+                            .setPositiveButton("确定", null)
+                            .show();
+                });
+            }
+        }).start();
+    }
+    
+    @Override
+    public void onResume() {
+        super.onResume();
+        // 页面恢复时更新缓存大小
+        updateCacheSize();
     }
 }

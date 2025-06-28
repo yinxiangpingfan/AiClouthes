@@ -35,6 +35,7 @@ import com.aiclothes.app.R;
 import com.aiclothes.app.network.ApiService;
 import com.aiclothes.app.utils.ImageUtils;
 import com.aiclothes.app.utils.PermissionUtils;
+import com.aiclothes.app.utils.CacheManager;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
@@ -138,6 +139,12 @@ public class WardrobeFragment extends Fragment {
     }
     
     private void selectImageFromGallery() {
+        // 如果当前没有选择任何图片，先清除APP内缓存
+        if (selectedImageFiles.isEmpty()) {
+            Log.d("WardrobeFragment", "准备选择第一张衣服图片，先清除缓存...");
+            CacheManager.clearWardrobeCache(getContext());
+        }
+        
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
@@ -145,6 +152,12 @@ public class WardrobeFragment extends Fragment {
     }
     
     private void takePhoto() {
+        // 如果当前没有选择任何图片，先清除APP内缓存
+        if (selectedImageFiles.isEmpty()) {
+            Log.d("WardrobeFragment", "准备拍摄第一张衣服图片，先清除缓存...");
+            CacheManager.clearWardrobeCache(getContext());
+        }
+        
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
             File photoFile = createImageFile();
@@ -312,10 +325,14 @@ public class WardrobeFragment extends Fragment {
         // 更新按钮状态
         btnAnalyzeWardrobe.setEnabled(!selectedImageFiles.isEmpty());
         
-        // 重置分析结果和推荐图片
-        tvAnalysisResult.setText("");
-        ivRecommendationImage.setVisibility(View.GONE);
-        cardRecommendationImage.setVisibility(View.GONE);
+        // 重置分析结果（但保留推荐图片，除非是清空所有图片）
+        if (selectedImageFiles.isEmpty()) {
+            // 只有在清空所有图片时才重置分析结果和推荐图片
+            tvAnalysisResult.setText("");
+            ivRecommendationImage.setVisibility(View.GONE);
+            cardRecommendationImage.setVisibility(View.GONE);
+            wardrobeAnalysisResult = null;
+        }
         btnGenerateImage.setEnabled(false);
         btnGenerateRecommendation.setEnabled(false);
     }
@@ -491,6 +508,11 @@ public class WardrobeFragment extends Fragment {
             return;
         }
         
+        // 调试：检查UI组件状态
+        Log.d("WardrobeFragment", "开始生成推荐图片");
+        Log.d("WardrobeFragment", "cardRecommendationImage是否为null: " + (cardRecommendationImage == null));
+        Log.d("WardrobeFragment", "ivRecommendationDisplay是否为null: " + (ivRecommendationDisplay == null));
+        
         // 禁用按钮防止重复点击
         btnGenerateImage.setEnabled(false);
         btnGenerateRecommendation.setEnabled(false);
@@ -511,9 +533,12 @@ public class WardrobeFragment extends Fragment {
                             JSONObject jsonObject = new JSONObject(responseStr);
                             String imageUrl = jsonObject.optString("url").trim();
                             
+                            Log.d("WardrobeFragment", "收到图片URL: " + imageUrl);
+                            
                             if (!TextUtils.isEmpty(imageUrl)) {
                                 // 显示推荐图片卡片
                                 cardRecommendationImage.setVisibility(View.VISIBLE);
+                                Log.d("WardrobeFragment", "推荐图片卡片已显示");
                                 
                                 // 重新启用按钮
                                 btnGenerateImage.setEnabled(true);
@@ -527,11 +552,15 @@ public class WardrobeFragment extends Fragment {
                                         .listener(new RequestListener<Drawable>() {
                                             @Override
                                             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                                                Log.e("WardrobeFragment", "图片加载失败: " + imageUrl, e);
+                                                Toast.makeText(getContext(), "图片加载失败，请检查网络连接", Toast.LENGTH_SHORT).show();
                                                 return false;
                                             }
                                             
                                             @Override
                                             public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                                                Log.d("WardrobeFragment", "图片加载成功: " + imageUrl);
+                                                Toast.makeText(getContext(), "推荐图片已生成", Toast.LENGTH_SHORT).show();
                                                 // 图片加载完成后自动滚动到底部
                                                 scrollToBottom();
                                                 return false;

@@ -49,6 +49,7 @@ drawable ic_lock
 drawable ic_logout
 drawable ic_person
 drawable ic_shirt
+drawable ic_storage
 drawable ic_try_on
 drawable ic_wardrobe
 drawable ic_weather
@@ -71,6 +72,7 @@ id btn_start_try_on
 id btn_take_photo
 id card_about
 id card_analysis_result
+id card_cache_management
 id card_change_password
 id card_gender_selection
 id card_generated_image
@@ -117,6 +119,7 @@ id rg_gender
 id rg_try_on_mode
 id scroll_view
 id tv_analysis_result
+id tv_cache_size
 id tv_city_name
 id tv_instructions
 id tv_login

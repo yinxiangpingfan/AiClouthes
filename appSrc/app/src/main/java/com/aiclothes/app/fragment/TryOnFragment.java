@@ -32,6 +32,7 @@ import com.aiclothes.app.R;
 import com.aiclothes.app.network.ApiService;
 import com.aiclothes.app.utils.ImageUtils;
 import com.aiclothes.app.utils.PermissionUtils;
+import com.aiclothes.app.utils.CacheManager;
 import com.bumptech.glide.Glide;
 
 import org.json.JSONObject;
@@ -822,6 +823,10 @@ public class TryOnFragment extends Fragment {
                                 cardResult.setVisibility(View.VISIBLE);
                                 ivResultImage.setVisibility(View.VISIBLE);
                                 
+                                // 清除之前的试衣缓存图片（保留当前结果）
+                                android.util.Log.d("TryOnFragment", "试穿成功，开始清除之前的缓存图片...");
+                                CacheManager.clearTryOnCache(getContext(), true);
+                                
                                 // 使用Glide加载结果图片，添加详细的监听器
                                 Glide.with(TryOnFragment.this)
                                         .load(imageUrl)
@@ -888,8 +893,20 @@ public class TryOnFragment extends Fragment {
                             case 1005:
                                 errorMsg = "服务器繁忙";
                                 break;
+                            case 2075:  
+                                errorMsg = "文件上传失败";
+                                break;
+                            case 2085:  
+                                errorMsg = "文件上传失败";
+                                break;
+                            case 2095:  
+                                errorMsg = "文件上传失败";
+                                break;
+                            case 2115:  
+                                errorMsg = "文件上传失败";
+                                break;
                             default:
-                                errorMsg = "试衣失败: " + msg;
+                                errorMsg = "试衣失败: 图片不符合规范" + msg;
                                 break;
                         }
                         

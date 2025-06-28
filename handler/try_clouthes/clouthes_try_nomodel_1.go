@@ -4,11 +4,12 @@ import (
 	"ai_clouthes_backed/config"
 	"ai_clouthes_backed/utils"
 	"fmt"
-	"github.com/gofiber/fiber/v3"
 	"mime/multipart"
 	"net/url"
 	"path"
 	"time"
+
+	"github.com/gofiber/fiber/v3"
 )
 
 //不需要用户提供模特图片

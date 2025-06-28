@@ -25,6 +25,9 @@ public final class FragmentProfileBinding implements ViewBinding {
   public final CardView cardAbout;
 
   @NonNull
+  public final CardView cardCacheManagement;
+
+  @NonNull
   public final CardView cardChangePassword;
 
   @NonNull
@@ -34,16 +37,22 @@ public final class FragmentProfileBinding implements ViewBinding {
   public final ProgressBar progressBar;
 
   @NonNull
+  public final TextView tvCacheSize;
+
+  @NonNull
   public final TextView tvUsername;
 
   private FragmentProfileBinding(@NonNull ScrollView rootView, @NonNull CardView cardAbout,
-      @NonNull CardView cardChangePassword, @NonNull CardView cardLogout,
-      @NonNull ProgressBar progressBar, @NonNull TextView tvUsername) {
+      @NonNull CardView cardCacheManagement, @NonNull CardView cardChangePassword,
+      @NonNull CardView cardLogout, @NonNull ProgressBar progressBar, @NonNull TextView tvCacheSize,
+      @NonNull TextView tvUsername) {
     this.rootView = rootView;
     this.cardAbout = cardAbout;
+    this.cardCacheManagement = cardCacheManagement;
     this.cardChangePassword = cardChangePassword;
     this.cardLogout = cardLogout;
     this.progressBar = progressBar;
+    this.tvCacheSize = tvCacheSize;
     this.tvUsername = tvUsername;
   }
 
@@ -80,6 +89,12 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.card_cache_management;
+      CardView cardCacheManagement = ViewBindings.findChildViewById(rootView, id);
+      if (cardCacheManagement == null) {
+        break missingId;
+      }
+
       id = R.id.card_change_password;
       CardView cardChangePassword = ViewBindings.findChildViewById(rootView, id);
       if (cardChangePassword == null) {
@@ -98,14 +113,20 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tv_cache_size;
+      TextView tvCacheSize = ViewBindings.findChildViewById(rootView, id);
+      if (tvCacheSize == null) {
+        break missingId;
+      }
+
       id = R.id.tv_username;
       TextView tvUsername = ViewBindings.findChildViewById(rootView, id);
       if (tvUsername == null) {
         break missingId;
       }
 
-      return new FragmentProfileBinding((ScrollView) rootView, cardAbout, cardChangePassword,
-          cardLogout, progressBar, tvUsername);
+      return new FragmentProfileBinding((ScrollView) rootView, cardAbout, cardCacheManagement,
+          cardChangePassword, cardLogout, progressBar, tvCacheSize, tvUsername);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
