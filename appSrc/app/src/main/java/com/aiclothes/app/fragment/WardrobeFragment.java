@@ -182,13 +182,7 @@ public class WardrobeFragment extends Fragment {
                         Uri imageUri = data.getClipData().getItemAt(i).getUri();
                         File imageFile = ImageUtils.getFileFromUri(getContext(), imageUri);
                         
-                        // 预检查文件大小
-                        if (imageFile != null && !ImageUtils.isWardrobeFileSizeValid(imageFile)) {
-                            String fileName = imageFile.getName();
-                            String fileSize = ImageUtils.getFileSizeDescription(imageFile);
-                            Toast.makeText(getContext(), "文件 " + fileName + " (" + fileSize + ") 不符合大小要求（5KB-5MB），已跳过", Toast.LENGTH_LONG).show();
-                            continue;
-                        }
+
                         
                         addSelectedImage(imageFile);
                     }
@@ -197,13 +191,7 @@ public class WardrobeFragment extends Fragment {
                     Uri selectedImageUri = data.getData();
                     File imageFile = ImageUtils.getFileFromUri(getContext(), selectedImageUri);
                     
-                    // 预检查文件大小
-                    if (imageFile != null && !ImageUtils.isWardrobeFileSizeValid(imageFile)) {
-                        String fileName = imageFile.getName();
-                        String fileSize = ImageUtils.getFileSizeDescription(imageFile);
-                        Toast.makeText(getContext(), "文件 " + fileName + " (" + fileSize + ") 不符合大小要求（5KB-5MB）", Toast.LENGTH_LONG).show();
-                        return;
-                    }
+
                     
                     addSelectedImage(imageFile);
                 }
@@ -259,7 +247,7 @@ public class WardrobeFragment extends Fragment {
                 Log.d("WardrobeFragment", "图片压缩完成，新大小: " + imageFile.length() + " bytes (" + ImageUtils.getFileSizeDescription(imageFile) + ")");
                 
                 // 压缩后再次检查大小
-                if (!ImageUtils.isWardrobeFileSizeValid(imageFile)) {
+                if (!ImageUtils.isFileSizeValid(imageFile)) {
                     Log.e("WardrobeFragment", "压缩后文件仍不符合要求");
                     Toast.makeText(getContext(), "图片文件大小不符合要求（5KB-5MB）", Toast.LENGTH_SHORT).show();
                     return;

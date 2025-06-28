@@ -127,22 +127,19 @@ public class ImageUtils {
         }
     }
     
-    // 检查文件大小 (AI试衣服功能: 5KB-5MB)
+    // 检查文件大小 (通用: 5KB-5MB)
     public static boolean isFileSizeValid(File file) {
         long fileSizeInBytes = file.length();
         long fileSizeInKB = fileSizeInBytes / 1024;
         long fileSizeInMB = fileSizeInBytes / (1024 * 1024);
-        
+
         return fileSizeInKB >= 5 && fileSizeInMB <= 5;
     }
-    
-    // 检查文件大小 (AI衣橱管理功能: 5KB-5MB)
+
+    // 检查文件大小 (AI衣橱管理功能: 5KB-5MB) - 已废弃，请使用 isFileSizeValid
+    @Deprecated
     public static boolean isWardrobeFileSizeValid(File file) {
-        long fileSizeInBytes = file.length();
-        long fileSizeInKB = fileSizeInBytes / 1024;
-        long fileSizeInMB = fileSizeInBytes / (1024 * 1024);
-        
-        return fileSizeInKB >= 5 && fileSizeInMB <= 5;
+        return isFileSizeValid(file);
     }
     
     // 检查图片格式
