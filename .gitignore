@@ -1,2 +1,128 @@
 *.yaml
 *.log
+
+# ===== Android / Gradle =====
+# 构建产物
+**/build/
+**/app/build/
+**/appSrc/app/build/
+**/appSrc/build/
+**/appSrc/.gradle/
+**/.gradle/
+**/gradle/build/
+**/gradle/app/build/
+
+# Gradle 缓存和临时文件
+.gradle/
+**/.gradle/
+**/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.jar
+!appSrc/gradle/wrapper/gradle-wrapper.jar
+
+# 本地配置文件
+local.properties
+**/local.properties
+*.properties
+!gradle.properties
+!appSrc/gradle.properties
+
+# Android Studio / IntelliJ IDEA
+.idea/
+**/.idea/
+*.iml
+*.ipr
+*.iws
+.idea_modules/
+
+# ===== Go =====
+# 编译产物
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+go.work.sum
+
+# Go 测试覆盖率
+*.coverprofile
+coverage.txt
+coverage.html
+
+# Go 依赖
+vendor/
+
+# ===== 系统文件 =====
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ===== IDE / 编辑器 =====
+# VSCode
+.vscode/
+*.code-workspace
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# NetBeans
+nbproject/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# ===== 临时文件和缓存 =====
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.cache/
+tmp/
+temp/
+
+# ===== 日志和调试文件 =====
+*.log
+logs/
+*.pid
+*.seed
+*.pid.lock
+
+# ===== 其他 =====
+# 环境变量文件
+.env
+.env.local
+.env.*.local
+
+# 备份文件
+*.bak
+*.backup
+*~
+
+# APK 文件（通常不需要提交）
+*.apk
+*.aab
+
+# 签名文件（不应该提交）
+*.jks
+*.keystore
+*.key
